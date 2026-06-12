@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://dfywqgr404x2a"]
+
+[ext_resource type="Script" uid="uid://ce48x5d41hgyi" path="res://b3gd/chart_editor/chart_editor_activate.gd" id="1_5icij"]
+[ext_resource type="Script" uid="uid://223mam7be1wl" path="res://b3gd/chart_player/chart_loader.gd" id="1_62xbj"]
+[ext_resource type="Resource" uid="uid://sjfqocgmjxjj" path="res://songs/test/chart.tres" id="3_cdfgl"]
+[ext_resource type="Script" uid="uid://bpt0v2hxb23lq" path="res://b3gd/chart_player/song_audio_player.gd" id="3_my5jg"]
+[ext_resource type="Script" uid="uid://cr3x8h58rufy1" path="res://b3gd/chart_player/event_player.gd" id="3_v3b1e"]
+[ext_resource type="Script" uid="uid://rypo2bh7qid7" path="res://b3gd/chart_player/note_manager.gd" id="4_t3y1r"]
+[ext_resource type="Script" uid="uid://dvjswg4e6wv1q" path="res://b3gd/chart_player/note_renderers/gridrenderer/3dgridrenderer.gd" id="5_yp0gr"]
+[ext_resource type="Texture2D" uid="uid://bdnho2gsjp6c2" path="res://b3gd/chart_player/noteskins/template.png" id="7_cdfgl"]
+[ext_resource type="Script" uid="uid://bctudmv5p4heo" path="res://b3gd/chart_player/note_renderers/gridrenderer/noteskingriddata.gd" id="8_rbo3x"]
+[ext_resource type="Script" uid="uid://m5sbxr0i4jp1" path="res://b3gd/chart_player/chart_data_editor.gd" id="10_darji"]
+[ext_resource type="Script" uid="uid://cn613y6nswe4m" path="res://b3gd/chart_editor/chart_scrubber.gd" id="10_wento"]
+
+[sub_resource type="Resource" id="Resource_eb4vn"]
+script = ExtResource("8_rbo3x")
+metadata/_custom_type_script = "uid://bctudmv5p4heo"
+
+[sub_resource type="Environment" id="Environment_v3b1e"]
+
+[node name="ChartPlayer" type="Node" unique_id=192656738 groups=["ChartSource"]]
+script = ExtResource("1_5icij")
+chart = ExtResource("3_cdfgl")
+
+[node name="ChartLoader" type="Node" parent="." unique_id=2030037540 node_paths=PackedStringArray("chart_source", "song_audio_player", "note_manager", "event_player", "status_handler") groups=["ChartLoader"]]
+script = ExtResource("1_62xbj")
+chart_source = NodePath("..")
+song_audio_player = NodePath("../SongAudioPlayer")
+note_manager = NodePath("../NoteManager")
+event_player = NodePath("../EventPlayer")
+status_handler = NodePath("../StatusHandler")
+
+[node name="EventPlayer" type="Node" parent="." unique_id=746537916 node_paths=PackedStringArray("song_audio_player")]
+script = ExtResource("3_v3b1e")
+song_audio_player = NodePath("../SongAudioPlayer")
+
+[node name="SongAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=1704886237 groups=["SongAudioPlayer"]]
+script = ExtResource("3_my5jg")
+
+[node name="NoteManager" type="Node" parent="." unique_id=1686211870 node_paths=PackedStringArray("song_audio_player") groups=["NoteManager"]]
+script = ExtResource("4_t3y1r")
+hit_window = 0.2
+song_audio_player = NodePath("../SongAudioPlayer")
+
+[node name="StatusHandler" type="Node" parent="." unique_id=1058364644]
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=2126257445]
+
+[node name="Strumlines" type="SubViewportContainer" parent="UI" unique_id=1338891566]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="UI/Strumlines" unique_id=8042913]
+transparent_bg = true
+handle_input_locally = false
+anisotropic_filtering_level = 0
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="StrumlineRenderer" type="MeshInstance3D" parent="UI/Strumlines/SubViewport" unique_id=2002107423]
+transform = Transform3D(0.14999999, 0, 0, 0, 0.14999998, 0, 0, 0, 0.14999999, 0, 0.29894063, 0)
+script = ExtResource("5_yp0gr")
+noteskin_texture = ExtResource("7_cdfgl")
+noteskin_data = SubResource("Resource_eb4vn")
+hold_resolution = 3.0
+
+[node name="Camera3D" type="Camera3D" parent="UI/Strumlines/SubViewport" unique_id=955848793]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17)
+projection = 1
+fov = 10.0
+near = 1.0
+far = 33.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1732893515]
+environment = SubResource("Environment_v3b1e")
+
+[node name="EditorTools" type="Node" parent="." unique_id=804139421]
+
+[node name="ChartDataEditor" type="Node" parent="EditorTools" unique_id=1425399514 node_paths=PackedStringArray("chart_source", "chart_loader", "song_audio_player", "note_manager", "event_player")]
+script = ExtResource("10_darji")
+chart_source = NodePath("../..")
+chart_loader = NodePath("../../ChartLoader")
+song_audio_player = NodePath("../../SongAudioPlayer")
+note_manager = NodePath("../../NoteManager")
+event_player = NodePath("../../EventPlayer")
+
+[node name="SongScrubber" type="Node" parent="EditorTools" unique_id=53443620]
+script = ExtResource("10_wento")
+
+[node name="ChartUI" type="Control" parent="EditorTools" unique_id=1302634853]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pre_init_events" from="EventPlayer" to="SongAudioPlayer" method="on_event_pre_init"]
+[connection signal="finished" from="SongAudioPlayer" to="SongAudioPlayer" method="on_finished"]

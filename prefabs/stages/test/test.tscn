@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bt4wd4ck4gv3f"]
+
+[ext_resource type="Script" uid="uid://bbjfx3qqjrsmn" path="res://prefabs/stages/background_align.gd" id="1_vxuqr"]
+[ext_resource type="Texture2D" uid="uid://becxc55qu1ppw" path="res://prefabs/stages/test/house.png" id="2_vclsp"]
+[ext_resource type="Texture2D" uid="uid://bbog6w61nfyhs" path="res://prefabs/stages/test/dirt.png" id="3_ypp0x"]
+
+[node name="TestBackground" type="Node2D" unique_id=2125051436]
+texture_filter = 1
+texture_repeat = 1
+script = ExtResource("1_vxuqr")
+
+[node name="Parallax2D3" type="Parallax2D" parent="." unique_id=1391399322]
+scroll_scale = Vector2(0, 0)
+
+[node name="ColorRect" type="ColorRect" parent="Parallax2D3" unique_id=1844761229]
+offset_left = -2539.0
+offset_top = -1308.0
+offset_right = 2555.0
+offset_bottom = 1296.0
+
+[node name="Parallax2D2" type="Parallax2D" parent="." unique_id=637201842]
+scroll_scale = Vector2(0.4, 0.4)
+
+[node name="House" type="Sprite2D" parent="Parallax2D2" unique_id=2092582013]
+position = Vector2(28, -154)
+texture = ExtResource("2_vclsp")
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1600617016]
+repeat_size = Vector2(1669, 0)
+repeat_times = 2
+
+[node name="Dirt" type="Sprite2D" parent="Parallax2D" unique_id=815087384]
+position = Vector2(108, 257)
+texture = ExtResource("3_ypp0x")
