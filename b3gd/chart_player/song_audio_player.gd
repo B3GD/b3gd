@@ -107,6 +107,9 @@ func unpause():
 		return
 	paused = false
 	song_progress_seconds = paused_position
+	if paused_position >= 0:
+		play(song_progress_seconds)
+		force_sync = true
 
 func track_seek(new_position, paused_scrub_time:float = 0):
 	paused_position = new_position

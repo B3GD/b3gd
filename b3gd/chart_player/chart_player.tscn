@@ -11,12 +11,20 @@
 [ext_resource type="Script" uid="uid://bctudmv5p4heo" path="res://b3gd/chart_player/note_renderers/gridrenderer/noteskingriddata.gd" id="8_rbo3x"]
 [ext_resource type="Script" uid="uid://m5sbxr0i4jp1" path="res://b3gd/chart_player/chart_data_editor.gd" id="10_darji"]
 [ext_resource type="Script" uid="uid://cn613y6nswe4m" path="res://b3gd/chart_editor/chart_scrubber.gd" id="10_wento"]
+[ext_resource type="Script" uid="uid://cj632xxpc60ub" path="res://b3gd/chart_player/note_renderers/control_renderer.gd" id="12_n4u7r"]
+[ext_resource type="Texture2D" uid="uid://bdkks2vfqiwwd" path="res://b3gd/chart_editor/notes.png" id="13_yao2k"]
 
 [sub_resource type="Resource" id="Resource_eb4vn"]
 script = ExtResource("8_rbo3x")
 metadata/_custom_type_script = "uid://bctudmv5p4heo"
 
 [sub_resource type="Environment" id="Environment_v3b1e"]
+
+[sub_resource type="FontVariation" id="FontVariation_darji"]
+variation_embolden = 0.75
+
+[sub_resource type="LabelSettings" id="LabelSettings_n4u7r"]
+font = SubResource("FontVariation_darji")
 
 [node name="ChartPlayer" type="Node" unique_id=192656738 groups=["ChartSource"]]
 script = ExtResource("1_5icij")
@@ -45,6 +53,7 @@ song_audio_player = NodePath("../SongAudioPlayer")
 [node name="StatusHandler" type="Node" parent="." unique_id=1058364644]
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=2126257445]
+visible = false
 
 [node name="Strumlines" type="SubViewportContainer" parent="UI" unique_id=1338891566]
 anchors_preset = 15
@@ -59,7 +68,7 @@ transparent_bg = true
 handle_input_locally = false
 anisotropic_filtering_level = 0
 size = Vector2i(1920, 1080)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="StrumlineRenderer" type="MeshInstance3D" parent="UI/Strumlines/SubViewport" unique_id=2002107423]
 transform = Transform3D(0.14999999, 0, 0, 0, 0.14999998, 0, 0, 0, 0.14999999, 0, 0.29894063, 0)
@@ -91,13 +100,165 @@ event_player = NodePath("../../EventPlayer")
 [node name="SongScrubber" type="Node" parent="EditorTools" unique_id=53443620]
 script = ExtResource("10_wento")
 
-[node name="ChartUI" type="Control" parent="EditorTools" unique_id=1302634853]
-layout_mode = 3
+[node name="EditorUI" type="CanvasLayer" parent="EditorTools" unique_id=394825533]
+layer = 255
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EditorTools/EditorUI" unique_id=1060376818]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -384.00012
+offset_bottom = -216.00006
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.25, 1.25)
+focus_behavior_recursive = 1
+
+[node name="TopBar" type="PanelContainer" parent="EditorTools/EditorUI/VBoxContainer" unique_id=188356539]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TopBarMargin" type="MarginContainer" parent="EditorTools/EditorUI/VBoxContainer/TopBar" unique_id=165015496]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="TopBarHBox" type="HBoxContainer" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin" unique_id=1592651682]
+layout_mode = 2
+
+[node name="SaveButton" type="Button" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=55421679]
+layout_mode = 2
+text = "SAVE"
+
+[node name="ChartInfoButton" type="Button" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=1423952751]
+layout_mode = 2
+toggle_mode = true
+text = "CHART INFO"
+
+[node name="VSeparator" type="VSeparator" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=268231637]
+layout_mode = 2
+
+[node name="NoteClassLabel" type="Label" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=1176939312]
+layout_mode = 2
+text = "Note Class:"
+
+[node name="NoteTypeBox" type="OptionButton" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=142868142]
+layout_mode = 2
+selected = 0
+item_count = 1
+popup/item_0/text = "Note"
+popup/item_0/id = 0
+
+[node name="SnapLabel" type="VSeparator" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=1100823991]
+layout_mode = 2
+
+[node name="Snap" type="Label" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=974579257]
+layout_mode = 2
+text = "Snap:"
+
+[node name="SnapBox" type="SpinBox" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=1303999096]
+layout_mode = 2
+min_value = 1.0
+max_value = 129.0
+page = 1.0
+value = 1.0
+alignment = 1
+prefix = "1 /"
+
+[node name="PitchScaleLabel" type="Label" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=1752501316]
+layout_mode = 2
+text = "Pitch Scale:"
+
+[node name="PitchScaleBox" type="SpinBox" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=916350522]
+layout_mode = 2
+min_value = 0.1
+max_value = 4.0
+step = 0.1
+page = 1.0
+value = 1.0
+alignment = 1
+suffix = "x"
+
+[node name="DownscrollLabel" type="Label" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=1309808987]
+layout_mode = 2
+text = "Downscroll:"
+
+[node name="EditorDownscroll" type="CheckBox" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=1138232562]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EditorTools/EditorUI/VBoxContainer" unique_id=17901632]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer" unique_id=1866255571]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+vertical_scroll_mode = 0
+scroll_hint_mode = 1
+
+[node name="SplitContainer" type="SplitContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer" unique_id=1896881357]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+split_offsets = PackedInt32Array(0, 0)
+drag_area_highlight_in_editor = true
+
+[node name="Control2" type="Control" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/SplitContainer" unique_id=1965979913]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Strumline" type="VBoxContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/SplitContainer" unique_id=431039475]
+layout_mode = 2
+
+[node name="InfoPanel" type="PanelContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/SplitContainer/Strumline" unique_id=284937725]
+layout_mode = 2
+
+[node name="InfoMargin" type="MarginContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/SplitContainer/Strumline/InfoPanel" unique_id=1179340067]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="InfoVBox" type="VBoxContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/SplitContainer/Strumline/InfoPanel/InfoMargin" unique_id=358730950]
+layout_mode = 2
+alignment = 1
+
+[node name="StrumlineLabel" type="Label" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/SplitContainer/Strumline/InfoPanel/InfoMargin/InfoVBox" unique_id=905893206]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Strumline 0"
+label_settings = SubResource("LabelSettings_n4u7r")
+horizontal_alignment = 1
+
+[node name="CPUCheckBox" type="CheckBox" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/SplitContainer/Strumline/InfoPanel/InfoMargin/InfoVBox" unique_id=706653509]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "CPU"
+alignment = 1
+
+[node name="StrumlineRenderer" type="Control" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/SplitContainer/Strumline" unique_id=1905340484]
+clip_contents = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("12_n4u7r")
+notes_texture = ExtResource("13_yao2k")
+
+[node name="Control" type="Control" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/SplitContainer" unique_id=509375042]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ProgressBar" type="ProgressBar" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer" unique_id=1461287667]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_vertical = 1
+fill_mode = 2
+show_percentage = false
 
 [connection signal="pre_init_events" from="EventPlayer" to="SongAudioPlayer" method="on_event_pre_init"]
 [connection signal="finished" from="SongAudioPlayer" to="SongAudioPlayer" method="on_finished"]
