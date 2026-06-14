@@ -1,0 +1,4 @@
+ABANDON ALL HOPE YE WHO ENTER
+the chart editor code actually isn't THAT bad,
+but i feel the need to warn because I don't believe it matches
+the quality standard for the other parts of the engine codebase wise.

@@ -20,11 +20,11 @@ var song_progress_seconds = -4: #set to a really low number so the song wont pla
 		if song_progress_seconds < 0 and playing:
 			stop()
 		elif song_progress_seconds >= 0 and !paused and !playing:
-			if song_progress_seconds > 0.08: # if its only a little off it just resyncs
+			if song_progress_seconds > 0.08: # if its only a little off it just retimes it
 				play(song_progress_seconds)
+				force_sync = true
 			else:
 				play()
-			force_sync = true
 
 var paused_position = 0.0
 var force_sync = false
@@ -89,6 +89,7 @@ func _process(delta: float) -> void:
 	# if true_prog stutters (which it can do) it will be smoothed out so it still feels normal
 	song_progress_seconds = max(true_prog, song_progress_seconds + (delta * 0.9 * pitch_scale))
 	if force_sync:
+		print("resync", song_progress_seconds, true_prog)
 		song_progress_seconds = max(true_prog, 0)
 		force_sync = false
 	

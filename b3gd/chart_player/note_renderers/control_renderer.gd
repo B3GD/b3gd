@@ -2,29 +2,54 @@ extends Control
 
 @export var notes_texture: Texture2D
 @export var strum_line_idx: int = 1
-@export var scroll_zoom: float = 1
 
 @onready var song_audio_player := get_tree().get_first_node_in_group("SongAudioPlayer")
 @onready var note_manager := get_tree().get_first_node_in_group("NoteManager")
 @onready var chart_source := get_tree().get_first_node_in_group("ChartSource")
 
-func _process(delta: float) -> void:
+var extra_zoom = 1.0
+
+func _process(_delta: float) -> void:
+	extra_zoom = 1.0 / (%EditorScrollZoom.value * 2.0)
 	queue_redraw()
 
 func _draw() -> void:
 	var fill_scale = size.x / 256
+	draw_rect(Rect2(Vector2.ZERO, size), Color(0.0, 0.0, 0.0, 0.25))
 	draw_set_transform(
 		Vector2(0, size.y * (0.25 + (float(%EditorDownscroll.button_pressed) * 0.5))), 
-		0.0,
+		0.0, 
 		Vector2(fill_scale, fill_scale)
 	)
 	draw_receptors()
 
 func draw_receptors():
 	var current_time = song_audio_player.song_progress_seconds
-	var scroll_mult = 1.0
+	var scroll_mult = extra_zoom
 	if %EditorDownscroll.button_pressed:
 		scroll_mult *= -1.0
+	
+	var current_beat = song_audio_player.song_progress_beats
+	
+	var grid_range = 128
+	@warning_ignore("integer_division") # I want these to round. so if you give a weird range its ok
+	var grid_start_time = round(current_beat) - (grid_range / 2)
+	@warning_ignore("integer_division") # I want these to round. so if you give a weird range its ok
+	var grid_end_time = round(current_beat) + (grid_range / 2)
+	var current_grid_time = grid_start_time
+	while current_grid_time < grid_end_time:
+		var line_y = song_audio_player.get_seconds_from_beat(current_grid_time) - current_time
+		line_y *= scroll_mult * 64
+		
+		var mod_version = fmod(current_grid_time + 1000.0, 2.0)
+		var alpha = lerp(0.5, 0.25, mod_version)
+		
+		draw_line(
+			Vector2(0, line_y),
+			Vector2(256, line_y),
+			Color(1.0, 1.0, 1.0, alpha)
+		)
+		current_grid_time += 1
 	
 	for receptor_id in range(note_manager.strum_lines[strum_line_idx].receptors.size()):
 		draw_note(Vector2(receptor_id, -0.5), Vector2i(receptor_id, 0))
