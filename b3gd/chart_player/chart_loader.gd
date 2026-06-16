@@ -1,5 +1,9 @@
 extends Node
 
+signal tracks_loaded()
+signal notes_loaded()
+signal events_loaded()
+
 @export_group("Node References")
 @export var chart_source:Node
 @export var song_audio_player:AudioStreamPlayer
@@ -42,6 +46,7 @@ func load_tracks():
 	for i in range(tracks.size()):
 		audio_stream.set_sync_stream(i, tracks[i])
 	song_audio_player.stream = audio_stream
+	tracks_loaded.emit()
 
 func load_notes(ignore_past_notes: bool = false):
 	note_manager.strum_lines = chart_source.chart.strum_lines
@@ -59,7 +64,9 @@ func load_notes(ignore_past_notes: bool = false):
 					continue
 				note_id += 1
 			receptor.notes = receptor.notes.slice(note_id)
+	notes_loaded.emit()
 
 func load_events():
 	event_player.events = chart_source.chart.events
 	event_player.init_events()
+	events_loaded.emit()

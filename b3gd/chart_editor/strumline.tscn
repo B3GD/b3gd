@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://dkros47lrg8sl"]
+
+[ext_resource type="Script" uid="uid://cj632xxpc60ub" path="res://b3gd/chart_player/note_renderers/control_renderer.gd" id="1_f2det"]
+[ext_resource type="Texture2D" uid="uid://bdkks2vfqiwwd" path="res://b3gd/chart_editor/images/notes.png" id="2_gwmbt"]
+
+[sub_resource type="FontVariation" id="FontVariation_darji"]
+variation_embolden = 0.75
+
+[sub_resource type="LabelSettings" id="LabelSettings_n4u7r"]
+font = SubResource("FontVariation_darji")
+
+[node name="Strumline" type="VBoxContainer" unique_id=1600336989]
+
+[node name="InfoPanel" type="PanelContainer" parent="." unique_id=1958028117]
+layout_mode = 2
+
+[node name="InfoMargin" type="MarginContainer" parent="InfoPanel" unique_id=1700282008]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="InfoVBox" type="VBoxContainer" parent="InfoPanel/InfoMargin" unique_id=2076739836]
+layout_mode = 2
+alignment = 1
+
+[node name="StrumlineLabel" type="Label" parent="InfoPanel/InfoMargin/InfoVBox" unique_id=1632624735]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Strumline 0"
+label_settings = SubResource("LabelSettings_n4u7r")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoPanel/InfoMargin/InfoVBox" unique_id=1643692828]
+layout_mode = 2
+
+[node name="CPUCheckBox" type="CheckBox" parent="InfoPanel/InfoMargin/InfoVBox/HBoxContainer" unique_id=468590135]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "CPU"
+alignment = 1
+
+[node name="CPUCheckBox2" type="CheckBox" parent="InfoPanel/InfoMargin/InfoVBox/HBoxContainer" unique_id=894004071]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "MUTE"
+alignment = 1
+
+[node name="StrumlineRenderer" type="Control" parent="." unique_id=220299407]
+clip_contents = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("1_f2det")
+notes_texture = ExtResource("2_gwmbt")

@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://b507lgcilwgxq"]
+
+[ext_resource type="Script" uid="uid://cc12t4u5iccp8" path="res://b3gd/chart_editor/event_box.gd" id="1_lcodg"]
+[ext_resource type="Texture2D" uid="uid://cka5y22a126yx" path="res://b3gd/chart_editor/images/arrow.png" id="2_jrhu1"]
+
+[node name="EventBox" type="Control" unique_id=2124450847]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 120.0
+offset_bottom = 40.0
+size_flags_horizontal = 8
+size_flags_vertical = 4
+script = ExtResource("1_lcodg")
+
+[node name="Button" type="Button" parent="." unique_id=1545249279]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 98.0
+grow_vertical = 2
+toggle_mode = true
+text = "EventName"
+
+[node name="Arrow" type="NinePatchRect" parent="." unique_id=1878804386]
+modulate = Color(1, 1, 1, 0.53333336)
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.99700004
+anchor_bottom = 1.0
+offset_left = 98.0
+offset_top = 11.0
+offset_right = -0.124053955
+offset_bottom = -11.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture = ExtResource("2_jrhu1")
+patch_margin_left = 4
+patch_margin_right = 17
+axis_stretch_horizontal = 1

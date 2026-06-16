@@ -12,22 +12,14 @@
 [ext_resource type="Script" uid="uid://m5sbxr0i4jp1" path="res://b3gd/chart_editor/chart_data_editor.gd" id="10_darji"]
 [ext_resource type="Script" uid="uid://cn613y6nswe4m" path="res://b3gd/chart_editor/chart_scrubber.gd" id="10_wento"]
 [ext_resource type="Script" uid="uid://b4it3bm2xipgc" path="res://b3gd/chart_editor/event_view_arranger.gd" id="12_jng4k"]
-[ext_resource type="Script" uid="uid://cj632xxpc60ub" path="res://b3gd/chart_player/note_renderers/control_renderer.gd" id="12_n4u7r"]
-[ext_resource type="Script" uid="uid://cc12t4u5iccp8" path="res://b3gd/chart_editor/event_box.gd" id="13_u3uuj"]
-[ext_resource type="Texture2D" uid="uid://bdkks2vfqiwwd" path="res://b3gd/chart_editor/images/notes.png" id="13_yao2k"]
-[ext_resource type="Texture2D" uid="uid://cka5y22a126yx" path="res://b3gd/chart_editor/images/arrow.png" id="14_763kw"]
+[ext_resource type="Script" uid="uid://cddem6pgulynf" path="res://b3gd/chart_editor/note_type_box.gd" id="12_o3yqt"]
+[ext_resource type="Script" uid="uid://dsxriov1ftjvw" path="res://b3gd/chart_editor/strumline_container.gd" id="13_yao2k"]
 
 [sub_resource type="Resource" id="Resource_eb4vn"]
 script = ExtResource("8_rbo3x")
 metadata/_custom_type_script = "uid://bctudmv5p4heo"
 
 [sub_resource type="Environment" id="Environment_v3b1e"]
-
-[sub_resource type="FontVariation" id="FontVariation_darji"]
-variation_embolden = 0.75
-
-[sub_resource type="LabelSettings" id="LabelSettings_n4u7r"]
-font = SubResource("FontVariation_darji")
 
 [sub_resource type="FontVariation" id="FontVariation_yao2k"]
 spacing_top = -2
@@ -155,12 +147,9 @@ layout_mode = 2
 layout_mode = 2
 text = "Note Class:"
 
-[node name="NoteTypeBox" type="OptionButton" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=142868142]
+[node name="NoteClassBox" type="OptionButton" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=142868142]
 layout_mode = 2
-selected = 0
-item_count = 1
-popup/item_0/text = "Note"
-popup/item_0/id = 0
+script = ExtResource("12_o3yqt")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="EditorTools/EditorUI/VBoxContainer" unique_id=17901632]
 layout_mode = 2
@@ -185,42 +174,6 @@ size_flags_horizontal = 8
 script = ExtResource("12_jng4k")
 pixel_top = 78
 extra_right_line_width = 48
-
-[node name="EventBox" type="Control" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Container" unique_id=56579838]
-custom_minimum_size = Vector2(120, 0)
-anchors_preset = 0
-offset_right = 120.0
-offset_bottom = 40.0
-size_flags_horizontal = 8
-size_flags_vertical = 4
-script = ExtResource("13_u3uuj")
-
-[node name="Button" type="Button" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Container/EventBox" unique_id=819385378]
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 98.0
-grow_vertical = 2
-toggle_mode = true
-text = "EventName"
-
-[node name="Arrow" type="NinePatchRect" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/Container/EventBox" unique_id=46137364]
-modulate = Color(1, 1, 1, 0.53333336)
-custom_minimum_size = Vector2(0, 18)
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.99700004
-anchor_bottom = 1.0
-offset_left = 98.0
-offset_top = 11.0
-offset_right = -0.124053955
-offset_bottom = -11.0
-size_flags_horizontal = 3
-size_flags_vertical = 4
-texture = ExtResource("14_763kw")
-patch_margin_left = 4
-patch_margin_right = 17
-axis_stretch_horizontal = 1
 
 [node name="ZoomBar" type="Control" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer" unique_id=84520637]
 custom_minimum_size = Vector2(42, 160)
@@ -266,103 +219,10 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-split_offsets = PackedInt32Array(153, 0)
+split_offsets = PackedInt32Array(153)
 drag_area_highlight_in_editor = true
 split_offset = 153
-
-[node name="Strumline" type="VBoxContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/StrumlineContainer" unique_id=431039475]
-layout_mode = 2
-
-[node name="InfoPanel" type="PanelContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/StrumlineContainer/Strumline" unique_id=284937725]
-layout_mode = 2
-
-[node name="InfoMargin" type="MarginContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/StrumlineContainer/Strumline/InfoPanel" unique_id=1179340067]
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="InfoVBox" type="VBoxContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/StrumlineContainer/Strumline/InfoPanel/InfoMargin" unique_id=358730950]
-layout_mode = 2
-alignment = 1
-
-[node name="StrumlineLabel" type="Label" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/StrumlineContainer/Strumline/InfoPanel/InfoMargin/InfoVBox" unique_id=905893206]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Strumline 0"
-label_settings = SubResource("LabelSettings_n4u7r")
-horizontal_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/StrumlineContainer/Strumline/InfoPanel/InfoMargin/InfoVBox" unique_id=1218454945]
-layout_mode = 2
-
-[node name="CPUCheckBox" type="CheckBox" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/StrumlineContainer/Strumline/InfoPanel/InfoMargin/InfoVBox/HBoxContainer" unique_id=706653509]
-layout_mode = 2
-size_flags_horizontal = 6
-text = "CPU"
-alignment = 1
-
-[node name="CPUCheckBox2" type="CheckBox" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/StrumlineContainer/Strumline/InfoPanel/InfoMargin/InfoVBox/HBoxContainer" unique_id=219912656]
-layout_mode = 2
-size_flags_horizontal = 6
-text = "MUTE"
-alignment = 1
-
-[node name="StrumlineRenderer" type="Control" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/StrumlineContainer/Strumline" unique_id=1905340484]
-clip_contents = true
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-size_flags_vertical = 3
-script = ExtResource("12_n4u7r")
-notes_texture = ExtResource("13_yao2k")
-
-[node name="Strumline2" type="VBoxContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/StrumlineContainer" unique_id=2085290356]
-layout_mode = 2
-
-[node name="InfoPanel" type="PanelContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/StrumlineContainer/Strumline2" unique_id=768284529]
-layout_mode = 2
-
-[node name="InfoMargin" type="MarginContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/StrumlineContainer/Strumline2/InfoPanel" unique_id=1110881716]
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="InfoVBox" type="VBoxContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/StrumlineContainer/Strumline2/InfoPanel/InfoMargin" unique_id=549849970]
-layout_mode = 2
-alignment = 1
-
-[node name="StrumlineLabel" type="Label" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/StrumlineContainer/Strumline2/InfoPanel/InfoMargin/InfoVBox" unique_id=1847565293]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Strumline 0"
-label_settings = SubResource("LabelSettings_n4u7r")
-horizontal_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/StrumlineContainer/Strumline2/InfoPanel/InfoMargin/InfoVBox" unique_id=1018955594]
-layout_mode = 2
-
-[node name="CPUCheckBox" type="CheckBox" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/StrumlineContainer/Strumline2/InfoPanel/InfoMargin/InfoVBox/HBoxContainer" unique_id=1376027624]
-layout_mode = 2
-size_flags_horizontal = 6
-text = "CPU"
-alignment = 1
-
-[node name="CPUCheckBox2" type="CheckBox" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/StrumlineContainer/Strumline2/InfoPanel/InfoMargin/InfoVBox/HBoxContainer" unique_id=676938430]
-layout_mode = 2
-size_flags_horizontal = 6
-text = "MUTE"
-alignment = 1
-
-[node name="StrumlineRenderer" type="Control" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/StrumlineContainer/Strumline2" unique_id=878080528]
-clip_contents = true
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-size_flags_vertical = 3
-script = ExtResource("12_n4u7r")
-notes_texture = ExtResource("13_yao2k")
+script = ExtResource("13_yao2k")
 
 [node name="_Margin" type="Control" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/StrumlineContainer" unique_id=509375042]
 layout_mode = 2
@@ -423,10 +283,11 @@ layout_mode = 2
 text = "Snap:"
 horizontal_alignment = 2
 
-[node name="SnapBox" type="SpinBox" parent="EditorTools/EditorUI/VBoxContainer/BottomBar/BottomBarMargin/BottomBarHBox/VBoxContainer2" unique_id=2036152241]
+[node name="EditorSnap" type="SpinBox" parent="EditorTools/EditorUI/VBoxContainer/BottomBar/BottomBarMargin/BottomBarHBox/VBoxContainer2" unique_id=2036152241]
+unique_name_in_owner = true
 layout_mode = 2
 min_value = 1.0
-max_value = 129.0
+max_value = 1025.0
 page = 1.0
 value = 1.0
 alignment = 1
@@ -436,7 +297,8 @@ prefix = "1 /"
 layout_mode = 2
 text = "Pitch Scale:"
 
-[node name="PitchScaleBox" type="SpinBox" parent="EditorTools/EditorUI/VBoxContainer/BottomBar/BottomBarMargin/BottomBarHBox/VBoxContainer2" unique_id=450882220]
+[node name="EditorPitchScale" type="SpinBox" parent="EditorTools/EditorUI/VBoxContainer/BottomBar/BottomBarMargin/BottomBarHBox/VBoxContainer2" unique_id=450882220]
+unique_name_in_owner = true
 layout_mode = 2
 min_value = 0.1
 max_value = 4.0
@@ -449,13 +311,10 @@ suffix = "x"
 [node name="SnapLabel2" type="VSeparator" parent="EditorTools/EditorUI/VBoxContainer/BottomBar/BottomBarMargin/BottomBarHBox" unique_id=469968538]
 layout_mode = 2
 
-[node name="DownscrollLabel" type="Label" parent="EditorTools/EditorUI/VBoxContainer/BottomBar/BottomBarMargin/BottomBarHBox" unique_id=1441296527]
-layout_mode = 2
-text = "Downscroll:"
-
 [node name="EditorDownscroll" type="CheckBox" parent="EditorTools/EditorUI/VBoxContainer/BottomBar/BottomBarMargin/BottomBarHBox" unique_id=1138232562]
 unique_name_in_owner = true
 layout_mode = 2
+text = "Downscroll"
 
 [connection signal="pre_init_events" from="EventPlayer" to="SongAudioPlayer" method="on_event_pre_init"]
 [connection signal="finished" from="SongAudioPlayer" to="SongAudioPlayer" method="on_finished"]

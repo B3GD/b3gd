@@ -13,10 +13,15 @@ func _process(_delta):
 	update_event_positions()
 
 func update_event_positions():
+	if get_children().size() == 0:
+		return
+	
 	var current_time = song_audio_player.song_progress_seconds
 	var height = size.y - pixel_top
 	var scroll_mult = 1.0 / (scroll_zoom.value * 2.0)
+	var baseline_mult = 0.25
 	if downscroll_toggle.button_pressed:
+		baseline_mult = 0.75
 		scroll_mult *= -1.0
 	
 	if strumline_container.get_children().size() > 1:
@@ -26,7 +31,7 @@ func update_event_positions():
 		var event_box_y = event_box.time - current_time
 		event_box_y *= 64 * scroll_mult
 		event_box_y += pixel_top
-		event_box_y += height * 0.25
+		event_box_y += height * baseline_mult
 		var event_box_grid_width = event_box.custom_minimum_size.x
 		var current_event_box_width = event_box_grid_width * (event_box.lane + 1)
 		event_box.position.x = size.x - current_event_box_width
