@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://c0cmejkc8gn3b"]
+
+[ext_resource type="Texture2D" uid="uid://cbk31lviufypw" path="res://menus/freeplay/freeplaybg.png" id="1_ff5d7"]
+[ext_resource type="Script" uid="uid://fy4fs5hvyrk6" path="res://menus/freeplay/freeplay_item_maker.gd" id="1_rqawy"]
+
+[node name="Freeplay" type="Control" unique_id=888896270]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1606550402]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ff5d7")
+
+[node name="ItemList" type="ItemList" parent="." unique_id=1995783794]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -436.0
+offset_top = -338.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_rqawy")
+
+[connection signal="item_activated" from="ItemList" to="ItemList" method="option_pressed"]
