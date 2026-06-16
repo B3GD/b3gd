@@ -14,6 +14,8 @@
 [ext_resource type="Script" uid="uid://b4it3bm2xipgc" path="res://b3gd/chart_editor/event_view_arranger.gd" id="12_jng4k"]
 [ext_resource type="Script" uid="uid://cddem6pgulynf" path="res://b3gd/chart_editor/note_type_box.gd" id="12_o3yqt"]
 [ext_resource type="Script" uid="uid://dsxriov1ftjvw" path="res://b3gd/chart_editor/strumline_container.gd" id="13_yao2k"]
+[ext_resource type="PackedScene" uid="uid://dkros47lrg8sl" path="res://b3gd/chart_editor/strumline.tscn" id="15_tbbiy"]
+[ext_resource type="Texture2D" uid="uid://kd73i3dkrn6l" path="res://b3gd/chart_editor/images/charles.png" id="16_jng4k"]
 
 [sub_resource type="Resource" id="Resource_eb4vn"]
 script = ExtResource("8_rbo3x")
@@ -223,6 +225,7 @@ split_offsets = PackedInt32Array(153)
 drag_area_highlight_in_editor = true
 split_offset = 153
 script = ExtResource("13_yao2k")
+strumline_node = ExtResource("15_tbbiy")
 
 [node name="_Margin" type="Control" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/StrumlineContainer" unique_id=509375042]
 layout_mode = 2
@@ -315,6 +318,95 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 text = "Downscroll"
+
+[node name="Window" type="Window" parent="EditorTools/EditorUI" unique_id=1144163274]
+oversampling_override = 1.0
+title = "Song Properties"
+position = Vector2i(71, 36)
+size = Vector2i(800, 397)
+unresizable = true
+
+[node name="Panel" type="Panel" parent="EditorTools/EditorUI/Window" unique_id=1817701729]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="EditorTools/EditorUI/Window/Panel" unique_id=620013007]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VFlowContainer" type="VFlowContainer" parent="EditorTools/EditorUI/Window/Panel/MarginContainer" unique_id=1103507713]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer" unique_id=1252954743]
+layout_mode = 2
+text = "Strumline Tracks:"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer" unique_id=855059347]
+custom_minimum_size = Vector2(300, 150)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/Panel" unique_id=1552848837]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TrackGrid" type="GridContainer" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/Panel/ScrollContainer" unique_id=1007618091]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 3
+
+[node name="Label2" type="Label" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/Panel/ScrollContainer/TrackGrid" unique_id=766952293]
+layout_mode = 2
+text = "1"
+
+[node name="Label3" type="Label" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/Panel/ScrollContainer/TrackGrid" unique_id=944530311]
+layout_mode = 2
+text = "tracks/opp.ogg"
+
+[node name="Button" type="Button" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/Panel/ScrollContainer/TrackGrid" unique_id=515659952]
+layout_mode = 2
+size_flags_horizontal = 10
+text = " X "
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer" unique_id=1027648156]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/HBoxContainer" unique_id=1125373769]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/HBoxContainer" unique_id=1600345443]
+layout_mode = 2
+size_flags_horizontal = 8
+text = " + "
+
+[node name="TextureRect" type="TextureRect" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer" unique_id=1595565935]
+custom_minimum_size = Vector2(0, 125.715)
+layout_mode = 2
+size_flags_vertical = 10
+texture = ExtResource("16_jng4k")
+expand_mode = 2
+stretch_mode = 4
 
 [connection signal="pre_init_events" from="EventPlayer" to="SongAudioPlayer" method="on_event_pre_init"]
 [connection signal="finished" from="SongAudioPlayer" to="SongAudioPlayer" method="on_finished"]
