@@ -9,15 +9,18 @@ extends Control
 
 var extra_zoom = 1.0
 
+@onready var scroll_zoom = %EditorScrollZoom
+@onready var downscroll_toggle = %EditorDownscroll
+
 func _process(_delta: float) -> void:
-	extra_zoom = 1.0 / (%EditorScrollZoom.value * 2.0)
+	extra_zoom = 1.0 / (scroll_zoom.value * 2.0)
 	queue_redraw()
 
 func _draw() -> void:
 	var fill_scale = size.x / 256
 	draw_rect(Rect2(Vector2.ZERO, size), Color(0.0, 0.0, 0.0, 0.25))
 	draw_set_transform(
-		Vector2(0, size.y * (0.25 + (float(%EditorDownscroll.button_pressed) * 0.5))), 
+		Vector2(0, size.y * (0.25 + (float(downscroll_toggle.button_pressed) * 0.5))), 
 		0.0, 
 		Vector2(fill_scale, fill_scale)
 	)
@@ -26,7 +29,7 @@ func _draw() -> void:
 func draw_receptors():
 	var current_time = song_audio_player.song_progress_seconds
 	var scroll_mult = extra_zoom
-	if %EditorDownscroll.button_pressed:
+	if downscroll_toggle.button_pressed:
 		scroll_mult *= -1.0
 	
 	var current_beat = song_audio_player.song_progress_beats

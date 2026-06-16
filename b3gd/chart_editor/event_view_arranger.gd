@@ -5,18 +5,22 @@ extends Control
 @export var pixel_top: int
 @export var extra_right_line_width: int
 
+@onready var scroll_zoom = %EditorScrollZoom
+@onready var downscroll_toggle = %EditorDownscroll
+@onready var strumline_container = %StrumlineContainer
+
 func _process(_delta):
 	update_event_positions()
 
 func update_event_positions():
 	var current_time = song_audio_player.song_progress_seconds
 	var height = size.y - pixel_top
-	var scroll_mult = 1.0 / (%EditorScrollZoom.value * 2.0)
-	if %EditorDownscroll.button_pressed:
+	var scroll_mult = 1.0 / (scroll_zoom.value * 2.0)
+	if downscroll_toggle.button_pressed:
 		scroll_mult *= -1.0
 	
-	if %StrumlineContainer.get_children().size() > 1:
-		scroll_mult *= %StrumlineContainer.get_children()[0].size.x / 256.0
+	if strumline_container.get_children().size() > 1:
+		scroll_mult *= strumline_container.get_children()[0].size.x / 256.0
 	
 	for event_box in get_children():
 		var event_box_y = event_box.time - current_time
