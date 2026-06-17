@@ -3,9 +3,10 @@ extends ItemList
 @export var song_folder = "res://songs/"
 @export var song_scene_name = "song.tscn"
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for file_name in DirAccess.get_directories_at(song_folder):
+		# This doesn't actually use the chart metadata name. 
+		# If ur using this to make a real freeplay u gotta change that
 		add_item(file_name)
 
 

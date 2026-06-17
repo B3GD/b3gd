@@ -322,7 +322,7 @@ text = "Downscroll"
 [node name="Window" type="Window" parent="EditorTools/EditorUI" unique_id=1144163274]
 oversampling_override = 1.0
 title = "Song Properties"
-position = Vector2i(71, 36)
+position = Vector2i(0, 36)
 size = Vector2i(800, 397)
 unresizable = true
 
@@ -345,19 +345,80 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VFlowContainer" type="VFlowContainer" parent="EditorTools/EditorUI/Window/Panel/MarginContainer" unique_id=1103507713]
+[node name="VFlowContainer" type="HBoxContainer" parent="EditorTools/EditorUI/Window/Panel/MarginContainer" unique_id=1709897347]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer" unique_id=1252954743]
+[node name="VBoxContainer" type="VBoxContainer" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer" unique_id=2032944626]
 layout_mode = 2
-text = "Strumline Tracks:"
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer" unique_id=1886734330]
+layout_mode = 2
+text = "Song Metadata"
 horizontal_alignment = 1
 
-[node name="Panel" type="Panel" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer" unique_id=855059347]
+[node name="Label3" type="Label" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer" unique_id=1367715971]
+layout_mode = 2
+text = "Song Name:"
+
+[node name="LineEdit" type="LineEdit" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer" unique_id=1307843780]
+layout_mode = 2
+placeholder_text = "Bopeebo"
+
+[node name="Label4" type="Label" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer" unique_id=161836687]
+layout_mode = 2
+text = "Song Credits:"
+
+[node name="Label5" type="Label" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer" unique_id=1710461039]
+layout_mode = 2
+text = "How do i do dictionary input?"
+
+[node name="TextureRect" type="TextureRect" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer" unique_id=1595565935]
+modulate = Color(1, 1, 1, 0.80784315)
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 10
+texture = ExtResource("16_jng4k")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="VSeparator" type="VSeparator" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer" unique_id=263826754]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer" unique_id=227109681]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer2" unique_id=1252954743]
+layout_mode = 2
+text = "Song Tracks"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer2" unique_id=355516636]
+layout_mode = 2
+text = "Instrumental Track:"
+
+[node name="LineEdit2" type="LineEdit" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer2" unique_id=43597218]
+layout_mode = 2
+placeholder_text = "none"
+
+[node name="Label4" type="Label" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer2" unique_id=1221302327]
+layout_mode = 2
+text = "Vocal Track:"
+
+[node name="LineEdit3" type="LineEdit" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer2" unique_id=158125677]
+layout_mode = 2
+placeholder_text = "none"
+
+[node name="Label2" type="Label" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer2" unique_id=565670583]
+layout_mode = 2
+text = "Strumline Tracks:"
+
+[node name="Panel" type="Panel" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer2" unique_id=855059347]
 custom_minimum_size = Vector2(300, 150)
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/Panel" unique_id=1552848837]
+[node name="ScrollContainer" type="ScrollContainer" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer2/Panel" unique_id=1552848837]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -369,44 +430,39 @@ offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TrackGrid" type="GridContainer" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/Panel/ScrollContainer" unique_id=1007618091]
+[node name="TrackGrid" type="GridContainer" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer2/Panel/ScrollContainer" unique_id=1007618091]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 3
 
-[node name="Label2" type="Label" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/Panel/ScrollContainer/TrackGrid" unique_id=766952293]
+[node name="Label2" type="Label" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer2/Panel/ScrollContainer/TrackGrid" unique_id=766952293]
 layout_mode = 2
 text = "1"
 
-[node name="Label3" type="Label" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/Panel/ScrollContainer/TrackGrid" unique_id=944530311]
+[node name="Label3" type="Label" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer2/Panel/ScrollContainer/TrackGrid" unique_id=944530311]
 layout_mode = 2
 text = "tracks/opp.ogg"
 
-[node name="Button" type="Button" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/Panel/ScrollContainer/TrackGrid" unique_id=515659952]
+[node name="Button" type="Button" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer2/Panel/ScrollContainer/TrackGrid" unique_id=515659952]
 layout_mode = 2
 size_flags_horizontal = 10
 text = " X "
 
-[node name="HBoxContainer" type="HBoxContainer" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer" unique_id=1027648156]
+[node name="HBoxContainer" type="HBoxContainer" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer2" unique_id=1027648156]
 layout_mode = 2
 
-[node name="LineEdit" type="LineEdit" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/HBoxContainer" unique_id=1125373769]
+[node name="LineEdit" type="LineEdit" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer2/HBoxContainer" unique_id=1125373769]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button" type="Button" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/HBoxContainer" unique_id=1600345443]
+[node name="Button" type="Button" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer2/HBoxContainer" unique_id=1600345443]
 layout_mode = 2
 size_flags_horizontal = 8
 text = " + "
 
-[node name="TextureRect" type="TextureRect" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer" unique_id=1595565935]
-custom_minimum_size = Vector2(0, 125.715)
+[node name="VSeparator2" type="VSeparator" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer" unique_id=6248650]
 layout_mode = 2
-size_flags_vertical = 10
-texture = ExtResource("16_jng4k")
-expand_mode = 2
-stretch_mode = 4
 
 [connection signal="pre_init_events" from="EventPlayer" to="SongAudioPlayer" method="on_event_pre_init"]
 [connection signal="finished" from="SongAudioPlayer" to="SongAudioPlayer" method="on_finished"]
