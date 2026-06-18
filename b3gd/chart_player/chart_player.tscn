@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://bapfqr3m4v28h" path="res://b3gd/chart_editor/time_bar.gd" id="12_763kw"]
 [ext_resource type="Script" uid="uid://b4it3bm2xipgc" path="res://b3gd/chart_editor/event_view_arranger.gd" id="12_jng4k"]
 [ext_resource type="Script" uid="uid://cddem6pgulynf" path="res://b3gd/chart_editor/note_type_box.gd" id="12_o3yqt"]
+[ext_resource type="Script" uid="uid://b585c60ln25gs" path="res://b3gd/chart_editor/editor_pitch_scale.gd" id="13_1n38x"]
 [ext_resource type="Script" uid="uid://dsxriov1ftjvw" path="res://b3gd/chart_editor/strumline_container.gd" id="13_yao2k"]
 [ext_resource type="PackedScene" uid="uid://b507lgcilwgxq" path="res://b3gd/chart_editor/event_box.tscn" id="14_u3uuj"]
 [ext_resource type="Texture2D" uid="uid://kd73i3dkrn6l" path="res://b3gd/chart_editor/images/charles.png" id="16_jng4k"]
@@ -218,6 +219,7 @@ page = 1.0
 value = 1.0
 alignment = 1
 suffix = "x"
+script = ExtResource("13_1n38x")
 
 [node name="SnapLabel2" type="VSeparator" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=1161976209]
 layout_mode = 2
@@ -325,3 +327,4 @@ expand_mode = 1
 
 [connection signal="pre_init_events" from="EventPlayer" to="SongAudioPlayer" method="on_event_pre_init"]
 [connection signal="finished" from="SongAudioPlayer" to="SongAudioPlayer" method="on_finished"]
+[connection signal="value_changed" from="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer2/EditorPitchScale" to="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer2/EditorPitchScale" method="_on_value_changed"]

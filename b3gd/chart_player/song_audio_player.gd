@@ -41,13 +41,13 @@ var bpm:
 	get():
 		return bpm_events[bpm_events_index].bpm
 
-var bpm_beat_start:
+var bpm_start_second:
 	get():
 		return bpm_events[bpm_events_index].time
 
 var song_progress_beats:
 	get():
-		var beat_since_beat_start = (bpm / 60) * (song_progress_seconds - bpm_beat_start)
+		var beat_since_beat_start = (bpm / 60) * (song_progress_seconds - bpm_start_second)
 		return beat_since_beat_start + get_beat_carry(bpm_events_index)
 
 @onready var output_latency = AudioServer.get_output_latency()
@@ -64,20 +64,19 @@ func get_beat_carry(bpm_index: int):
 func get_seconds_from_beat(beat: float):
 	var bpm_event = {"event": bpm_events[0], "carry": get_beat_carry(0)}
 	for i in range(bpm_events.size()):
-		if get_beat_carry(i) > bpm_event.carry and get_beat_carry(i) <= beat:
+		if get_beat_carry(i) <= beat:
 			bpm_event.event = bpm_events[i]
 			bpm_event.carry = get_beat_carry(i)
 	return ((beat - bpm_event.carry) / (bpm_event.event.bpm / 60)) + bpm_event.event.time
 
-#func get_beat_from_seconds(seconds: float):
-	#var bpm_info_at_beat = [bpm_events[0].bpm, bpm_events[0].time, bpm_events[0].time]
-	#for i in range(bpm_events.size()):
-		#if get_beat_carry(i) > bpm_event.carry and get_beat_carry(i) <= beat:
-			#bpm_event = bpm_events[i]
-			#bpm_event.carry = get_beat_carry(i)
-	#
-	#var beat_since_beat_start = (bpm / 60) * (song_progress_seconds - bpm_beat_start)
-	#return beat_since_beat_start + get_beat_carry(bpm_events_index)
+func get_beat_from_seconds(seconds: float):
+	var bpm_event = {"event": bpm_events[0], "carry": get_beat_carry(0)}
+	for i in range(bpm_events.size()):
+		if bpm_event.time <= seconds:
+			bpm_event.event = bpm_events[i]
+			bpm_event.carry = get_beat_carry(i)
+	var beat_since_beat_start = (bpm_event.event.bpm / 60) * (seconds - bpm_event.event.time)
+	return beat_since_beat_start + bpm_event.carry
 
 func _ready() -> void:
 	add_child(scrub_timer)
