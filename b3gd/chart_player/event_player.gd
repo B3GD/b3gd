@@ -9,7 +9,12 @@ var events:Array[Event]
 @export var song_audio_player: Node
 
 func _process(delta: float) -> void:
-	process_events()
+	var i = 0
+	while process_events():
+		i += 1
+		if i > 8000:
+			printerr(">8000 Events just tried to play in one frame")
+			return
 
 func init_events() -> void:
 	pre_init_events.emit()
@@ -17,14 +22,15 @@ func init_events() -> void:
 		event.parent = self
 		event.init()
 
-func process_events() -> void:
-	var next_event = null
+func process_events() -> bool:
 	if last_played_event != -1 and events[last_played_event].time > song_audio_player.song_progress_seconds:
-		last_played_event = max(last_played_event - 1, 0)
+		last_played_event = max(last_played_event - 1, -1)
 		events[last_played_event].play(song_audio_player.pitch_scale * -1)
-		return
+		return true
 	if last_played_event >= events.size() - 1:
-		return
+		return false
 	if events[last_played_event + 1].time <= song_audio_player.song_progress_seconds:
 		last_played_event += 1
 		events[last_played_event].play(song_audio_player.pitch_scale * 1)
+		return true
+	return false

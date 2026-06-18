@@ -12,7 +12,7 @@ signal note_miss(strum_line_id: int, receptor_id: int)
 
 var strum_lines: Array[StrumLine] = []
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if force_inactive:
 		return
 	for strum_line_id in range(strum_lines.size()):
@@ -57,7 +57,6 @@ func handle_manual_receptor_input(strum_line_id, receptor_id):
 	if !is_pressed and !is_held:
 		return
 	
-	var note_length = receptor.notes[0].length
 	if is_pressed or (is_held and receptor.notes[0].hold_pressed):
 		hit_note(strum_line_id, receptor_id)
 

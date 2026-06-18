@@ -62,11 +62,22 @@ func get_beat_carry(bpm_index: int):
 	return add_beat
 
 func get_seconds_from_beat(beat: float):
-	var bpm_info_at_beat = [bpm_events[0].bpm, bpm_events[0].time, bpm_events[0].time]
+	var bpm_event = {"event": bpm_events[0], "carry": get_beat_carry(0)}
 	for i in range(bpm_events.size()):
-		if get_beat_carry(i) > bpm_info_at_beat[1] and get_beat_carry(i) <= beat:
-			bpm_info_at_beat = [bpm_events[i].bpm, get_beat_carry(i), bpm_events[i].time]
-	return ((beat - bpm_info_at_beat[1]) / (bpm_info_at_beat[0] / 60)) + bpm_info_at_beat[2]
+		if get_beat_carry(i) > bpm_event.carry and get_beat_carry(i) <= beat:
+			bpm_event.event = bpm_events[i]
+			bpm_event.carry = get_beat_carry(i)
+	return ((beat - bpm_event.carry) / (bpm_event.event.bpm / 60)) + bpm_event.event.time
+
+#func get_beat_from_seconds(seconds: float):
+	#var bpm_info_at_beat = [bpm_events[0].bpm, bpm_events[0].time, bpm_events[0].time]
+	#for i in range(bpm_events.size()):
+		#if get_beat_carry(i) > bpm_event.carry and get_beat_carry(i) <= beat:
+			#bpm_event = bpm_events[i]
+			#bpm_event.carry = get_beat_carry(i)
+	#
+	#var beat_since_beat_start = (bpm / 60) * (song_progress_seconds - bpm_beat_start)
+	#return beat_since_beat_start + get_beat_carry(bpm_events_index)
 
 func _ready() -> void:
 	add_child(scrub_timer)

@@ -15,9 +15,12 @@ script = ExtResource("1_lcodg")
 
 [node name="Button" type="Button" parent="." unique_id=1545249279]
 layout_mode = 1
-anchors_preset = 9
+anchors_preset = -1
+anchor_left = 0.81700003
+anchor_right = 0.81700003
 anchor_bottom = 1.0
-offset_right = 98.0
+offset_left = -100.04
+offset_right = -2.040001
 grow_vertical = 2
 toggle_mode = true
 text = "EventName"

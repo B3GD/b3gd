@@ -1,18 +1,23 @@
-extends SplitContainer
+extends HBoxContainer
 
-@export var strumline_node: PackedScene
+@export var strum_line_node: PackedScene
+@onready var chart_source = get_tree().get_first_node_in_group("ChartSource")
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	update_strumlines()
+	await get_tree().create_timer(5.0).timeout
+	update_strumlines()
+	print("oehoho")
 
 func update_strumlines():
+	#if get_children().size() - 1 == chart_source.chart.strum_lines.size():
+	#	return
+	
 	for child in get_children():
-		if child.name.begins_with("_"):
-			continue
 		remove_child(child)
 	
+	for i in range(chart_source.chart.strum_lines.size()):
+		var new_strumline = strum_line_node.instantiate()
+		new_strumline.get_node("StrumLineRenderer").strum_line_idx = i
+		new_strumline.get_node("%StrumLineLabel").text = "StrumLine " + str(i)
+		add_child(new_strumline)

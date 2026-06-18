@@ -2,12 +2,32 @@ extends Control
 
 @onready var song_audio_player = get_tree().get_first_node_in_group("SongAudioPlayer")
 
+@export var event_box_scene: PackedScene
 @export var pixel_top: int
 @export var extra_right_line_width: int
 
+@onready var chart_source = get_tree().get_first_node_in_group("ChartSource")
 @onready var scroll_zoom = %EditorScrollZoom
 @onready var downscroll_toggle = %EditorDownscroll
-@onready var strumline_container = %StrumlineContainer
+@onready var strum_line_container = %StrumLineContainer
+
+func _ready() -> void:
+	update_events()
+
+func update_events():
+	for child in get_children():
+		remove_child(child)
+	
+	var i = 0
+	while i < chart_source.chart.events.size():
+		var event = chart_source.chart.events[i]
+		var event_box = event_box_scene.instantiate()
+		event_box.event_name = event.get_script().get_global_name()
+		event_box.time = event.time
+		event_box.lane = event.lane
+		event_box.id = i
+		add_child(event_box)
+		i += 1
 
 func _process(_delta):
 	update_event_positions()
@@ -24,8 +44,8 @@ func update_event_positions():
 		baseline_mult = 0.75
 		scroll_mult *= -1.0
 	
-	if strumline_container.get_children().size() > 1:
-		scroll_mult *= strumline_container.get_children()[0].size.x / 256.0
+	if strum_line_container.get_children().size() > 1:
+		scroll_mult *= strum_line_container.get_children()[0].size.x / 256.0
 	
 	for event_box in get_children():
 		var event_box_y = event_box.time - current_time

@@ -11,11 +11,13 @@
 [ext_resource type="Script" uid="uid://bctudmv5p4heo" path="res://b3gd/chart_player/note_renderers/gridrenderer/noteskingriddata.gd" id="8_rbo3x"]
 [ext_resource type="Script" uid="uid://m5sbxr0i4jp1" path="res://b3gd/chart_editor/chart_data_editor.gd" id="10_darji"]
 [ext_resource type="Script" uid="uid://cn613y6nswe4m" path="res://b3gd/chart_editor/chart_scrubber.gd" id="10_wento"]
+[ext_resource type="Script" uid="uid://bapfqr3m4v28h" path="res://b3gd/chart_editor/time_bar.gd" id="12_763kw"]
 [ext_resource type="Script" uid="uid://b4it3bm2xipgc" path="res://b3gd/chart_editor/event_view_arranger.gd" id="12_jng4k"]
 [ext_resource type="Script" uid="uid://cddem6pgulynf" path="res://b3gd/chart_editor/note_type_box.gd" id="12_o3yqt"]
 [ext_resource type="Script" uid="uid://dsxriov1ftjvw" path="res://b3gd/chart_editor/strumline_container.gd" id="13_yao2k"]
-[ext_resource type="PackedScene" uid="uid://dkros47lrg8sl" path="res://b3gd/chart_editor/strumline.tscn" id="15_tbbiy"]
+[ext_resource type="PackedScene" uid="uid://b507lgcilwgxq" path="res://b3gd/chart_editor/event_box.tscn" id="14_u3uuj"]
 [ext_resource type="Texture2D" uid="uid://kd73i3dkrn6l" path="res://b3gd/chart_editor/images/charles.png" id="16_jng4k"]
+[ext_resource type="PackedScene" uid="uid://dkros47lrg8sl" path="res://b3gd/chart_editor/strum_line.tscn" id="17_763kw"]
 
 [sub_resource type="Resource" id="Resource_eb4vn"]
 script = ExtResource("8_rbo3x")
@@ -75,7 +77,7 @@ anisotropic_filtering_level = 0
 size = Vector2i(1920, 1080)
 render_target_update_mode = 0
 
-[node name="StrumlineRenderer" type="MeshInstance3D" parent="UI/Strumlines/SubViewport" unique_id=2002107423]
+[node name="StrumLineRenderer" type="MeshInstance3D" parent="UI/Strumlines/SubViewport" unique_id=2002107423]
 transform = Transform3D(0.14999999, 0, 0, 0, 0.14999998, 0, 0, 0, 0.14999999, 0, 0.29894063, 0)
 script = ExtResource("5_yp0gr")
 noteskin_texture = ExtResource("7_cdfgl")
@@ -133,23 +135,130 @@ theme_override_constants/margin_bottom = 8
 [node name="TopBarHBox" type="HBoxContainer" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin" unique_id=1592651682]
 layout_mode = 2
 
-[node name="SaveButton" type="Button" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=55421679]
+[node name="VBoxContainer3" type="VBoxContainer" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=806648245]
 layout_mode = 2
+
+[node name="SaveButton" type="Button" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer3" unique_id=55421679]
+layout_mode = 2
+size_flags_vertical = 6
 text = "SAVE"
 
-[node name="ChartInfoButton" type="Button" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=1423952751]
-layout_mode = 2
-toggle_mode = true
-text = "CHART INFO"
-
-[node name="VSeparator" type="VSeparator" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=268231637]
+[node name="HBoxContainer" type="HBoxContainer" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer3" unique_id=1949305925]
 layout_mode = 2
 
-[node name="NoteClassLabel" type="Label" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=1176939312]
+[node name="VSeparator3" type="VSeparator" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=1359956746]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=7176743]
+layout_mode = 2
+
+[node name="TimeBar" type="HBoxContainer" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer" unique_id=642591246]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+script = ExtResource("12_763kw")
+
+[node name="CurrentTimeLabel" type="Label" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer/TimeBar" unique_id=1693420606]
+layout_mode = 2
+size_flags_vertical = 8
+text = "0:28.00"
+label_settings = SubResource("LabelSettings_o3yqt")
+
+[node name="TotalTimeLabel" type="Label" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer/TimeBar" unique_id=108587704]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "/ 3:00.00"
+horizontal_alignment = 2
+
+[node name="EditorTimeFormatBox" type="OptionButton" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer" unique_id=544778780]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "Seconds (M:SS.CS)"
+popup/item_0/id = 0
+popup/item_1/text = "Beats (B.CB)"
+popup/item_1/id = 1
+
+[node name="SnapLabel" type="VSeparator" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=559359944]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="GridContainer" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=108443748]
+layout_mode = 2
+size_flags_vertical = 4
+columns = 2
+
+[node name="Snap" type="Label" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer2" unique_id=525002271]
+layout_mode = 2
+text = "Snap:"
+horizontal_alignment = 2
+
+[node name="EditorSnap" type="SpinBox" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer2" unique_id=2036152241]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 1025.0
+page = 1.0
+value = 1.0
+alignment = 1
+prefix = "1 /"
+
+[node name="PitchScaleLabel" type="Label" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer2" unique_id=959973929]
+layout_mode = 2
+text = "Pitch Scale:"
+
+[node name="EditorPitchScale" type="SpinBox" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer2" unique_id=450882220]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 0.1
+max_value = 4.0
+step = 0.1
+page = 1.0
+value = 1.0
+alignment = 1
+suffix = "x"
+
+[node name="SnapLabel2" type="VSeparator" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=1161976209]
+layout_mode = 2
+
+[node name="VBoxContainer4" type="GridContainer" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=836797912]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer4" unique_id=2036164914]
+layout_mode = 2
+text = "Zoom:"
+
+[node name="EditorScrollZoom" type="HSlider" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer4" unique_id=1973338551]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 0.1
+max_value = 0.9
+step = 0.1
+value = 0.5
+tick_count = 9
+ticks_on_borders = true
+
+[node name="Label3" type="Label" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer4" unique_id=837322506]
+layout_mode = 2
+text = "Downscroll:"
+
+[node name="EditorDownscroll" type="CheckBox" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer4" unique_id=1138232562]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+alignment = 1
+
+[node name="NoteClassLabel" type="Label" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer4" unique_id=1176939312]
 layout_mode = 2
 text = "Note Class:"
 
-[node name="NoteClassBox" type="OptionButton" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=142868142]
+[node name="NoteClassBox" type="OptionButton" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer4" unique_id=142868142]
 layout_mode = 2
 script = ExtResource("12_o3yqt")
 
@@ -168,68 +277,24 @@ scroll_hint_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+alignment = 1
 
-[node name="Container" type="Control" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer" unique_id=1423378740]
+[node name="EventContainer" type="Control" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer" unique_id=1423378740]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-size_flags_horizontal = 8
 script = ExtResource("12_jng4k")
+event_box_scene = ExtResource("14_u3uuj")
 pixel_top = 78
-extra_right_line_width = 48
+extra_right_line_width = 4
 
-[node name="ZoomBar" type="Control" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer" unique_id=84520637]
-custom_minimum_size = Vector2(42, 160)
-layout_mode = 2
-
-[node name="HSeparator2" type="HSeparator" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/ZoomBar" unique_id=1242219892]
-layout_mode = 0
-offset_left = 0.8000002
-offset_top = 70.799866
-offset_right = 11.200025
-offset_bottom = 74.799866
-scale = Vector2(1.5120001, 1)
-
-[node name="HSeparator3" type="HSeparator" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/ZoomBar" unique_id=1325168498]
-layout_mode = 0
-offset_left = 0.8000002
-offset_top = 71.59987
-offset_right = 11.199964
-offset_bottom = 75.59987
-scale = Vector2(1.5120001, 1)
-
-[node name="EditorScrollZoom" type="VSlider" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/ZoomBar" unique_id=1863508165]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -11.200001
-offset_top = 162.79996
-offset_right = 4.800003
-offset_bottom = 326.19995
-grow_horizontal = 0
-rotation = 3.1415927
-min_value = 0.1
-max_value = 1.0
-step = 0.1
-value = 0.5
-tick_count = 10
-ticks_on_borders = true
-
-[node name="StrumlineContainer" type="SplitContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer" unique_id=1896881357]
+[node name="StrumLineContainer" type="HBoxContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer" unique_id=32177528]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 4
 size_flags_vertical = 3
-split_offsets = PackedInt32Array(153)
-drag_area_highlight_in_editor = true
-split_offset = 153
+alignment = 1
 script = ExtResource("13_yao2k")
-strumline_node = ExtResource("15_tbbiy")
-
-[node name="_Margin" type="Control" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer/StrumlineContainer" unique_id=509375042]
-layout_mode = 2
-size_flags_horizontal = 3
+strum_line_node = ExtResource("17_763kw")
 
 [node name="BottomBar" type="PanelContainer" parent="EditorTools/EditorUI/VBoxContainer" unique_id=1433109865]
 layout_mode = 2
@@ -245,224 +310,18 @@ theme_override_constants/margin_bottom = 8
 [node name="BottomBarHBox" type="HBoxContainer" parent="EditorTools/EditorUI/VBoxContainer/BottomBar/BottomBarMargin" unique_id=1815840792]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="EditorTools/EditorUI/VBoxContainer/BottomBar/BottomBarMargin/BottomBarHBox" unique_id=7176743]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="EditorTools/EditorUI/VBoxContainer/BottomBar/BottomBarMargin/BottomBarHBox/VBoxContainer" unique_id=642591246]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="TimeLabel" type="Label" parent="EditorTools/EditorUI/VBoxContainer/BottomBar/BottomBarMargin/BottomBarHBox/VBoxContainer/HBoxContainer" unique_id=1693420606]
-layout_mode = 2
-size_flags_vertical = 8
-text = "0:28.00"
-label_settings = SubResource("LabelSettings_o3yqt")
-
-[node name="TimeLabel2" type="Label" parent="EditorTools/EditorUI/VBoxContainer/BottomBar/BottomBarMargin/BottomBarHBox/VBoxContainer/HBoxContainer" unique_id=108587704]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-text = "/ 3:00.00"
-horizontal_alignment = 2
-
-[node name="TimeFormat" type="OptionButton" parent="EditorTools/EditorUI/VBoxContainer/BottomBar/BottomBarMargin/BottomBarHBox/VBoxContainer" unique_id=544778780]
-layout_mode = 2
-selected = 0
-item_count = 2
-popup/item_0/text = "Seconds (M:SS.CS)"
-popup/item_0/id = 0
-popup/item_1/text = "Beats (B.CB)"
-popup/item_1/id = 1
-
-[node name="SnapLabel" type="VSeparator" parent="EditorTools/EditorUI/VBoxContainer/BottomBar/BottomBarMargin/BottomBarHBox" unique_id=559359944]
-layout_mode = 2
-
-[node name="VBoxContainer2" type="GridContainer" parent="EditorTools/EditorUI/VBoxContainer/BottomBar/BottomBarMargin/BottomBarHBox" unique_id=108443748]
-layout_mode = 2
-columns = 2
-
-[node name="Snap" type="Label" parent="EditorTools/EditorUI/VBoxContainer/BottomBar/BottomBarMargin/BottomBarHBox/VBoxContainer2" unique_id=525002271]
-layout_mode = 2
-text = "Snap:"
-horizontal_alignment = 2
-
-[node name="EditorSnap" type="SpinBox" parent="EditorTools/EditorUI/VBoxContainer/BottomBar/BottomBarMargin/BottomBarHBox/VBoxContainer2" unique_id=2036152241]
-unique_name_in_owner = true
-layout_mode = 2
-min_value = 1.0
-max_value = 1025.0
-page = 1.0
-value = 1.0
-alignment = 1
-prefix = "1 /"
-
-[node name="PitchScaleLabel" type="Label" parent="EditorTools/EditorUI/VBoxContainer/BottomBar/BottomBarMargin/BottomBarHBox/VBoxContainer2" unique_id=959973929]
-layout_mode = 2
-text = "Pitch Scale:"
-
-[node name="EditorPitchScale" type="SpinBox" parent="EditorTools/EditorUI/VBoxContainer/BottomBar/BottomBarMargin/BottomBarHBox/VBoxContainer2" unique_id=450882220]
-unique_name_in_owner = true
-layout_mode = 2
-min_value = 0.1
-max_value = 4.0
-step = 0.1
-page = 1.0
-value = 1.0
-alignment = 1
-suffix = "x"
-
-[node name="SnapLabel2" type="VSeparator" parent="EditorTools/EditorUI/VBoxContainer/BottomBar/BottomBarMargin/BottomBarHBox" unique_id=469968538]
-layout_mode = 2
-
-[node name="EditorDownscroll" type="CheckBox" parent="EditorTools/EditorUI/VBoxContainer/BottomBar/BottomBarMargin/BottomBarHBox" unique_id=1138232562]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Downscroll"
-
-[node name="Window" type="Window" parent="EditorTools/EditorUI" unique_id=1144163274]
-oversampling_override = 1.0
-title = "Song Properties"
-position = Vector2i(0, 36)
-size = Vector2i(800, 397)
-unresizable = true
-
-[node name="Panel" type="Panel" parent="EditorTools/EditorUI/Window" unique_id=1817701729]
-anchors_preset = 15
-anchor_right = 1.0
+[node name="TextureRect" type="TextureRect" parent="EditorTools/EditorUI" unique_id=405556981]
+modulate = Color(1, 1, 1, 0.2901961)
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="EditorTools/EditorUI/Window/Panel" unique_id=620013007]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="VFlowContainer" type="HBoxContainer" parent="EditorTools/EditorUI/Window/Panel/MarginContainer" unique_id=1709897347]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer" unique_id=2032944626]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label2" type="Label" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer" unique_id=1886734330]
-layout_mode = 2
-text = "Song Metadata"
-horizontal_alignment = 1
-
-[node name="Label3" type="Label" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer" unique_id=1367715971]
-layout_mode = 2
-text = "Song Name:"
-
-[node name="LineEdit" type="LineEdit" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer" unique_id=1307843780]
-layout_mode = 2
-placeholder_text = "Bopeebo"
-
-[node name="Label4" type="Label" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer" unique_id=161836687]
-layout_mode = 2
-text = "Song Credits:"
-
-[node name="Label5" type="Label" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer" unique_id=1710461039]
-layout_mode = 2
-text = "How do i do dictionary input?"
-
-[node name="TextureRect" type="TextureRect" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer" unique_id=1595565935]
-modulate = Color(1, 1, 1, 0.80784315)
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-size_flags_vertical = 10
+offset_left = 15.0
+offset_top = -178.0
+offset_right = 255.03143
+offset_bottom = -8.0
+grow_vertical = 0
 texture = ExtResource("16_jng4k")
-expand_mode = 2
-stretch_mode = 4
-
-[node name="VSeparator" type="VSeparator" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer" unique_id=263826754]
-layout_mode = 2
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer" unique_id=227109681]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer2" unique_id=1252954743]
-layout_mode = 2
-text = "Song Tracks"
-horizontal_alignment = 1
-
-[node name="Label3" type="Label" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer2" unique_id=355516636]
-layout_mode = 2
-text = "Instrumental Track:"
-
-[node name="LineEdit2" type="LineEdit" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer2" unique_id=43597218]
-layout_mode = 2
-placeholder_text = "none"
-
-[node name="Label4" type="Label" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer2" unique_id=1221302327]
-layout_mode = 2
-text = "Vocal Track:"
-
-[node name="LineEdit3" type="LineEdit" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer2" unique_id=158125677]
-layout_mode = 2
-placeholder_text = "none"
-
-[node name="Label2" type="Label" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer2" unique_id=565670583]
-layout_mode = 2
-text = "Strumline Tracks:"
-
-[node name="Panel" type="Panel" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer2" unique_id=855059347]
-custom_minimum_size = Vector2(300, 150)
-layout_mode = 2
-
-[node name="ScrollContainer" type="ScrollContainer" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer2/Panel" unique_id=1552848837]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = -4.0
-offset_bottom = -4.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TrackGrid" type="GridContainer" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer2/Panel/ScrollContainer" unique_id=1007618091]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-columns = 3
-
-[node name="Label2" type="Label" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer2/Panel/ScrollContainer/TrackGrid" unique_id=766952293]
-layout_mode = 2
-text = "1"
-
-[node name="Label3" type="Label" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer2/Panel/ScrollContainer/TrackGrid" unique_id=944530311]
-layout_mode = 2
-text = "tracks/opp.ogg"
-
-[node name="Button" type="Button" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer2/Panel/ScrollContainer/TrackGrid" unique_id=515659952]
-layout_mode = 2
-size_flags_horizontal = 10
-text = " X "
-
-[node name="HBoxContainer" type="HBoxContainer" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer2" unique_id=1027648156]
-layout_mode = 2
-
-[node name="LineEdit" type="LineEdit" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer2/HBoxContainer" unique_id=1125373769]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Button" type="Button" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer/VBoxContainer2/HBoxContainer" unique_id=1600345443]
-layout_mode = 2
-size_flags_horizontal = 8
-text = " + "
-
-[node name="VSeparator2" type="VSeparator" parent="EditorTools/EditorUI/Window/Panel/MarginContainer/VFlowContainer" unique_id=6248650]
-layout_mode = 2
+expand_mode = 1
 
 [connection signal="pre_init_events" from="EventPlayer" to="SongAudioPlayer" method="on_event_pre_init"]
 [connection signal="finished" from="SongAudioPlayer" to="SongAudioPlayer" method="on_finished"]

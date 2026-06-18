@@ -33,10 +33,10 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	update_idle_frames(delta)
-	mesh = get_strumline_mesh()
+	mesh = get_strum_line_mesh()
 	mesh.surface_set_material(0, material)
 
-func get_strumline_mesh() -> ArrayMesh:
+func get_strum_line_mesh() -> ArrayMesh:
 	var mesh_array = []
 	mesh_array.resize(Mesh.ARRAY_MAX)
 	mesh_array[Mesh.ARRAY_VERTEX] = PackedVector3Array()
@@ -95,7 +95,6 @@ func add_sustain_to_mesh(mesh_array: Array, receptor_id: int, receptor_transform
 		var transform_end = get_note_transform(receptor_id, last_segment_point, receptor_transform)
 		#transform_end.basis = transform_end.basis.looking_at(transform_start.origin, Vector3(0, 1, 0), true)
 		#transform_start.basis = transform_end.basis
-		var frame = get_texture_index(receptor_id, hold_frame)
 		add_hold_quad_to_mesh(
 			mesh_array,
 			get_texture_index(receptor_id, hold_frame), 

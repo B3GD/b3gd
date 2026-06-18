@@ -32,9 +32,12 @@ func play(speed: float = 1.0):
 		to_tween.node.set(to_tween.property, to_tween.value)
 		return
 	var tween = parent.get_tree().create_tween()
-	tween.tween_property(to_tween.node, to_tween.property, to_tween.value, duration / speed)
-	tween.set_trans(transition)
-	tween.set_ease(ease)
+	tween.tween_property(
+		to_tween.node, 
+		to_tween.property, 
+		to_tween.value, 
+		duration / speed
+	).set_trans(transition).set_ease(ease)
 	
 	if tween_tracker.node != null:
 		tween_tracker.node.zoom_tween = tween

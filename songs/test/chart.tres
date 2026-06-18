@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cxewr41xtv111" path="res://b3gd/chart_data/events/camera/camera_movement.gd" id="2_vfrlu"]
 [ext_resource type="Script" uid="uid://d10klgni64d7f" path="res://b3gd/chart_data/events/song_playback/bpm.gd" id="3_s0yfo"]
 [ext_resource type="Script" uid="uid://tsakffm2k03s" path="res://b3gd/chart_data/chart.gd" id="3_vfrlu"]
+[ext_resource type="Script" uid="uid://cyqa68xim30d1" path="res://b3gd/chart_data/events/camera/camera_zoom.gd" id="4_2wgma"]
 [ext_resource type="Script" uid="uid://dcj6ncvkdmib8" path="res://b3gd/chart_data/strum_line.gd" id="4_s0yfo"]
 [ext_resource type="Script" uid="uid://dmjgm4x8wfbgo" path="res://b3gd/chart_data/chart_metadata.gd" id="4_vfrlu"]
 [ext_resource type="Script" uid="uid://mae25nhr3e8c" path="res://b3gd/chart_data/receptor.gd" id="5_y1qrp"]
@@ -16,8 +17,8 @@
 [sub_resource type="Resource" id="Resource_m45sv"]
 script = ExtResource("2_vfrlu")
 tween = true
-duration = 8.0
-transition = 4
+duration = 2.0
+transition = 6
 ease = 1
 time = -2.0
 metadata/_custom_type_script = "uid://cxewr41xtv111"
@@ -25,6 +26,27 @@ metadata/_custom_type_script = "uid://cxewr41xtv111"
 [sub_resource type="Resource" id="Resource_y1qrp"]
 script = ExtResource("3_s0yfo")
 bpm = 120.0
+
+[sub_resource type="Resource" id="Resource_jvbwd"]
+script = ExtResource("4_2wgma")
+target_zoom = Vector2(1, 1)
+metadata/_custom_type_script = "uid://cyqa68xim30d1"
+
+[sub_resource type="Resource" id="Resource_jvg1e"]
+script = ExtResource("4_2wgma")
+target_zoom = Vector2(2, -1)
+tween = true
+duration = 4.0
+transition = 11
+ease = 1
+time = 4.0
+metadata/_custom_type_script = "uid://cyqa68xim30d1"
+
+[sub_resource type="Resource" id="Resource_0drvw"]
+script = ExtResource("2_vfrlu")
+target_idx = 1
+time = 8.0
+metadata/_custom_type_script = "uid://cxewr41xtv111"
 
 [sub_resource type="Resource" id="Resource_x1mtf"]
 script = ExtResource("4_vfrlu")
@@ -319,5 +341,5 @@ script = ExtResource("3_vfrlu")
 metadata = SubResource("Resource_x1mtf")
 tracks = SubResource("Resource_kjr5n")
 strum_lines = Array[ExtResource("4_s0yfo")]([SubResource("Resource_ornok"), SubResource("Resource_vn8tq")])
-events = Array[ExtResource("1_y1qrp")]([SubResource("Resource_m45sv"), SubResource("Resource_y1qrp")])
+events = Array[ExtResource("1_y1qrp")]([SubResource("Resource_m45sv"), SubResource("Resource_y1qrp"), SubResource("Resource_jvbwd"), SubResource("Resource_jvg1e"), SubResource("Resource_0drvw")])
 scroll_speed = 3.5
