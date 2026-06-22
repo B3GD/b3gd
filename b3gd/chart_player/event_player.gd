@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 	while process_events():
 		i += 1
 		if i > 8000:
-			printerr(">8000 Events just tried to play in one frame")
+			printerr(">8000 Events just tried to play in one frame. What")
 			return
 
 func init_events() -> void:
