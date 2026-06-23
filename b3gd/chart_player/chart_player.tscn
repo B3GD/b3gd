@@ -301,6 +301,7 @@ script = ExtResource("12_jng4k")
 event_box_scene = ExtResource("14_u3uuj")
 pixel_top = 78
 extra_right_line_width = 4
+event_lane_width = 180
 
 [node name="StrumLineContainer" type="HBoxContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer" unique_id=32177528]
 unique_name_in_owner = true

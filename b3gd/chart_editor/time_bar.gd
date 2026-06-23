@@ -6,7 +6,6 @@ extends HBoxContainer
 func _process(_delta: float) -> void:
 	var time = song_audio_player.song_progress_seconds
 	var total = song_audio_player.stream.get_length()
-	print(time, total)
 	$CurrentTimeLabel.text = format_time_into_minutes(time)
 	$TotalTimeLabel.text = format_time_into_minutes(total)
 

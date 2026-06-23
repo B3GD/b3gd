@@ -5,6 +5,7 @@ extends Control
 @export var event_box_scene: PackedScene
 @export var pixel_top: int
 @export var extra_right_line_width: int
+@export var event_lane_width: int
 
 @onready var chart_source = get_tree().get_first_node_in_group("ChartSource")
 @onready var scroll_zoom = %EditorScrollZoom
@@ -52,8 +53,7 @@ func update_event_positions():
 		event_box_y *= 64 * scroll_mult
 		event_box_y += pixel_top
 		event_box_y += height * baseline_mult
-		var event_box_grid_width = event_box.custom_minimum_size.x
-		var current_event_box_width = event_box_grid_width * (event_box.lane + 1)
-		event_box.position.x = size.x - current_event_box_width
+		var lane_offset = -event_lane_width * event_box.lane
+		event_box.position.x = size.x - event_box.custom_minimum_size.x + lane_offset
 		event_box.position.y = event_box_y - (event_box.size.y * 0.5)
-		event_box.size.x = current_event_box_width + extra_right_line_width
+		event_box.size.x = event_box.custom_minimum_size.x + extra_right_line_width

@@ -5,9 +5,6 @@ extends HBoxContainer
 
 func _ready() -> void:
 	update_strumlines()
-	await get_tree().create_timer(5.0).timeout
-	update_strumlines()
-	print("oehoho")
 
 func update_strumlines():
 	#if get_children().size() - 1 == chart_source.chart.strum_lines.size():

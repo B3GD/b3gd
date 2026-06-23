@@ -23,7 +23,8 @@ func _process(_delta: float) -> void:
 	queue_redraw()
 
 func _draw() -> void:
-	var fill_scale = size.x / 256
+	custom_minimum_size.x = (64 * note_manager.strum_lines[strum_line_idx].receptors.size())
+	var fill_scale = size.x / custom_minimum_size.x
 	draw_rect(Rect2(Vector2.ZERO, size), Color(0.0, 0.0, 0.0, 0.25))
 	draw_set_transform(
 		Vector2(0, size.y * (0.25 + (float(downscroll) * 0.5))), 
