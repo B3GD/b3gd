@@ -10,14 +10,16 @@ extends Control
 @onready var chart_source = get_tree().get_first_node_in_group("ChartSource")
 @onready var scroll_zoom = %EditorScrollZoom
 @onready var downscroll_toggle = %EditorDownscroll
-@onready var strum_line_container = %StrumLineContainer
+@onready var strum_line_container = %EditorStrumLineContainer
 
 func _ready() -> void:
 	get_selection()
 	update_events()
 
 func get_selection():
+	var previous_selected = event_selected
 	event_selected = -1
+	
 	for i in get_children().size():
 		var event_box = get_children()[i]
 		if event_box.get_node("Button").button_pressed:
@@ -50,9 +52,9 @@ func update_event_positions():
 	
 	var current_time = song_audio_player.song_progress_seconds
 	var scroll_mult = 1.0 / (scroll_zoom.value * 2.0)
-	var baseline_mult = 0.25
+	var baseline_mult = strum_line_container.timeline_present_point
+	baseline_mult = (remap(float(downscroll_toggle.button_pressed), 0, 1, 1, -1) * (baseline_mult - 0.5) + 0.5)
 	if downscroll_toggle.button_pressed:
-		baseline_mult = 0.75
 		scroll_mult *= -1.0
 	
 	if strum_line_container.get_children().size() > 1:

@@ -26,7 +26,8 @@ func _draw() -> void:
 	custom_minimum_size.x = (64 * note_manager.strum_lines[strum_line_idx].receptors.size())
 	#var fill_scale = size.x / custom_minimum_size.x
 	var transform_y = size.y + position.y
-	transform_y *= 0.25 + (float(downscroll) * 0.5)
+	var timeline_present_point = get_parent().get_parent().timeline_present_point
+	transform_y *= (remap(float(downscroll), 0, 1, 1, -1) * (timeline_present_point - 0.5) + 0.5)
 	transform_y -= position.y
 	draw_rect(Rect2(Vector2.ZERO, size), Color(0.0, 0.0, 0.0, 0.25))
 	draw_set_transform(

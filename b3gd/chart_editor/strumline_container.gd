@@ -1,7 +1,9 @@
 extends HBoxContainer
 
+@export var timeline_present_point = 0.333
 @export var strum_line_node: PackedScene
 @onready var chart_source = get_tree().get_first_node_in_group("ChartSource")
+
 
 func _ready() -> void:
 	update_strumlines()

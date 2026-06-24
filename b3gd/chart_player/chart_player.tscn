@@ -174,7 +174,7 @@ script = ExtResource("12_jng4k")
 event_box_scene = ExtResource("14_u3uuj")
 event_lane_width = 180
 
-[node name="StrumLineContainer" type="HBoxContainer" parent="EditorTools/EditorUI/UIContainer/WorkAreaScroll/Container" unique_id=32177528]
+[node name="EditorStrumLineContainer" type="HBoxContainer" parent="EditorTools/EditorUI/UIContainer/WorkAreaScroll/Container" unique_id=32177528]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -196,6 +196,7 @@ text = "  + Add Strumline  "
 
 [node name="FieldScroll" type="ScrollContainer" parent="EditorTools/EditorUI/UIContainer" unique_id=242495268]
 layout_mode = 2
+focus_behavior_recursive = 2
 horizontal_scroll_mode = 0
 
 [node name="Container" type="VBoxContainer" parent="EditorTools/EditorUI/UIContainer/FieldScroll" unique_id=285842642]
@@ -409,7 +410,6 @@ size_flags_vertical = 0
 alignment = 1
 
 [node name="EventPanel" type="PanelContainer" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container" unique_id=1179675671]
-visible = false
 layout_mode = 2
 
 [node name="Margin" type="MarginContainer" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/EventPanel" unique_id=39165862]
@@ -443,6 +443,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="EditorTools/EditorUI" unique_id=405556981]
+modulate = Color(1, 1, 1, 0.40392157)
 light_mask = 0
 material = SubResource("CanvasItemMaterial_aqojd")
 anchors_preset = 2
