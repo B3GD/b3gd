@@ -1,5 +1,7 @@
 extends Control
 
+@export var event_selected = -1
+
 @onready var song_audio_player = get_tree().get_first_node_in_group("SongAudioPlayer")
 
 @export var event_box_scene: PackedScene
@@ -11,7 +13,15 @@ extends Control
 @onready var strum_line_container = %StrumLineContainer
 
 func _ready() -> void:
+	get_selection()
 	update_events()
+
+func get_selection():
+	event_selected = -1
+	for i in get_children().size():
+		var event_box = get_children()[i]
+		if event_box.get_node("Button").button_pressed:
+			event_selected = i
 
 func update_events():
 	for child in get_children():
