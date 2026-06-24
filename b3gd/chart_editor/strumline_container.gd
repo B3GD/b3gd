@@ -14,7 +14,10 @@ func update_strumlines():
 		remove_child(child)
 	
 	for i in range(chart_source.chart.strum_lines.size()):
+		var strum_line_source = chart_source.chart.strum_lines[i]
 		var new_strumline = strum_line_node.instantiate()
 		new_strumline.get_node("StrumLineRenderer").strum_line_idx = i
-		new_strumline.get_node("%StrumLineLabel").text = "StrumLine " + str(i)
+		new_strumline.get_node("%StrumLineLabel").text = str(i)
+		new_strumline.get_node("%CPUCheckBox").button_pressed = strum_line_source.cpu
+		new_strumline.get_node("%ReceptorCountSpinBox").value = strum_line_source.receptors.size()
 		add_child(new_strumline)

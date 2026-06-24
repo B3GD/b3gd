@@ -13,6 +13,9 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 fov = 19.0
 
+[node name="TextureRect" parent="ChartPlayer/EditorTools/EditorUI" parent_id_path=PackedInt32Array(192656738, 394825533) index="1" unique_id=405556981]
+mouse_filter = 2
+
 [node name="TestBackground" parent="." unique_id=2125051436 instance=ExtResource("2_iai5w")]
 position = Vector2(-69, 24)
 

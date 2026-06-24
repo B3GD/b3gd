@@ -72,7 +72,7 @@ func get_seconds_from_beat(beat: float):
 func get_beat_from_seconds(seconds: float):
 	var bpm_event = {"event": bpm_events[0], "carry": get_beat_carry(0)}
 	for i in range(bpm_events.size()):
-		if bpm_event.time <= seconds:
+		if bpm_event.event.time <= seconds:
 			bpm_event.event = bpm_events[i]
 			bpm_event.carry = get_beat_carry(i)
 	var beat_since_beat_start = (bpm_event.event.bpm / 60) * (seconds - bpm_event.event.time)

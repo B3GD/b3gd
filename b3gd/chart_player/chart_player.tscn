@@ -22,6 +22,10 @@
 [ext_resource type="PackedScene" uid="uid://b507lgcilwgxq" path="res://b3gd/chart_editor/event_box.tscn" id="14_u3uuj"]
 [ext_resource type="Texture2D" uid="uid://kd73i3dkrn6l" path="res://b3gd/chart_editor/images/charles.png" id="16_jng4k"]
 [ext_resource type="PackedScene" uid="uid://dkros47lrg8sl" path="res://b3gd/chart_editor/strum_line.tscn" id="17_763kw"]
+[ext_resource type="Texture2D" uid="uid://cq03bxqwqbpqd" path="res://b3gd/chart_editor/images/inspector.png" id="19_asiwl"]
+[ext_resource type="Texture2D" uid="uid://dyvqs61ch1mx2" path="res://b3gd/chart_editor/images/seconds.png" id="21_akx1q"]
+[ext_resource type="Texture2D" uid="uid://7i5p3off2gwj" path="res://b3gd/chart_editor/images/beats.png" id="22_asiwl"]
+[ext_resource type="Texture2D" uid="uid://c0jlf16tl8ke7" path="res://b3gd/chart_editor/images/event.png" id="25_vvqha"]
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_asiwl"]
 stream_count = 3
@@ -38,6 +42,18 @@ metadata/_custom_type_script = "uid://bctudmv5p4heo"
 
 [sub_resource type="Environment" id="Environment_v3b1e"]
 
+[sub_resource type="FontVariation" id="FontVariation_akx1q"]
+variation_embolden = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_asiwl"]
+font = SubResource("FontVariation_akx1q")
+
+[sub_resource type="FontVariation" id="FontVariation_aqojd"]
+variation_embolden = 0.5
+
+[sub_resource type="LabelSettings" id="LabelSettings_piitt"]
+font = SubResource("FontVariation_aqojd")
+
 [sub_resource type="FontVariation" id="FontVariation_yao2k"]
 spacing_top = -2
 spacing_bottom = -2
@@ -45,6 +61,8 @@ spacing_bottom = -2
 [sub_resource type="LabelSettings" id="LabelSettings_o3yqt"]
 font = SubResource("FontVariation_yao2k")
 font_size = 22
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_aqojd"]
 
 [node name="ChartPlayer" type="Node" unique_id=192656738 groups=["ChartSource"]]
 script = ExtResource("1_5icij")
@@ -135,148 +153,6 @@ grow_vertical = 2
 scale = Vector2(1.25, 1.25)
 focus_behavior_recursive = 1
 
-[node name="TopBar" type="PanelContainer" parent="EditorTools/EditorUI/VBoxContainer" unique_id=188356539]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="TopBarMargin" type="MarginContainer" parent="EditorTools/EditorUI/VBoxContainer/TopBar" unique_id=165015496]
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="TopBarHBox" type="HBoxContainer" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin" unique_id=1592651682]
-layout_mode = 2
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=806648245]
-layout_mode = 2
-
-[node name="SaveButton" type="Button" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer3" unique_id=55421679]
-layout_mode = 2
-size_flags_vertical = 6
-text = "SAVE"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer3" unique_id=1949305925]
-layout_mode = 2
-
-[node name="VSeparator3" type="VSeparator" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=1359956746]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=7176743]
-layout_mode = 2
-
-[node name="TimeBar" type="HBoxContainer" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer" unique_id=642591246]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 6
-script = ExtResource("12_763kw")
-
-[node name="CurrentTimeLabel" type="Label" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer/TimeBar" unique_id=1693420606]
-layout_mode = 2
-size_flags_vertical = 8
-text = "0:28.00"
-label_settings = SubResource("LabelSettings_o3yqt")
-
-[node name="TotalTimeLabel" type="Label" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer/TimeBar" unique_id=108587704]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-text = "/ 3:00.00"
-horizontal_alignment = 2
-
-[node name="EditorTimeFormatBox" type="OptionButton" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer" unique_id=544778780]
-unique_name_in_owner = true
-layout_mode = 2
-selected = 0
-item_count = 2
-popup/item_0/text = "Seconds (M:SS.CS)"
-popup/item_0/id = 0
-popup/item_1/text = "Beats (B.CB)"
-popup/item_1/id = 1
-
-[node name="SnapLabel" type="VSeparator" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=559359944]
-layout_mode = 2
-
-[node name="VBoxContainer2" type="GridContainer" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=108443748]
-layout_mode = 2
-size_flags_vertical = 4
-columns = 2
-
-[node name="Snap" type="Label" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer2" unique_id=525002271]
-layout_mode = 2
-text = "Snap:"
-horizontal_alignment = 2
-
-[node name="EditorSnap" type="SpinBox" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer2" unique_id=2036152241]
-unique_name_in_owner = true
-layout_mode = 2
-min_value = 1.0
-max_value = 1025.0
-page = 1.0
-value = 1.0
-alignment = 1
-prefix = "1 /"
-
-[node name="PitchScaleLabel" type="Label" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer2" unique_id=959973929]
-layout_mode = 2
-text = "Pitch Scale:"
-
-[node name="EditorPitchScale" type="SpinBox" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer2" unique_id=450882220]
-unique_name_in_owner = true
-layout_mode = 2
-min_value = 0.1
-max_value = 4.0
-step = 0.1
-page = 1.0
-value = 1.0
-alignment = 1
-suffix = "x"
-script = ExtResource("13_1n38x")
-
-[node name="SnapLabel2" type="VSeparator" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=1161976209]
-layout_mode = 2
-
-[node name="VBoxContainer4" type="GridContainer" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox" unique_id=836797912]
-layout_mode = 2
-columns = 2
-
-[node name="Label" type="Label" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer4" unique_id=2036164914]
-layout_mode = 2
-text = "Zoom:"
-
-[node name="EditorScrollZoom" type="HSlider" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer4" unique_id=1973338551]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(130, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-min_value = 0.1
-max_value = 0.9
-step = 0.1
-value = 0.5
-tick_count = 9
-ticks_on_borders = true
-
-[node name="Label3" type="Label" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer4" unique_id=837322506]
-layout_mode = 2
-text = "Downscroll:"
-
-[node name="EditorDownscroll" type="CheckBox" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer4" unique_id=1138232562]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-alignment = 1
-
-[node name="NoteClassLabel" type="Label" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer4" unique_id=1176939312]
-layout_mode = 2
-text = "Note Class:"
-
-[node name="NoteClassBox" type="OptionButton" parent="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer4" unique_id=142868142]
-layout_mode = 2
-script = ExtResource("12_o3yqt")
-
 [node name="HBoxContainer" type="HBoxContainer" parent="EditorTools/EditorUI/VBoxContainer" unique_id=17901632]
 layout_mode = 2
 size_flags_vertical = 3
@@ -292,6 +168,7 @@ scroll_hint_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 0
 alignment = 1
 
 [node name="EventContainer" type="Control" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer" unique_id=1423378740]
@@ -299,8 +176,6 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 script = ExtResource("12_jng4k")
 event_box_scene = ExtResource("14_u3uuj")
-pixel_top = 78
-extra_right_line_width = 4
 event_lane_width = 180
 
 [node name="StrumLineContainer" type="HBoxContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer" unique_id=32177528]
@@ -312,22 +187,242 @@ alignment = 1
 script = ExtResource("13_yao2k")
 strum_line_node = ExtResource("17_763kw")
 
-[node name="BottomBar" type="PanelContainer" parent="EditorTools/EditorUI/VBoxContainer" unique_id=1433109865]
+[node name="Margin" type="Control" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer" unique_id=1200977817]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer/HBoxContainer" unique_id=1090693307]
+custom_minimum_size = Vector2(0, 47)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "  + Add Strumline  "
 
-[node name="BottomBarMargin" type="MarginContainer" parent="EditorTools/EditorUI/VBoxContainer/BottomBar" unique_id=1899916726]
+[node name="ScrollContainer2" type="ScrollContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer" unique_id=242495268]
 layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+horizontal_scroll_mode = 0
 
-[node name="BottomBarHBox" type="HBoxContainer" parent="EditorTools/EditorUI/VBoxContainer/BottomBar/BottomBarMargin" unique_id=1815840792]
+[node name="VBoxContainer" type="VBoxContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2" unique_id=285842642]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer" unique_id=1920558401]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer" unique_id=1324385359]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer/MarginContainer" unique_id=1894479255]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=738537539]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1816072122]
+layout_mode = 2
+texture = ExtResource("19_asiwl")
+stretch_mode = 3
+
+[node name="Label3" type="Label" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=697818999]
+layout_mode = 2
+text = "Inspector"
+label_settings = SubResource("LabelSettings_asiwl")
+
+[node name="HSeparator4" type="HSeparator" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1271127288]
+layout_mode = 2
+
+[node name="Label5" type="Label" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2095806497]
+layout_mode = 2
+text = "File"
+label_settings = SubResource("LabelSettings_piitt")
+horizontal_alignment = 1
+
+[node name="SaveButton" type="Button" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=55421679]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+text = "SAVE"
+
+[node name="HSeparator3" type="HSeparator" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=870520249]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1899562829]
+layout_mode = 2
+text = "Playback"
+label_settings = SubResource("LabelSettings_piitt")
+horizontal_alignment = 1
+
+[node name="PitchScaleLabel2" type="Label" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2134226606]
+layout_mode = 2
+text = "Current Time:"
+
+[node name="TimeBar" type="HBoxContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=642591246]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+script = ExtResource("12_763kw")
+
+[node name="EditorTimeFormatBox" type="OptionButton" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TimeBar" unique_id=544778780]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+selected = 0
+item_count = 2
+popup/item_0/icon = ExtResource("21_akx1q")
+popup/item_0/id = 0
+popup/item_1/icon = ExtResource("22_asiwl")
+popup/item_1/id = 1
+
+[node name="CurrentTimeLabel" type="Label" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TimeBar" unique_id=1693420606]
+layout_mode = 2
+size_flags_vertical = 8
+text = "0:28.00"
+label_settings = SubResource("LabelSettings_o3yqt")
+
+[node name="TotalTimeLabel" type="Label" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TimeBar" unique_id=108587704]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "/ 3:00.00"
+horizontal_alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=520856854]
+layout_mode = 2
+
+[node name="PitchScaleLabel" type="Label" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=959973929]
+layout_mode = 2
+text = "Pitch Scale:"
+
+[node name="EditorPitchScale" type="SpinBox" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=450882220]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.1
+max_value = 4.0
+step = 0.1
+page = 1.0
+value = 1.0
+alignment = 1
+suffix = "x"
+script = ExtResource("13_1n38x")
+
+[node name="HSeparator" type="HSeparator" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1359186163]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1334071341]
+layout_mode = 2
+text = "Editor"
+label_settings = SubResource("LabelSettings_piitt")
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="GridContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=108443748]
+layout_mode = 2
+size_flags_vertical = 4
+columns = 2
+
+[node name="Snap" type="Label" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=525002271]
+layout_mode = 2
+text = "Snap:"
+horizontal_alignment = 2
+
+[node name="EditorSnap" type="SpinBox" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=2036152241]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 1025.0
+page = 1.0
+value = 1.0
+alignment = 1
+prefix = "1 /"
+
+[node name="NoteClassLabel" type="Label" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=1176939312]
+layout_mode = 2
+text = "Note Class:"
+
+[node name="NoteClassBox" type="OptionButton" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=142868142]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("12_o3yqt")
+
+[node name="HSeparator2" type="HSeparator" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=483256034]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1032560146]
+layout_mode = 2
+text = "View"
+label_settings = SubResource("LabelSettings_piitt")
+horizontal_alignment = 1
+
+[node name="VBoxContainer4" type="GridContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=836797912]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer4" unique_id=2036164914]
+layout_mode = 2
+text = "Zoom:"
+
+[node name="EditorScrollZoom" type="HSlider" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer4" unique_id=1973338551]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 0.1
+max_value = 0.9
+step = 0.1
+value = 0.5
+tick_count = 9
+ticks_on_borders = true
+
+[node name="Label3" type="Label" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer4" unique_id=837322506]
+layout_mode = 2
+text = "Downscroll:"
+
+[node name="EditorDownscroll" type="CheckBox" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer4" unique_id=1138232562]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer" unique_id=1179675671]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer2" unique_id=39165862]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer2/MarginContainer" unique_id=1455210247]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer" unique_id=1443713852]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1195162381]
+layout_mode = 2
+texture = ExtResource("25_vvqha")
+stretch_mode = 3
+
+[node name="Label3" type="Label" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=65623636]
+layout_mode = 2
+text = "Event"
+label_settings = SubResource("LabelSettings_asiwl")
+
+[node name="HSeparator4" type="HSeparator" parent="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer" unique_id=180528880]
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="EditorTools/EditorUI" unique_id=405556981]
-modulate = Color(1, 1, 1, 0.2901961)
+light_mask = 0
+material = SubResource("CanvasItemMaterial_aqojd")
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -341,4 +436,4 @@ expand_mode = 1
 
 [connection signal="pre_init_events" from="EventPlayer" to="SongAudioPlayer" method="on_event_pre_init"]
 [connection signal="finished" from="SongAudioPlayer" to="SongAudioPlayer" method="on_finished"]
-[connection signal="value_changed" from="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer2/EditorPitchScale" to="EditorTools/EditorUI/VBoxContainer/TopBar/TopBarMargin/TopBarHBox/VBoxContainer2/EditorPitchScale" method="_on_value_changed"]
+[connection signal="value_changed" from="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/EditorPitchScale" to="EditorTools/EditorUI/VBoxContainer/HBoxContainer/ScrollContainer2/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/EditorPitchScale" method="_on_value_changed"]

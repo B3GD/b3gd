@@ -23,34 +23,50 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="InfoVBox" type="VBoxContainer" parent="InfoPanel/InfoMargin" unique_id=2076739836]
+[node name="InfoVBox" type="HFlowContainer" parent="InfoPanel/InfoMargin" unique_id=1581257114]
 layout_mode = 2
-alignment = 1
+alignment = 2
 
 [node name="StrumLineLabel" type="Label" parent="InfoPanel/InfoMargin/InfoVBox" unique_id=1632624735]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
-text = "Strumline 0"
+size_flags_horizontal = 3
+text = "0"
 label_settings = SubResource("LabelSettings_n4u7r")
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="InfoPanel/InfoMargin/InfoVBox" unique_id=1643692828]
+[node name="CPUCheckBox" type="CheckBox" parent="InfoPanel/InfoMargin/InfoVBox" unique_id=468590135]
+unique_name_in_owner = true
 layout_mode = 2
-
-[node name="CPUCheckBox" type="CheckBox" parent="InfoPanel/InfoMargin/InfoVBox/HBoxContainer" unique_id=468590135]
-layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 0
 text = "CPU"
 alignment = 1
 
-[node name="CPUCheckBox2" type="CheckBox" parent="InfoPanel/InfoMargin/InfoVBox/HBoxContainer" unique_id=894004071]
+[node name="MuteCheckBox" type="CheckBox" parent="InfoPanel/InfoMargin/InfoVBox" unique_id=894004071]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 0
 text = "MUTE"
 alignment = 1
 
+[node name="HBoxContainer" type="HBoxContainer" parent="InfoPanel/InfoMargin/InfoVBox" unique_id=1071740959]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="InfoPanel/InfoMargin/InfoVBox/HBoxContainer" unique_id=549249472]
+layout_mode = 2
+text = "Keys:"
+
+[node name="ReceptorCountSpinBox" type="SpinBox" parent="InfoPanel/InfoMargin/InfoVBox/HBoxContainer" unique_id=515500591]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 9.0
+value = 1.0
+rounded = true
+allow_lesser = true
+
 [node name="StrumLineRenderer" type="Control" parent="." unique_id=220299407]
+texture_repeat = 2
 clip_contents = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2

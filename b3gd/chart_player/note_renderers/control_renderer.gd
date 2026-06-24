@@ -24,12 +24,16 @@ func _process(_delta: float) -> void:
 
 func _draw() -> void:
 	custom_minimum_size.x = (64 * note_manager.strum_lines[strum_line_idx].receptors.size())
-	var fill_scale = size.x / custom_minimum_size.x
+	#var fill_scale = size.x / custom_minimum_size.x
+	var transform_y = size.y + position.y
+	transform_y *= 0.25 + (float(downscroll) * 0.5)
+	transform_y -= position.y
 	draw_rect(Rect2(Vector2.ZERO, size), Color(0.0, 0.0, 0.0, 0.25))
 	draw_set_transform(
-		Vector2(0, size.y * (0.25 + (float(downscroll) * 0.5))), 
+		Vector2(0, transform_y), 
 		0.0, 
-		Vector2(fill_scale, fill_scale)
+		Vector2.ONE
+		#Vector2(fill_scale, fill_scale)
 	)
 	draw_receptors()
 
@@ -56,7 +60,7 @@ func draw_receptors():
 		
 		draw_line(
 			Vector2(0, line_y),
-			Vector2(256, line_y),
+			Vector2(custom_minimum_size.x, line_y),
 			Color(1.0, 1.0, 1.0, alpha)
 		)
 		current_grid_time += 1

@@ -333,48 +333,6 @@ metadata/_custom_type_script = "uid://mae25nhr3e8c"
 script = ExtResource("4_s0yfo")
 receptors = Array[ExtResource("5_y1qrp")]([SubResource("Resource_hj4t8"), SubResource("Resource_jx4dp"), SubResource("Resource_dfst8"), SubResource("Resource_8dxfr")])
 
-[sub_resource type="Resource" id="Resource_msnhh"]
-script = ExtResource("5_y1qrp")
-metadata/_custom_type_script = "uid://mae25nhr3e8c"
-
-[sub_resource type="Resource" id="Resource_tb2p0"]
-script = ExtResource("5_y1qrp")
-metadata/_custom_type_script = "uid://mae25nhr3e8c"
-
-[sub_resource type="Resource" id="Resource_1huog"]
-script = ExtResource("4_s0yfo")
-receptors = Array[ExtResource("5_y1qrp")]([SubResource("Resource_msnhh"), SubResource("Resource_tb2p0")])
-metadata/_custom_type_script = "uid://dcj6ncvkdmib8"
-
-[sub_resource type="Resource" id="Resource_ecruf"]
-script = ExtResource("5_y1qrp")
-metadata/_custom_type_script = "uid://mae25nhr3e8c"
-
-[sub_resource type="Resource" id="Resource_43lu7"]
-script = ExtResource("5_y1qrp")
-metadata/_custom_type_script = "uid://mae25nhr3e8c"
-
-[sub_resource type="Resource" id="Resource_2pvq7"]
-script = ExtResource("5_y1qrp")
-metadata/_custom_type_script = "uid://mae25nhr3e8c"
-
-[sub_resource type="Resource" id="Resource_fygwi"]
-script = ExtResource("5_y1qrp")
-metadata/_custom_type_script = "uid://mae25nhr3e8c"
-
-[sub_resource type="Resource" id="Resource_hjqbk"]
-script = ExtResource("5_y1qrp")
-metadata/_custom_type_script = "uid://mae25nhr3e8c"
-
-[sub_resource type="Resource" id="Resource_nxvwx"]
-script = ExtResource("5_y1qrp")
-metadata/_custom_type_script = "uid://mae25nhr3e8c"
-
-[sub_resource type="Resource" id="Resource_rgr8j"]
-script = ExtResource("4_s0yfo")
-receptors = Array[ExtResource("5_y1qrp")]([SubResource("Resource_ecruf"), SubResource("Resource_43lu7"), SubResource("Resource_2pvq7"), SubResource("Resource_fygwi"), SubResource("Resource_hjqbk"), SubResource("Resource_nxvwx")])
-metadata/_custom_type_script = "uid://dcj6ncvkdmib8"
-
 [sub_resource type="Resource" id="Resource_kjr5n"]
 script = ExtResource("8_3e5jf")
 instrumental = ExtResource("7_gervv")
@@ -384,6 +342,6 @@ vocal_layers = Array[AudioStream]([ExtResource("9_s2f6i"), ExtResource("10_aeoum
 script = ExtResource("3_vfrlu")
 metadata = SubResource("Resource_x1mtf")
 tracks = SubResource("Resource_kjr5n")
-strum_lines = Array[ExtResource("4_s0yfo")]([SubResource("Resource_ornok"), SubResource("Resource_vn8tq"), SubResource("Resource_1huog"), SubResource("Resource_rgr8j")])
+strum_lines = Array[ExtResource("4_s0yfo")]([SubResource("Resource_ornok"), SubResource("Resource_vn8tq")])
 events = Array[ExtResource("1_y1qrp")]([SubResource("Resource_m45sv"), SubResource("Resource_y1qrp"), SubResource("Resource_jvbwd"), SubResource("Resource_jvg1e"), SubResource("Resource_0drvw")])
 scroll_speed = 3.5
