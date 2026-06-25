@@ -32,6 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://7i5p3off2gwj" path="res://b3gd/chart_editor/chart_info/beats.png" id="22_asiwl"]
 [ext_resource type="Texture2D" uid="uid://c6mup4esllr8p" path="res://b3gd/chart_editor/chart_info/redo.png" id="22_f3pcj"]
 [ext_resource type="Texture2D" uid="uid://c0jlf16tl8ke7" path="res://b3gd/chart_editor/chart_info/event.png" id="25_vvqha"]
+[ext_resource type="Script" uid="uid://bhvkv73cux2u0" path="res://b3gd/chart_editor/event_editing/event_panel.gd" id="31_dyjyi"]
 [ext_resource type="Texture2D" uid="uid://cnjiglqj2tbq5" path="res://b3gd/im mad.png" id="31_jbl5p"]
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_asiwl"]
@@ -68,6 +69,14 @@ spacing_bottom = -2
 [sub_resource type="LabelSettings" id="LabelSettings_o3yqt"]
 font = SubResource("FontVariation_yao2k")
 font_size = 22
+
+[sub_resource type="FontVariation" id="FontVariation_dyjyi"]
+variation_embolden = 0.5
+
+[sub_resource type="LabelSettings" id="LabelSettings_xr37n"]
+font = SubResource("FontVariation_dyjyi")
+
+[sub_resource type="LabelSettings" id="LabelSettings_cle1c"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_aqojd"]
 
@@ -184,7 +193,8 @@ size_flags_vertical = 3
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="EventContainer" type="Control" parent="ChartEditor/EditorUI/UIContainer/WorkAreaScroll/Container" unique_id=1423378740]
+[node name="EditorEventContainer" type="Control" parent="ChartEditor/EditorUI/UIContainer/WorkAreaScroll/Container" unique_id=1423378740]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 script = ExtResource("12_jng4k")
@@ -453,6 +463,9 @@ alignment = 1
 
 [node name="EventPanel" type="PanelContainer" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container" unique_id=1179675671]
 layout_mode = 2
+script = ExtResource("31_dyjyi")
+header_label_settings = SubResource("LabelSettings_xr37n")
+property_label_settings = SubResource("LabelSettings_cle1c")
 
 [node name="Margin" type="MarginContainer" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/EventPanel" unique_id=39165862]
 layout_mode = 2
@@ -473,7 +486,8 @@ layout_mode = 2
 texture = ExtResource("25_vvqha")
 stretch_mode = 3
 
-[node name="Label" type="Label" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/EventPanel/Margin/EventContainer/Header" unique_id=65623636]
+[node name="EditorEventHeader" type="Label" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/EventPanel/Margin/EventContainer/Header" unique_id=65623636]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Event"
 label_settings = SubResource("LabelSettings_asiwl")
@@ -481,7 +495,8 @@ label_settings = SubResource("LabelSettings_asiwl")
 [node name="HeaderSeperator" type="HSeparator" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/EventPanel/Margin/EventContainer" unique_id=180528880]
 layout_mode = 2
 
-[node name="FieldContainer" type="VBoxContainer" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/EventPanel/Margin/EventContainer" unique_id=1638781186]
+[node name="EditorEventFieldContainer" type="VBoxContainer" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/EventPanel/Margin/EventContainer" unique_id=1638781186]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="Images" type="Control" parent="ChartEditor/EditorUI" unique_id=1748260361]

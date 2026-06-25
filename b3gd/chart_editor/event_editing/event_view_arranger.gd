@@ -20,10 +20,16 @@ func get_selection():
 	var previous_selected = event_selected
 	event_selected = -1
 	
+	var unselect_previous = false
+	
 	for i in get_children().size():
 		var event_box = get_children()[i]
 		if event_box.get_node("Button").button_pressed:
 			event_selected = i
+			if i != previous_selected:
+				unselect_previous = true
+	if unselect_previous:
+		get_children()[previous_selected].get_node("Button").button_pressed = false
 
 func update_events():
 	for child in get_children():
@@ -45,6 +51,7 @@ func update_events():
 
 func _process(_delta):
 	update_event_positions()
+	get_selection()
 
 func update_event_positions():
 	if get_children().size() == 0:

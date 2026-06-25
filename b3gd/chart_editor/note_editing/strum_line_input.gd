@@ -60,13 +60,9 @@ func _draw() -> void:
 		scroll_mult *= -1.0
 	
 	var line_y = mouse_time - song_audio_player.song_progress_seconds
-	line_y *= scroll_mult
-	line_y += (get_parent().transform_y / 64.0)
-	line_y -= 0.5
-	draw_note(
-		Vector2(mouse_column, line_y),
-		Vector2i(mouse_column, 1)
-	)
+	line_y = (line_y * scroll_mult) + (get_parent().transform_y / 64.0) - 0.5
+	draw_note(Vector2(mouse_column, line_y), Vector2i(mouse_column, 1))
+	
 	if !creating_note:
 		return
 	
@@ -77,13 +73,21 @@ func _draw() -> void:
 	draw_note(
 		Vector2(mouse_column, line_y + 0.5),
 		Vector2i(mouse_column, 2),
-		line_y - line_end
+		line_end - line_y
 	)
 
 func draw_note(pos: Vector2, idx: Vector2i, height: float = 1.0):
-	draw_texture_rect_region(
-		get_parent().notes_texture,
-		Rect2(pos.x * 64, pos.y * 64, 64, height * 64),
-		Rect2(idx.x * 64, idx.y * 64, 64, 64),
-		Color(Color.WHITE, 0.3)
-	)
+	if height < 0:
+		draw_texture_rect_region(
+			get_parent().notes_texture,
+			Rect2(Vector2(pos.x, pos.y + height) * 64, Vector2(1, height) * 64),
+			Rect2(idx * 64, Vector2.ONE * 64),
+			Color(Color.WHITE, 0.3)
+		)
+	else:
+		draw_texture_rect_region(
+			get_parent().notes_texture,
+			Rect2(pos * 64, Vector2(1, height) * 64),
+			Rect2(idx * 64, Vector2.ONE * 64),
+			Color(Color.WHITE, 0.3)
+		)
