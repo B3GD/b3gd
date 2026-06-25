@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7i5p3off2gwj"
-path="res://.godot/imported/beats.png-1b43aaa72c1cdef888443081f3482204.ctex"
+uid="uid://cka5y22a126yx"
+path="res://.godot/imported/arrow.png-8ec6c47a61290bfde7c3c2b4de1e8d47.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://b3gd/chart_editor/images/beats.png"
-dest_files=["res://.godot/imported/beats.png-1b43aaa72c1cdef888443081f3482204.ctex"]
+source_file="res://b3gd/chart_editor/event_editing/arrow.png"
+dest_files=["res://.godot/imported/arrow.png-8ec6c47a61290bfde7c3c2b4de1e8d47.ctex"]
 
 [params]
 

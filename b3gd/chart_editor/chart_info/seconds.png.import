@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqccpwijdgqui"
-path="res://.godot/imported/save.png-d74f005d938ce0bf01364b0bdd001280.ctex"
+uid="uid://dyvqs61ch1mx2"
+path="res://.godot/imported/seconds.png-14dbb0cff59a6e974ed4a26030a076bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://b3gd/chart_editor/images/save.png"
-dest_files=["res://.godot/imported/save.png-d74f005d938ce0bf01364b0bdd001280.ctex"]
+source_file="res://b3gd/chart_editor/chart_info/seconds.png"
+dest_files=["res://.godot/imported/seconds.png-14dbb0cff59a6e974ed4a26030a076bb.ctex"]
 
 [params]
 

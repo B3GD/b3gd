@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cq03bxqwqbpqd"
-path="res://.godot/imported/inspector.png-c4d0fab363e995c11031c1e4b707c104.ctex"
+uid="uid://cqccpwijdgqui"
+path="res://.godot/imported/save.png-e5eac0b2a09148dd741dce95ac1e975c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://b3gd/chart_editor/images/inspector.png"
-dest_files=["res://.godot/imported/inspector.png-c4d0fab363e995c11031c1e4b707c104.ctex"]
+source_file="res://b3gd/chart_editor/chart_info/save.png"
+dest_files=["res://.godot/imported/save.png-e5eac0b2a09148dd741dce95ac1e975c.ctex"]
 
 [params]
 

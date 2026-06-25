@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b507lgcilwgxq"]
 
-[ext_resource type="Script" uid="uid://cc12t4u5iccp8" path="res://b3gd/chart_editor/event_box.gd" id="1_lcodg"]
-[ext_resource type="Texture2D" uid="uid://cka5y22a126yx" path="res://b3gd/chart_editor/images/arrow.png" id="2_jrhu1"]
+[ext_resource type="Script" uid="uid://cc12t4u5iccp8" path="res://b3gd/chart_editor/event_editing/event_box.gd" id="1_l13sa"]
+[ext_resource type="Texture2D" uid="uid://cka5y22a126yx" path="res://b3gd/chart_editor/event_editing/arrow.png" id="2_v7ey4"]
 
 [sub_resource type="FontVariation" id="FontVariation_lcodg"]
 spacing_top = -4
@@ -16,7 +16,7 @@ offset_bottom = 40.0
 size_flags_horizontal = 8
 size_flags_vertical = 4
 mouse_filter = 2
-script = ExtResource("1_lcodg")
+script = ExtResource("1_l13sa")
 
 [node name="Button" type="Button" parent="." unique_id=1545249279]
 layout_mode = 1
@@ -42,7 +42,7 @@ offset_right = -0.124053955
 offset_bottom = -11.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
-texture = ExtResource("2_jrhu1")
+texture = ExtResource("2_v7ey4")
 patch_margin_left = 4
 patch_margin_right = 17
 axis_stretch_horizontal = 1

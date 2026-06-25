@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://kd73i3dkrn6l"
-path="res://.godot/imported/charles.png-dde3061ce97de2c5a7cd203e0728e352.ctex"
+path="res://.godot/imported/charles.png-d9924a1a5c5e629a5787ba6adb90147b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://b3gd/chart_editor/images/charles.png"
-dest_files=["res://.godot/imported/charles.png-dde3061ce97de2c5a7cd203e0728e352.ctex"]
+source_file="res://b3gd/chart_editor/chart_info/charles.png"
+dest_files=["res://.godot/imported/charles.png-d9924a1a5c5e629a5787ba6adb90147b.ctex"]
 
 [params]
 

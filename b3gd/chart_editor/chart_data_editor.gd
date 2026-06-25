@@ -33,5 +33,12 @@ func add_note(strum_line, receptor, time, length):
 	chart_source.chart.strum_lines[strum_line].receptors[receptor].notes.sort_custom(sort_ascending)
 	chart_loader.load_notes()
 
+func remove_note(strum_line, receptor, time):
+	var notes = chart_source.chart.strum_lines[strum_line].receptors[receptor].notes
+	for note in notes:
+		if is_equal_approx(note.time, time):
+			notes.remove_at(notes.find(note)) # Only removes one at a time
+			return
+
 func sort_ascending(a, b):
 	return a.time < b.time

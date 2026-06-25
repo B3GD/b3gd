@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bd4ucgm5uh2qb"
-path="res://.godot/imported/undo.png-dab02d0226b715ec029d1003d2fdeb36.ctex"
+uid="uid://cnjiglqj2tbq5"
+path="res://.godot/imported/im mad.png-326cfbf365c35db538c17c2b4d150235.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://b3gd/chart_editor/images/undo.png"
-dest_files=["res://.godot/imported/undo.png-dab02d0226b715ec029d1003d2fdeb36.ctex"]
+source_file="res://b3gd/im mad.png"
+dest_files=["res://.godot/imported/im mad.png-326cfbf365c35db538c17c2b4d150235.ctex"]
 
 [params]
 

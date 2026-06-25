@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cka5y22a126yx"
-path="res://.godot/imported/arrow.png-e67a0dc1c30414f5c04a549fba9e4e26.ctex"
+uid="uid://bd4ucgm5uh2qb"
+path="res://.godot/imported/undo.png-33a2ccf5fabf2f748ce743e8df6cb482.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://b3gd/chart_editor/images/arrow.png"
-dest_files=["res://.godot/imported/arrow.png-e67a0dc1c30414f5c04a549fba9e4e26.ctex"]
+source_file="res://b3gd/chart_editor/chart_info/undo.png"
+dest_files=["res://.godot/imported/undo.png-33a2ccf5fabf2f748ce743e8df6cb482.ctex"]
 
 [params]
 

@@ -12,17 +12,23 @@ var creating_note = false
 var note_length = 0.0
 
 func _input(event: InputEvent) -> void:
-	if event is not InputEventMouseButton:
+	if event is not InputEventMouseButton or !is_mouse_over:
+		if event is InputEventMouseButton and is_mouse_over:
+			print("yeah")
 		return
-	if event.is_echo() or event.button_index != 1 or !is_mouse_over:
-		return
-	
-	if event.is_pressed():
-		creating_note = true
-		note_length = 0.0
-	if event.is_released():
-		creating_note = false
-		chart_data_modifier.add_note(int(%StrumLineLabel.text), mouse_column, mouse_time, note_length)
+	var strum_line_id = int(%StrumLineLabel.text)
+	match event.button_index:
+		1:
+			if event.is_pressed():
+				creating_note = true
+				note_length = 0.0
+			if event.is_released():
+				creating_note = false
+				chart_data_modifier.add_note(strum_line_id, mouse_column, mouse_time, note_length)
+		2:
+			if !event.is_pressed():
+				return
+			chart_data_modifier.remove_note(strum_line_id, mouse_column, mouse_time)
 
 func _process(_delta: float) -> void:
 	queue_redraw()

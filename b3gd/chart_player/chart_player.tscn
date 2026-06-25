@@ -14,22 +14,25 @@
 [ext_resource type="Script" uid="uid://bctudmv5p4heo" path="res://b3gd/chart_player/note_renderers/gridrenderer/noteskingriddata.gd" id="8_rbo3x"]
 [ext_resource type="Script" uid="uid://m5sbxr0i4jp1" path="res://b3gd/chart_editor/chart_data_editor.gd" id="10_darji"]
 [ext_resource type="Script" uid="uid://cn613y6nswe4m" path="res://b3gd/chart_editor/chart_scrubber.gd" id="10_wento"]
-[ext_resource type="Script" uid="uid://bapfqr3m4v28h" path="res://b3gd/chart_editor/time_bar.gd" id="12_763kw"]
-[ext_resource type="Script" uid="uid://b4it3bm2xipgc" path="res://b3gd/chart_editor/event_view_arranger.gd" id="12_jng4k"]
-[ext_resource type="Script" uid="uid://cddem6pgulynf" path="res://b3gd/chart_editor/note_type_box.gd" id="12_o3yqt"]
-[ext_resource type="Script" uid="uid://b585c60ln25gs" path="res://b3gd/chart_editor/editor_pitch_scale.gd" id="13_1n38x"]
-[ext_resource type="Script" uid="uid://dsxriov1ftjvw" path="res://b3gd/chart_editor/strumline_container.gd" id="13_yao2k"]
-[ext_resource type="PackedScene" uid="uid://b507lgcilwgxq" path="res://b3gd/chart_editor/event_box.tscn" id="14_u3uuj"]
-[ext_resource type="Texture2D" uid="uid://kd73i3dkrn6l" path="res://b3gd/chart_editor/images/charles.png" id="16_jng4k"]
-[ext_resource type="PackedScene" uid="uid://dkros47lrg8sl" path="res://b3gd/chart_editor/strum_line.tscn" id="17_763kw"]
-[ext_resource type="Texture2D" uid="uid://cq03bxqwqbpqd" path="res://b3gd/chart_editor/images/inspector.png" id="19_asiwl"]
-[ext_resource type="Texture2D" uid="uid://cqccpwijdgqui" path="res://b3gd/chart_editor/images/save.png" id="20_5k0rp"]
-[ext_resource type="Texture2D" uid="uid://dyvqs61ch1mx2" path="res://b3gd/chart_editor/images/seconds.png" id="21_akx1q"]
-[ext_resource type="Texture2D" uid="uid://bd4ucgm5uh2qb" path="res://b3gd/chart_editor/images/undo.png" id="21_to1tm"]
-[ext_resource type="Texture2D" uid="uid://7i5p3off2gwj" path="res://b3gd/chart_editor/images/beats.png" id="22_asiwl"]
-[ext_resource type="Texture2D" uid="uid://c6mup4esllr8p" path="res://b3gd/chart_editor/images/redo.png" id="22_f3pcj"]
-[ext_resource type="Texture2D" uid="uid://c0jlf16tl8ke7" path="res://b3gd/chart_editor/images/event.png" id="25_vvqha"]
-[ext_resource type="Texture2D" uid="uid://cnjiglqj2tbq5" path="res://b3gd/chart_editor/images/im mad.png" id="31_jbl5p"]
+[ext_resource type="Script" uid="uid://bapfqr3m4v28h" path="res://b3gd/chart_editor/chart_info/time_bar.gd" id="12_763kw"]
+[ext_resource type="Script" uid="uid://b4it3bm2xipgc" path="res://b3gd/chart_editor/event_editing/event_view_arranger.gd" id="12_jng4k"]
+[ext_resource type="Script" uid="uid://cddem6pgulynf" path="res://b3gd/chart_editor/note_editing/note_type_box.gd" id="12_o3yqt"]
+[ext_resource type="Script" uid="uid://b585c60ln25gs" path="res://b3gd/chart_editor/chart_info/editor_pitch_scale.gd" id="13_1n38x"]
+[ext_resource type="Script" uid="uid://dsxriov1ftjvw" path="res://b3gd/chart_editor/note_editing/strumline_container.gd" id="13_yao2k"]
+[ext_resource type="PackedScene" uid="uid://b507lgcilwgxq" path="res://b3gd/chart_editor/event_editing/event_box.tscn" id="14_u3uuj"]
+[ext_resource type="Script" uid="uid://cqyp5h5ij2gaa" path="res://b3gd/chart_editor/fake_note_manager.gd" id="15_jbl5p"]
+[ext_resource type="Texture2D" uid="uid://kd73i3dkrn6l" path="res://b3gd/chart_editor/chart_info/charles.png" id="16_jng4k"]
+[ext_resource type="AudioStream" uid="uid://nwgw3lpaxmje" path="res://b3gd/chart_editor/sounds/note_click.wav" id="16_s7pdn"]
+[ext_resource type="PackedScene" uid="uid://dkros47lrg8sl" path="res://b3gd/chart_editor/note_editing/strum_line.tscn" id="17_763kw"]
+[ext_resource type="Script" uid="uid://b8qw62xl3ryi3" path="res://b3gd/chart_editor/chart_saver.gd" id="17_s7pdn"]
+[ext_resource type="Texture2D" uid="uid://cq03bxqwqbpqd" path="res://b3gd/chart_editor/chart_info/inspector.png" id="19_asiwl"]
+[ext_resource type="Texture2D" uid="uid://cqccpwijdgqui" path="res://b3gd/chart_editor/chart_info/save.png" id="20_5k0rp"]
+[ext_resource type="Texture2D" uid="uid://dyvqs61ch1mx2" path="res://b3gd/chart_editor/chart_info/seconds.png" id="21_akx1q"]
+[ext_resource type="Texture2D" uid="uid://bd4ucgm5uh2qb" path="res://b3gd/chart_editor/chart_info/undo.png" id="21_to1tm"]
+[ext_resource type="Texture2D" uid="uid://7i5p3off2gwj" path="res://b3gd/chart_editor/chart_info/beats.png" id="22_asiwl"]
+[ext_resource type="Texture2D" uid="uid://c6mup4esllr8p" path="res://b3gd/chart_editor/chart_info/redo.png" id="22_f3pcj"]
+[ext_resource type="Texture2D" uid="uid://c0jlf16tl8ke7" path="res://b3gd/chart_editor/chart_info/event.png" id="25_vvqha"]
+[ext_resource type="Texture2D" uid="uid://cnjiglqj2tbq5" path="res://b3gd/im mad.png" id="31_jbl5p"]
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_asiwl"]
 stream_count = 3
@@ -146,6 +149,16 @@ event_player = NodePath("../../EventPlayer")
 unique_name_in_owner = true
 script = ExtResource("10_wento")
 
+[node name="FakeNoteManager" type="Node" parent="ChartEditor" unique_id=1674734293]
+script = ExtResource("15_jbl5p")
+
+[node name="NoteClick" type="AudioStreamPlayer" parent="ChartEditor/FakeNoteManager" unique_id=371634989]
+stream = ExtResource("16_s7pdn")
+max_polyphony = 16
+
+[node name="ChartSaver" type="Node" parent="ChartEditor" unique_id=239006381]
+script = ExtResource("17_s7pdn")
+
 [node name="EditorUI" type="CanvasLayer" parent="ChartEditor" unique_id=394825533]
 layer = 255
 
@@ -247,8 +260,7 @@ horizontal_alignment = 1
 layout_mode = 2
 alignment = 1
 
-[node name="EditorSaveButton" type="Button" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/FileButtons" unique_id=55421679]
-unique_name_in_owner = true
+[node name="SaveButton" type="Button" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/FileButtons" unique_id=55421679]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -262,6 +274,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 focus_mode = 0
+disabled = true
 text = "Undo"
 icon = ExtResource("21_to1tm")
 
@@ -271,6 +284,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 focus_mode = 0
+disabled = true
 text = "Redo"
 icon = ExtResource("22_f3pcj")
 
@@ -338,6 +352,22 @@ value = 1.0
 alignment = 1
 suffix = "x"
 script = ExtResource("13_1n38x")
+
+[node name="HitSoundContainer" type="HBoxContainer" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=1000932083]
+layout_mode = 2
+
+[node name="HitSoundLabel" type="Label" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/HitSoundContainer" unique_id=1432505448]
+layout_mode = 2
+text = "Hit Sound:"
+
+[node name="EditorHitSound" type="CheckBox" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/HitSoundContainer" unique_id=138415564]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+focus_mode = 0
+button_pressed = true
+alignment = 1
 
 [node name="PlaybackSeperator" type="HSeparator" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=1359186163]
 layout_mode = 2

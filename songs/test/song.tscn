@@ -13,7 +13,7 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 fov = 19.0
 
-[node name="TextureRect" parent="ChartPlayer/EditorTools/EditorUI" parent_id_path=PackedInt32Array(192656738, 394825533) index="1" unique_id=405556981]
+[node name="Charles" parent="ChartPlayer/ChartEditor/EditorUI/Images" parent_id_path=PackedInt32Array(192656738, 1748260361) index="0" unique_id=405556981]
 mouse_filter = 2
 
 [node name="TestBackground" parent="." unique_id=2125051436 instance=ExtResource("2_iai5w")]
@@ -37,7 +37,7 @@ script = ExtResource("4_m7tut")
 [node name="CameraTargets" type="Node" parent="." unique_id=1455999995 groups=["CameraTargets"]]
 
 [node name="DadPosition" type="Marker2D" parent="CameraTargets" unique_id=1785062173]
-position = Vector2(-558, 0)
+position = Vector2(-476, 0)
 
 [node name="BfPosition" type="Marker2D" parent="CameraTargets" unique_id=516424553]
 position = Vector2(569, 0)

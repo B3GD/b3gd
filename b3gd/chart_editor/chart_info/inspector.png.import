@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0jlf16tl8ke7"
-path="res://.godot/imported/event.png-ed62f878371d41682239b171eaee5a91.ctex"
+uid="uid://cq03bxqwqbpqd"
+path="res://.godot/imported/inspector.png-b6adcb751019cfe7a946cc157d5b3d05.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://b3gd/chart_editor/images/event.png"
-dest_files=["res://.godot/imported/event.png-ed62f878371d41682239b171eaee5a91.ctex"]
+source_file="res://b3gd/chart_editor/chart_info/inspector.png"
+dest_files=["res://.godot/imported/inspector.png-b6adcb751019cfe7a946cc157d5b3d05.ctex"]
 
 [params]
 

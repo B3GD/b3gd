@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6mup4esllr8p"
-path="res://.godot/imported/redo.png-c25ddc5ff973c584eabcd94d643b1c44.ctex"
+uid="uid://bdkks2vfqiwwd"
+path="res://.godot/imported/notes.png-06c11a80bb975121c2dbf02e13a49dfb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://b3gd/chart_editor/images/redo.png"
-dest_files=["res://.godot/imported/redo.png-c25ddc5ff973c584eabcd94d643b1c44.ctex"]
+source_file="res://b3gd/chart_editor/note_editing/notes.png"
+dest_files=["res://.godot/imported/notes.png-06c11a80bb975121c2dbf02e13a49dfb.ctex"]
 
 [params]
 
