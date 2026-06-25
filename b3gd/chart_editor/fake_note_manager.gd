@@ -2,7 +2,6 @@ extends Node
 
 @onready var song_audio_player = get_tree().get_first_node_in_group("SongAudioPlayer")
 @onready var note_manager = get_tree().get_first_node_in_group("NoteManager")
-@onready var chart_source = get_tree().get_first_node_in_group("ChartPlayer")
 
 var hit_note_ids = []
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ce48x5d41hgyi" path="res://b3gd/chart_editor/chart_editor_activate.gd" id="1_5icij"]
 [ext_resource type="Script" uid="uid://223mam7be1wl" path="res://b3gd/chart_player/chart_loader.gd" id="1_62xbj"]
-[ext_resource type="Resource" uid="uid://sjfqocgmjxjj" path="res://songs/test/chart.tres" id="3_cdfgl"]
+[ext_resource type="Resource" path="res://songs/test/chart.tres" id="3_cdfgl"]
 [ext_resource type="Script" uid="uid://bpt0v2hxb23lq" path="res://b3gd/chart_player/song_audio_player.gd" id="3_my5jg"]
 [ext_resource type="Script" uid="uid://cr3x8h58rufy1" path="res://b3gd/chart_player/event_player.gd" id="3_v3b1e"]
 [ext_resource type="Script" uid="uid://rypo2bh7qid7" path="res://b3gd/chart_player/note_manager.gd" id="4_t3y1r"]
@@ -523,4 +523,5 @@ texture = ExtResource("31_jbl5p")
 
 [connection signal="pre_init_events" from="EventPlayer" to="SongAudioPlayer" method="on_event_pre_init"]
 [connection signal="finished" from="SongAudioPlayer" to="SongAudioPlayer" method="on_finished"]
+[connection signal="pressed" from="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/FileButtons/SaveButton" to="ChartEditor/ChartSaver" method="_on_save_button_pressed"]
 [connection signal="value_changed" from="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/PitchScaleContainer/EditorPitchScale" to="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/PitchScaleContainer/EditorPitchScale" method="_on_value_changed"]
