@@ -38,6 +38,7 @@ func _process(_delta: float) -> void:
 		scroll_mult *= -1.0
 	time_mouse_pos /= 64 * scroll_mult
 	time_mouse_pos += song_audio_player.song_progress_seconds
+	time_mouse_pos = chart_data_modifier.get_snapped_time(time_mouse_pos)
 	
 	if !creating_note:
 		mouse_time = time_mouse_pos

@@ -8,6 +8,7 @@ func _input(event: InputEvent) -> void:
 		step *= -1
 	if %EditorDownscroll.button_pressed:
 		step *= -1
+	
 	if event.is_action_pressed("editor_time_down") or event.is_action_pressed("editor_time_up"):
 		var beat = song_audio_player.song_progress_beats
 		beat += step
