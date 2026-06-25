@@ -7,34 +7,37 @@ extends Control
 @onready var note_manager := get_tree().get_first_node_in_group("NoteManager")
 @onready var chart_source := get_tree().get_first_node_in_group("ChartSource")
 
-var extra_zoom = 1.0
-
 @onready var scroll_zoom = get_parent().get_parent().get_node("%EditorScrollZoom")
 @onready var downscroll_toggle = get_parent().get_parent().get_node("%EditorDownscroll")
 
 var downscroll = false
+var extra_zoom = 1.0
+var transform_y = size.y + position.y
+
 
 func _process(_delta: float) -> void:
+	var timeline_present_point = get_parent().get_parent().timeline_present_point
+	
+	transform_y = size.y + position.y
+	transform_y *= (remap(float(downscroll), 0, 1, 1, -1) * (timeline_present_point - 0.5) + 0.5)
+	transform_y -= position.y
+	
 	extra_zoom = 1.0
 	if scroll_zoom != null:
 		extra_zoom /= scroll_zoom.value * 2.0
 	if downscroll_toggle != null:
 		downscroll = downscroll_toggle.button_pressed
+	
 	queue_redraw()
 
 func _draw() -> void:
 	custom_minimum_size.x = (64 * note_manager.strum_lines[strum_line_idx].receptors.size())
 	#var fill_scale = size.x / custom_minimum_size.x
-	var transform_y = size.y + position.y
-	var timeline_present_point = get_parent().get_parent().timeline_present_point
-	transform_y *= (remap(float(downscroll), 0, 1, 1, -1) * (timeline_present_point - 0.5) + 0.5)
-	transform_y -= position.y
 	draw_rect(Rect2(Vector2.ZERO, size), Color(0.0, 0.0, 0.0, 0.25))
 	draw_set_transform(
 		Vector2(0, transform_y), 
 		0.0, 
 		Vector2.ONE
-		#Vector2(fill_scale, fill_scale)
 	)
 	draw_receptors()
 

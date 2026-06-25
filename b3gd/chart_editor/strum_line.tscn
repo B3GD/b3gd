@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cj632xxpc60ub" path="res://b3gd/chart_player/note_renderers/control_renderer.gd" id="1_jjdoy"]
 [ext_resource type="Texture2D" uid="uid://bdkks2vfqiwwd" path="res://b3gd/chart_editor/images/notes.png" id="2_8s5n4"]
+[ext_resource type="Script" uid="uid://bmrwgx2ga1mpy" path="res://b3gd/chart_editor/strum_line_input.gd" id="3_8s5n4"]
 
 [sub_resource type="FontVariation" id="FontVariation_darji"]
 variation_embolden = 0.75
@@ -39,6 +40,7 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
+focus_mode = 0
 text = "CPU"
 alignment = 1
 
@@ -46,6 +48,7 @@ alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
+focus_mode = 0
 text = "MUTE"
 alignment = 1
 
@@ -73,3 +76,12 @@ layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("1_jjdoy")
 notes_texture = ExtResource("2_8s5n4")
+
+[node name="StrumLineInput" type="Control" parent="StrumLineRenderer" unique_id=1456482736]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_8s5n4")

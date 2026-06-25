@@ -24,6 +24,7 @@ anchors_preset = -1
 anchor_bottom = 1.0
 offset_right = 147.02002
 grow_vertical = 2
+focus_mode = 0
 theme_override_fonts/font = SubResource("FontVariation_lcodg")
 toggle_mode = true
 autowrap_mode = 1

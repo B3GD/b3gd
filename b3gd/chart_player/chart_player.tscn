@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://7i5p3off2gwj" path="res://b3gd/chart_editor/images/beats.png" id="22_asiwl"]
 [ext_resource type="Texture2D" uid="uid://c6mup4esllr8p" path="res://b3gd/chart_editor/images/redo.png" id="22_f3pcj"]
 [ext_resource type="Texture2D" uid="uid://c0jlf16tl8ke7" path="res://b3gd/chart_editor/images/event.png" id="25_vvqha"]
+[ext_resource type="Texture2D" uid="uid://cnjiglqj2tbq5" path="res://b3gd/chart_editor/images/im mad.png" id="31_jbl5p"]
 
 [sub_resource type="AudioStreamSynchronized" id="AudioStreamSynchronized_asiwl"]
 stream_count = 3
@@ -102,6 +103,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 0
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="UI/Strumlines" unique_id=8042913]
@@ -129,9 +131,10 @@ far = 33.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1732893515]
 environment = SubResource("Environment_v3b1e")
 
-[node name="EditorTools" type="Node" parent="." unique_id=804139421]
+[node name="ChartEditor" type="Node" parent="." unique_id=804139421]
 
-[node name="ChartDataEditor" type="Node" parent="EditorTools" unique_id=1425399514 node_paths=PackedStringArray("chart_source", "chart_loader", "song_audio_player", "note_manager", "event_player")]
+[node name="EditorChartDataModifier" type="Node" parent="ChartEditor" unique_id=1425399514 node_paths=PackedStringArray("chart_source", "chart_loader", "song_audio_player", "note_manager", "event_player")]
+unique_name_in_owner = true
 script = ExtResource("10_darji")
 chart_source = NodePath("../..")
 chart_loader = NodePath("../../ChartLoader")
@@ -139,13 +142,14 @@ song_audio_player = NodePath("../../SongAudioPlayer")
 note_manager = NodePath("../../NoteManager")
 event_player = NodePath("../../EventPlayer")
 
-[node name="SongScrubber" type="Node" parent="EditorTools" unique_id=53443620]
+[node name="EditorSongScrubber" type="Node" parent="ChartEditor" unique_id=53443620]
+unique_name_in_owner = true
 script = ExtResource("10_wento")
 
-[node name="EditorUI" type="CanvasLayer" parent="EditorTools" unique_id=394825533]
+[node name="EditorUI" type="CanvasLayer" parent="ChartEditor" unique_id=394825533]
 layer = 255
 
-[node name="UIContainer" type="HBoxContainer" parent="EditorTools/EditorUI" unique_id=17901632]
+[node name="UIContainer" type="HBoxContainer" parent="ChartEditor/EditorUI" unique_id=17901632]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -153,28 +157,28 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 
-[node name="WorkAreaScroll" type="ScrollContainer" parent="EditorTools/EditorUI/UIContainer" unique_id=1866255571]
+[node name="WorkAreaScroll" type="ScrollContainer" parent="ChartEditor/EditorUI/UIContainer" unique_id=1866255571]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 vertical_scroll_mode = 0
 scroll_hint_mode = 1
 
-[node name="Container" type="HBoxContainer" parent="EditorTools/EditorUI/UIContainer/WorkAreaScroll" unique_id=491110280]
+[node name="Container" type="HBoxContainer" parent="ChartEditor/EditorUI/UIContainer/WorkAreaScroll" unique_id=491110280]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="EventContainer" type="Control" parent="EditorTools/EditorUI/UIContainer/WorkAreaScroll/Container" unique_id=1423378740]
+[node name="EventContainer" type="Control" parent="ChartEditor/EditorUI/UIContainer/WorkAreaScroll/Container" unique_id=1423378740]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 script = ExtResource("12_jng4k")
 event_box_scene = ExtResource("14_u3uuj")
 event_lane_width = 180
 
-[node name="EditorStrumLineContainer" type="HBoxContainer" parent="EditorTools/EditorUI/UIContainer/WorkAreaScroll/Container" unique_id=32177528]
+[node name="EditorStrumLineContainer" type="HBoxContainer" parent="ChartEditor/EditorUI/UIContainer/WorkAreaScroll/Container" unique_id=32177528]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -183,113 +187,118 @@ alignment = 1
 script = ExtResource("13_yao2k")
 strum_line_node = ExtResource("17_763kw")
 
-[node name="Margin" type="Control" parent="EditorTools/EditorUI/UIContainer/WorkAreaScroll/Container" unique_id=1200977817]
+[node name="Margin" type="Control" parent="ChartEditor/EditorUI/UIContainer/WorkAreaScroll/Container" unique_id=1200977817]
 custom_minimum_size = Vector2(4, 0)
 layout_mode = 2
 
-[node name="AddStrumlineButton" type="Button" parent="EditorTools/EditorUI/UIContainer/WorkAreaScroll/Container" unique_id=1090693307]
+[node name="AddStrumlineButton" type="Button" parent="ChartEditor/EditorUI/UIContainer/WorkAreaScroll/Container" unique_id=1090693307]
 custom_minimum_size = Vector2(0, 47)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+focus_mode = 0
 text = "  + Add Strumline  "
 
-[node name="FieldScroll" type="ScrollContainer" parent="EditorTools/EditorUI/UIContainer" unique_id=242495268]
+[node name="FieldScroll" type="ScrollContainer" parent="ChartEditor/EditorUI/UIContainer" unique_id=242495268]
 layout_mode = 2
 focus_behavior_recursive = 2
 horizontal_scroll_mode = 0
 
-[node name="Container" type="VBoxContainer" parent="EditorTools/EditorUI/UIContainer/FieldScroll" unique_id=285842642]
+[node name="Container" type="VBoxContainer" parent="ChartEditor/EditorUI/UIContainer/FieldScroll" unique_id=285842642]
 layout_mode = 2
 
-[node name="ChartInfoPanel" type="PanelContainer" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container" unique_id=1920558401]
+[node name="ChartInfoPanel" type="PanelContainer" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container" unique_id=1920558401]
 layout_mode = 2
 
-[node name="Margin" type="MarginContainer" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel" unique_id=1324385359]
+[node name="Margin" type="MarginContainer" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel" unique_id=1324385359]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="HBox" type="VBoxContainer" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin" unique_id=1894479255]
+[node name="HBox" type="VBoxContainer" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin" unique_id=1894479255]
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 
-[node name="Header" type="HBoxContainer" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=738537539]
+[node name="Header" type="HBoxContainer" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=738537539]
 layout_mode = 2
 
-[node name="Icon" type="TextureRect" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/Header" unique_id=1816072122]
+[node name="Icon" type="TextureRect" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/Header" unique_id=1816072122]
 layout_mode = 2
 texture = ExtResource("19_asiwl")
 stretch_mode = 3
 
-[node name="Label" type="Label" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/Header" unique_id=697818999]
+[node name="Label" type="Label" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/Header" unique_id=697818999]
 layout_mode = 2
 text = "Chart Info"
 label_settings = SubResource("LabelSettings_asiwl")
 
-[node name="HeaderSeperator" type="HSeparator" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=1271127288]
+[node name="HeaderSeperator" type="HSeparator" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=1271127288]
 layout_mode = 2
 
-[node name="FileGroupLabel" type="Label" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=2095806497]
+[node name="FileGroupLabel" type="Label" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=2095806497]
 layout_mode = 2
 text = "File"
 label_settings = SubResource("LabelSettings_piitt")
 horizontal_alignment = 1
 
-[node name="FileButtons" type="HBoxContainer" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=229216169]
+[node name="FileButtons" type="HBoxContainer" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=229216169]
 layout_mode = 2
 alignment = 1
 
-[node name="EditorSaveButton" type="Button" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/FileButtons" unique_id=55421679]
+[node name="EditorSaveButton" type="Button" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/FileButtons" unique_id=55421679]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+focus_mode = 0
 text = "Save"
 icon = ExtResource("20_5k0rp")
 
-[node name="EditorUndoButton" type="Button" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/FileButtons" unique_id=1472911109]
+[node name="EditorUndoButton" type="Button" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/FileButtons" unique_id=1472911109]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+focus_mode = 0
 text = "Undo"
 icon = ExtResource("21_to1tm")
 
-[node name="EditorRedoButton" type="Button" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/FileButtons" unique_id=1183792469]
+[node name="EditorRedoButton" type="Button" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/FileButtons" unique_id=1183792469]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+focus_mode = 0
 text = "Redo"
 icon = ExtResource("22_f3pcj")
 
-[node name="FileSeperator" type="HSeparator" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=870520249]
+[node name="FileSeperator" type="HSeparator" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=870520249]
 layout_mode = 2
 
-[node name="PlaybackGroupLabel" type="Label" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=1899562829]
+[node name="PlaybackGroupLabel" type="Label" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=1899562829]
 layout_mode = 2
 text = "Playback"
 label_settings = SubResource("LabelSettings_piitt")
 horizontal_alignment = 1
 
-[node name="CurrentTimeLabel" type="Label" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=2134226606]
+[node name="CurrentTimeLabel" type="Label" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=2134226606]
 layout_mode = 2
 text = "Current Time:"
 
-[node name="TimeBar" type="HBoxContainer" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=642591246]
+[node name="TimeBar" type="HBoxContainer" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=642591246]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 script = ExtResource("12_763kw")
 
-[node name="EditorTimeFormatBox" type="OptionButton" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/TimeBar" unique_id=544778780]
+[node name="EditorTimeFormatBox" type="OptionButton" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/TimeBar" unique_id=544778780]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
+focus_mode = 0
 selected = 0
 item_count = 2
 popup/item_0/icon = ExtResource("21_akx1q")
@@ -297,27 +306,27 @@ popup/item_0/id = 0
 popup/item_1/icon = ExtResource("22_asiwl")
 popup/item_1/id = 1
 
-[node name="CurrentTimeLabel" type="Label" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/TimeBar" unique_id=1693420606]
+[node name="CurrentTimeLabel" type="Label" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/TimeBar" unique_id=1693420606]
 layout_mode = 2
 size_flags_vertical = 8
 text = "0:28.00"
 label_settings = SubResource("LabelSettings_o3yqt")
 
-[node name="TotalTimeLabel" type="Label" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/TimeBar" unique_id=108587704]
+[node name="TotalTimeLabel" type="Label" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/TimeBar" unique_id=108587704]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 text = "/ 3:00.00"
 horizontal_alignment = 2
 
-[node name="PitchScaleContainer" type="HBoxContainer" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=520856854]
+[node name="PitchScaleContainer" type="HBoxContainer" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=520856854]
 layout_mode = 2
 
-[node name="PitchScaleLabel" type="Label" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/PitchScaleContainer" unique_id=959973929]
+[node name="PitchScaleLabel" type="Label" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/PitchScaleContainer" unique_id=959973929]
 layout_mode = 2
 text = "Pitch Scale:"
 
-[node name="EditorPitchScale" type="SpinBox" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/PitchScaleContainer" unique_id=450882220]
+[node name="EditorPitchScale" type="SpinBox" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/PitchScaleContainer" unique_id=450882220]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -330,26 +339,26 @@ alignment = 1
 suffix = "x"
 script = ExtResource("13_1n38x")
 
-[node name="PlaybackSeperator" type="HSeparator" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=1359186163]
+[node name="PlaybackSeperator" type="HSeparator" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=1359186163]
 layout_mode = 2
 
-[node name="EditorGroupLabel" type="Label" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=1334071341]
+[node name="EditorGroupLabel" type="Label" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=1334071341]
 layout_mode = 2
 text = "Editor"
 label_settings = SubResource("LabelSettings_piitt")
 horizontal_alignment = 1
 
-[node name="EditorFieldContainer" type="GridContainer" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=108443748]
+[node name="EditorFieldContainer" type="GridContainer" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=108443748]
 layout_mode = 2
 size_flags_vertical = 4
 columns = 2
 
-[node name="SnapLabel" type="Label" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/EditorFieldContainer" unique_id=525002271]
+[node name="SnapLabel" type="Label" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/EditorFieldContainer" unique_id=525002271]
 layout_mode = 2
 text = "Snap:"
 horizontal_alignment = 2
 
-[node name="EditorSnap" type="SpinBox" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/EditorFieldContainer" unique_id=2036152241]
+[node name="EditorSnap" type="SpinBox" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/EditorFieldContainer" unique_id=2036152241]
 unique_name_in_owner = true
 layout_mode = 2
 min_value = 1.0
@@ -359,38 +368,40 @@ value = 1.0
 alignment = 1
 prefix = "1 /"
 
-[node name="NoteClassLabel" type="Label" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/EditorFieldContainer" unique_id=1176939312]
+[node name="NoteClassLabel" type="Label" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/EditorFieldContainer" unique_id=1176939312]
 layout_mode = 2
 text = "Note Class:"
 
-[node name="NoteClassBox" type="OptionButton" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/EditorFieldContainer" unique_id=142868142]
+[node name="NoteClassBox" type="OptionButton" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/EditorFieldContainer" unique_id=142868142]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 script = ExtResource("12_o3yqt")
 
-[node name="EditorSeperator" type="HSeparator" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=483256034]
+[node name="EditorSeperator" type="HSeparator" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=483256034]
 layout_mode = 2
 
-[node name="ViewGroupLabel" type="Label" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=1032560146]
+[node name="ViewGroupLabel" type="Label" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=1032560146]
 layout_mode = 2
 text = "View"
 label_settings = SubResource("LabelSettings_piitt")
 horizontal_alignment = 1
 
-[node name="ViewFieldContainer" type="GridContainer" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=836797912]
+[node name="ViewFieldContainer" type="GridContainer" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=836797912]
 layout_mode = 2
 columns = 2
 
-[node name="ZoomLabel" type="Label" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/ViewFieldContainer" unique_id=2036164914]
+[node name="ZoomLabel" type="Label" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/ViewFieldContainer" unique_id=2036164914]
 layout_mode = 2
 text = "Zoom:"
 
-[node name="EditorScrollZoom" type="HSlider" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/ViewFieldContainer" unique_id=1973338551]
+[node name="EditorScrollZoom" type="HSlider" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/ViewFieldContainer" unique_id=1973338551]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+focus_mode = 0
 min_value = 0.1
 max_value = 0.9
 step = 0.1
@@ -398,65 +409,88 @@ value = 0.5
 tick_count = 9
 ticks_on_borders = true
 
-[node name="DownscrollLabel" type="Label" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/ViewFieldContainer" unique_id=837322506]
+[node name="DownscrollLabel" type="Label" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/ViewFieldContainer" unique_id=837322506]
 layout_mode = 2
 text = "Downscroll:"
 
-[node name="EditorDownscroll" type="CheckBox" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/ViewFieldContainer" unique_id=1138232562]
+[node name="EditorDownscroll" type="CheckBox" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/ViewFieldContainer" unique_id=1138232562]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
+focus_mode = 0
 alignment = 1
 
-[node name="EventPanel" type="PanelContainer" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container" unique_id=1179675671]
+[node name="EventPanel" type="PanelContainer" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container" unique_id=1179675671]
 layout_mode = 2
 
-[node name="Margin" type="MarginContainer" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/EventPanel" unique_id=39165862]
+[node name="Margin" type="MarginContainer" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/EventPanel" unique_id=39165862]
 layout_mode = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="EventContainer" type="VBoxContainer" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/EventPanel/Margin" unique_id=1455210247]
+[node name="EventContainer" type="VBoxContainer" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/EventPanel/Margin" unique_id=1455210247]
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 
-[node name="Header" type="HBoxContainer" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/EventPanel/Margin/EventContainer" unique_id=1443713852]
+[node name="Header" type="HBoxContainer" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/EventPanel/Margin/EventContainer" unique_id=1443713852]
 layout_mode = 2
 
-[node name="Icon" type="TextureRect" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/EventPanel/Margin/EventContainer/Header" unique_id=1195162381]
+[node name="Icon" type="TextureRect" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/EventPanel/Margin/EventContainer/Header" unique_id=1195162381]
 layout_mode = 2
 texture = ExtResource("25_vvqha")
 stretch_mode = 3
 
-[node name="Label" type="Label" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/EventPanel/Margin/EventContainer/Header" unique_id=65623636]
+[node name="Label" type="Label" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/EventPanel/Margin/EventContainer/Header" unique_id=65623636]
 layout_mode = 2
 text = "Event"
 label_settings = SubResource("LabelSettings_asiwl")
 
-[node name="HeaderSeperator" type="HSeparator" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/EventPanel/Margin/EventContainer" unique_id=180528880]
+[node name="HeaderSeperator" type="HSeparator" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/EventPanel/Margin/EventContainer" unique_id=180528880]
 layout_mode = 2
 
-[node name="FieldContainer" type="VBoxContainer" parent="EditorTools/EditorUI/UIContainer/FieldScroll/Container/EventPanel/Margin/EventContainer" unique_id=1638781186]
+[node name="FieldContainer" type="VBoxContainer" parent="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/EventPanel/Margin/EventContainer" unique_id=1638781186]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="EditorTools/EditorUI" unique_id=405556981]
+[node name="Images" type="Control" parent="ChartEditor/EditorUI" unique_id=1748260361]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1920.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Charles" type="TextureRect" parent="ChartEditor/EditorUI/Images" unique_id=405556981]
 modulate = Color(1, 1, 1, 0.40392157)
 light_mask = 0
 material = SubResource("CanvasItemMaterial_aqojd")
+layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 15.0
-offset_top = -178.0
-offset_right = 255.03143
-offset_bottom = -8.0
+offset_left = 10.0
+offset_top = -173.0
+offset_right = 250.03143
+offset_bottom = -3.0
 grow_vertical = 0
 texture = ExtResource("16_jng4k")
 expand_mode = 1
 
+[node name="MyMessage" type="TextureRect" parent="ChartEditor/EditorUI/Images" unique_id=2030445319]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -476.0
+offset_top = -128.0
+offset_right = -90.0
+offset_bottom = 128.0
+texture = ExtResource("31_jbl5p")
+
 [connection signal="pre_init_events" from="EventPlayer" to="SongAudioPlayer" method="on_event_pre_init"]
 [connection signal="finished" from="SongAudioPlayer" to="SongAudioPlayer" method="on_finished"]
-[connection signal="value_changed" from="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/PitchScaleContainer/EditorPitchScale" to="EditorTools/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/PitchScaleContainer/EditorPitchScale" method="_on_value_changed"]
+[connection signal="value_changed" from="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/PitchScaleContainer/EditorPitchScale" to="ChartEditor/EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/PitchScaleContainer/EditorPitchScale" method="_on_value_changed"]

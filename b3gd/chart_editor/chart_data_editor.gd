@@ -7,10 +7,17 @@ extends Node
 @export var note_manager:Node
 @export var event_player:Node
 
+func get_snapped_time(seconds: float):
+	var beat = song_audio_player.get_beat_from_seconds(seconds)
+	beat = snappedf(beat, 1.0 / %EditorSnap.value)
+	return song_audio_player.get_seconds_from_beat(beat)
+
 func _ready() -> void:
 	pass
 
 func _input(event: InputEvent) -> void:
+	return
+	# UNREACHABLE CUZ I WANNA ADD IT BACK BUT I HAVENT YET
 	for i in range(4):
 		var input_name = "strumline_" + str(i)
 		if !InputMap.has_action(input_name):

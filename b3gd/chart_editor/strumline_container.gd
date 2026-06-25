@@ -9,9 +9,6 @@ func _ready() -> void:
 	update_strumlines()
 
 func update_strumlines():
-	#if get_children().size() - 1 == chart_source.chart.strum_lines.size():
-	#	return
-	
 	for child in get_children():
 		remove_child(child)
 	
