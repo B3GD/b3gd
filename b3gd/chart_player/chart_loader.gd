@@ -17,7 +17,7 @@ func _ready() -> void:
 func load_chart():
 	chart_variable_init()
 	load_tracks()
-	load_notes()
+	load_notes(false)
 	load_events()
 
 func chart_variable_init():
@@ -51,9 +51,12 @@ func load_tracks():
 func load_notes(ignore_past_notes: bool = false):
 	note_manager.strum_lines = chart_source.chart.strum_lines
 	
-	if !ignore_past_notes:
-		return
+	if ignore_past_notes:
+		remove_notes_from_past()
 	
+	notes_loaded.emit()
+
+func remove_notes_from_past():
 	for strum_line in note_manager.strum_lines:
 		for receptor in strum_line.receptors:
 			var future_id_found = false
@@ -64,7 +67,6 @@ func load_notes(ignore_past_notes: bool = false):
 					continue
 				note_id += 1
 			receptor.notes = receptor.notes.slice(note_id)
-	notes_loaded.emit()
 
 func load_events():
 	event_player.events = chart_source.chart.events

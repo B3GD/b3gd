@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://cj3squ17mo2kj"]
+
+[ext_resource type="Script" uid="uid://brcd74t0yv5qo" path="res://b3gd/song_scripts/character.gd" id="1_5uds8"]
+[ext_resource type="Texture2D" uid="uid://bamsucw3ndn7r" path="res://prefabs/characters/speaker/frames/bounce0000.png" id="2_0m4af"]
+[ext_resource type="Texture2D" uid="uid://du425218xayk2" path="res://prefabs/characters/speaker/frames/bounce0001.png" id="3_qw8v8"]
+[ext_resource type="Texture2D" uid="uid://b33ly20hlkx8t" path="res://prefabs/characters/speaker/frames/bounce0003.png" id="4_iwymf"]
+[ext_resource type="Texture2D" uid="uid://cq8vuavsghxrt" path="res://prefabs/characters/speaker/frames/sad0000.png" id="5_gr4ql"]
+[ext_resource type="Texture2D" uid="uid://buyvtctd3fane" path="res://prefabs/characters/speaker/frames/sad0001.png" id="6_s6k7h"]
+[ext_resource type="AudioStream" uid="uid://dbfl322ahe87p" path="res://prefabs/characters/test/ouo.wav" id="21_llafh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5ad5f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0m4af")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qw8v8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_iwymf")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_gr4ql")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_s6k7h")
+}],
+"loop": false,
+"name": &"sad_anim",
+"speed": 8.0
+}]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fwh4l"]
+random_pitch = 1.1892071
+streams_count = 1
+stream_0/stream = ExtResource("21_llafh")
+
+[node name="TestSpeaker" type="Node2D" unique_id=737532779 node_paths=PackedStringArray("thing_to_animate", "miss_sound")]
+script = ExtResource("1_5uds8")
+thing_to_animate = NodePath("TestSpeaker")
+miss_sound = NodePath("Ouo")
+strumline = 1
+ignore_sing = true
+note_directions = Array[String](["anim", "anim", "anim", "anim"])
+sing_prefix = ""
+miss_prefix = "sad_"
+
+[node name="TestSpeaker" type="AnimatedSprite2D" parent="." unique_id=1824398302]
+texture_filter = 1
+texture_repeat = 1
+sprite_frames = SubResource("SpriteFrames_5ad5f")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Ouo" type="AudioStreamPlayer" parent="." unique_id=874779029]
+stream = SubResource("AudioStreamRandomizer_fwh4l")
+max_polyphony = 16

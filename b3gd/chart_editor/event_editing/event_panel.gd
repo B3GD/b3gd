@@ -13,9 +13,11 @@ func _process(delta: float) -> void:
 	var new_event_id = %EditorEventContainer.event_selected
 	if new_event_id == -1:
 		event_id = new_event_id
+		hide()
 		return
 	if new_event_id != event_id:
 		event_id = new_event_id
+		show()
 		update_event_info()
 
 func update_event_info():

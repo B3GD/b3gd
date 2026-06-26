@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://bl4p54qrqml14" path="res://prefabs/characters/test/frames/right0001.png" id="18_saqak"]
 [ext_resource type="Texture2D" uid="uid://m1k430gg6w7i" path="res://prefabs/characters/test/frames/up0000.png" id="19_pxa2y"]
 [ext_resource type="Texture2D" uid="uid://bdp12yannq3hq" path="res://prefabs/characters/test/frames/up0001.png" id="20_vhmt2"]
+[ext_resource type="AudioStream" uid="uid://dbfl322ahe87p" path="res://prefabs/characters/test/ouo.wav" id="21_fwh4l"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0e6te"]
 animations = [{
@@ -129,9 +130,15 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="TestJoe" type="Node2D" unique_id=737532779 node_paths=PackedStringArray("thing_to_animate")]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fwh4l"]
+random_pitch = 1.1892071
+streams_count = 1
+stream_0/stream = ExtResource("21_fwh4l")
+
+[node name="TestJoe" type="Node2D" unique_id=737532779 node_paths=PackedStringArray("thing_to_animate", "miss_sound")]
 script = ExtResource("1_dxawe")
 thing_to_animate = NodePath("TestJoe")
+miss_sound = NodePath("Ouo")
 strumline = 1
 
 [node name="TestJoe" type="AnimatedSprite2D" parent="." unique_id=1824398302]
@@ -141,3 +148,7 @@ position = Vector2(16, -158)
 sprite_frames = SubResource("SpriteFrames_0e6te")
 animation = &"idle"
 autoplay = "idle"
+
+[node name="Ouo" type="AudioStreamPlayer" parent="." unique_id=874779029]
+stream = SubResource("AudioStreamRandomizer_fwh4l")
+max_polyphony = 16

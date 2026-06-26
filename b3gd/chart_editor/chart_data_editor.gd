@@ -1,11 +1,11 @@
 extends Node
 
 @export_group("Node References")
-@export var chart_source:Node
-@export var chart_loader:Node
-@export var song_audio_player:AudioStreamPlayer
-@export var note_manager:Node
-@export var event_player:Node
+@onready var chart_source:Node = get_tree().get_first_node_in_group("ChartSource")
+@onready var chart_loader:Node = get_tree().get_first_node_in_group("ChartLoader")
+@onready var song_audio_player:AudioStreamPlayer = get_tree().get_first_node_in_group("SongAudioPlayer")
+@onready var note_manager:Node = get_tree().get_first_node_in_group("NoteManager")
+@onready var event_player:Node = get_tree().get_first_node_in_group("EventPlayer")
 
 func get_snapped_time(seconds: float):
 	var beat = song_audio_player.get_beat_from_seconds(seconds)
@@ -31,14 +31,15 @@ func add_note(strum_line, receptor, time, length):
 	new_note.length = length
 	chart_source.chart.strum_lines[strum_line].receptors[receptor].notes.append(new_note)
 	chart_source.chart.strum_lines[strum_line].receptors[receptor].notes.sort_custom(sort_ascending)
-	chart_loader.load_notes()
+	chart_loader.load_notes(false)
 
 func remove_note(strum_line, receptor, time):
 	var notes = chart_source.chart.strum_lines[strum_line].receptors[receptor].notes
 	for note in notes:
-		if is_equal_approx(note.time, time):
+		if abs(note.time - time) < 0.05:
 			notes.remove_at(notes.find(note)) # Only removes one at a time
-			return
+			break
+	chart_loader.load_notes(false)
 
 func sort_ascending(a, b):
 	return a.time < b.time

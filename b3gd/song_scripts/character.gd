@@ -1,6 +1,7 @@
 extends Node
 
 @export var thing_to_animate: Node
+@export var miss_sound: AudioStreamPlayer
 @export var strumline: int
 @export var ignore_sing: bool = false
 @export var ignore_miss: bool = false
@@ -41,4 +42,5 @@ func note_press(strum_line_id: int, receptor_id: int, note_data, _hold_delta: fl
 func note_miss(strum_line_id: int, receptor_id: int) -> void:
 	if get_tree() == null or strumline != strum_line_id or ignore_miss: 
 		return
+	miss_sound.play()
 	thing_to_animate.play(miss_prefix + note_directions[receptor_id] + current_suffix)
