@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ce48x5d41hgyi" path="res://b3gd/chart_editor/chart_editor_activate.gd" id="1_5icij"]
 [ext_resource type="Script" uid="uid://223mam7be1wl" path="res://b3gd/chart_player/chart_loader.gd" id="1_62xbj"]
-[ext_resource type="Resource" uid="uid://csbpb7bsbl8qc" path="res://songs/test/chart.tres" id="3_cdfgl"]
+[ext_resource type="Resource" uid="uid://bn5thsehao2d6" path="res://songs/test/chart.tres" id="3_cdfgl"]
 [ext_resource type="Script" uid="uid://bpt0v2hxb23lq" path="res://b3gd/chart_player/song_audio_player.gd" id="3_my5jg"]
 [ext_resource type="Script" uid="uid://cr3x8h58rufy1" path="res://b3gd/chart_player/event_player.gd" id="3_v3b1e"]
 [ext_resource type="Script" uid="uid://rypo2bh7qid7" path="res://b3gd/chart_player/note_manager.gd" id="4_t3y1r"]
@@ -61,7 +61,15 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="StrumLineRenderer" type="MeshInstance3D" parent="UI/Strumlines/SubViewport" unique_id=2002107423]
-transform = Transform3D(0.14999999, 0, 0, 0, 0.14999998, 0, 0, 0, 0.14999999, 0, 0.29894063, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.9000001, 0)
+script = ExtResource("5_yp0gr")
+noteskin_texture = ExtResource("7_cdfgl")
+noteskin_data = SubResource("Resource_eb4vn")
+strum_line_idx = 0
+hold_resolution = 3.0
+
+[node name="StrumLineRenderer2" type="MeshInstance3D" parent="UI/Strumlines/SubViewport" unique_id=228372249]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.9, 0)
 script = ExtResource("5_yp0gr")
 noteskin_texture = ExtResource("7_cdfgl")
 noteskin_data = SubResource("Resource_eb4vn")
@@ -69,8 +77,10 @@ hold_resolution = 3.0
 
 [node name="Camera3D" type="Camera3D" parent="UI/Strumlines/SubViewport" unique_id=955848793]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17)
+keep_aspect = 0
 projection = 1
 fov = 10.0
+size = 10.0
 near = 1.0
 far = 33.0
 

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Chart" format=3 uid="uid://csbpb7bsbl8qc"]
+[gd_resource type="Resource" script_class="Chart" format=3 uid="uid://bn5thsehao2d6"]
 
 [ext_resource type="Script" uid="uid://uba06rj25tk5" path="res://b3gd/chart_data/event.gd" id="1_y1qrp"]
 [ext_resource type="Script" uid="uid://cxewr41xtv111" path="res://b3gd/chart_data/events/camera/camera_movement.gd" id="2_vfrlu"]

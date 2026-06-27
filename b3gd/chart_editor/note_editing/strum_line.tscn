@@ -41,18 +41,12 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 focus_mode = 0
+disabled = true
 text = "CPU"
 alignment = 1
 
-[node name="MuteCheckBox" type="CheckBox" parent="InfoPanel/InfoMargin/InfoVBox" unique_id=894004071]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 0
-focus_mode = 0
-text = "MUTE"
-alignment = 1
-
 [node name="HBoxContainer" type="HBoxContainer" parent="InfoPanel/InfoMargin/InfoVBox" unique_id=1071740959]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="InfoPanel/InfoMargin/InfoVBox/HBoxContainer" unique_id=549249472]
@@ -67,11 +61,12 @@ max_value = 9.0
 value = 1.0
 rounded = true
 allow_lesser = true
+editable = false
 
 [node name="StrumLineRenderer" type="Control" parent="." unique_id=220299407]
 texture_repeat = 2
-clip_contents = true
 custom_minimum_size = Vector2(150, 0)
+clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("1_q4hsb")

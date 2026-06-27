@@ -70,11 +70,21 @@ func update_event_info():
 		field_container.add_child(hbox)
 		hbox.add_child(name_label)
 		
+		var range = {}
 		match property.hint:
 			PROPERTY_HINT_NONE:
-				print(" --hint: no")
+				pass
 			PROPERTY_HINT_RANGE:
 				print(" --hint: range")
+				var range_string = property.usage.substr(",")
+				var lower = float(range_string[0])
+				var upper = float(range_string[1])
+				var step = 1.0
+				if range_string.size() > 2:
+					step = float(range_string[2])
+				if range_string.size() > 2:
+					step = float(range_string[2])
+				
 			PROPERTY_HINT_ENUM:
 				print(" --hint: enum")
 		
@@ -85,6 +95,8 @@ func update_event_info():
 			TYPE_INT:
 				var spin_box = SpinBox.new()
 				hbox.add_child(spin_box)
+			TYPE_FLOAT:
+				pass
 			_:
 				var warn_label = Label.new()
 				warn_label.text = "UNSUPPORTED TYPE"

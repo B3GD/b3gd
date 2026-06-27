@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Chart" format=3 uid="uid://d1olkvu5s3bqw"]
+[gd_resource type="Resource" script_class="Chart" format=3 uid="uid://csbpb7bsbl8qc"]
 
 [ext_resource type="Script" uid="uid://uba06rj25tk5" path="res://b3gd/chart_data/event.gd" id="1_y1qrp"]
 [ext_resource type="Script" uid="uid://cxewr41xtv111" path="res://b3gd/chart_data/events/camera/camera_movement.gd" id="2_vfrlu"]
@@ -325,4 +325,4 @@ metadata = SubResource("Resource_x1mtf")
 tracks = SubResource("Resource_kjr5n")
 strum_lines = Array[ExtResource("4_s0yfo")]([SubResource("Resource_ornok"), SubResource("Resource_vn8tq")])
 events = Array[ExtResource("1_y1qrp")]([SubResource("Resource_m45sv"), SubResource("Resource_y1qrp"), SubResource("Resource_jvbwd"), SubResource("Resource_jvg1e"), SubResource("Resource_0drvw")])
-scroll_speed = 3.5
+scroll_speed = 4.5

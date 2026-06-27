@@ -176,6 +176,8 @@ func update_idle_frames(delta: float) -> void:
 func get_receptor_frame(receptor: Receptor) -> int:
 	var receptor_frame = noteskin_data.receptor_frames[idle_frames.receptor_frames]
 	var time_since_last_input = song_audio_player.song_progress_seconds - receptor.last_press.input_time
+	if time_since_last_input < 0:
+		return receptor_frame
 	if !receptor.last_press.ignore_draw:
 		var hit_frame = time_since_last_input * noteskin_data.active_animation_fps
 		if receptor.last_press.dummy:

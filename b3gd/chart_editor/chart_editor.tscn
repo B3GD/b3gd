@@ -158,6 +158,7 @@ custom_minimum_size = Vector2(4, 0)
 layout_mode = 2
 
 [node name="AddStrumlineButton" type="Button" parent="EditorUI/UIContainer/WorkAreaScroll/Container" unique_id=166877994]
+visible = false
 custom_minimum_size = Vector2(0, 47)
 layout_mode = 2
 size_flags_horizontal = 4

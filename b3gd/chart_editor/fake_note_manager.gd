@@ -4,6 +4,7 @@ extends Node
 @onready var note_manager = get_tree().get_first_node_in_group("NoteManager")
 
 var hit_note_ids = []
+var frames_born = 0
 
 func _ready() -> void:
 	init_hit_notes()
@@ -21,6 +22,7 @@ func init_hit_notes():
 					hit_note_ids[-1][-1] = note_id
 
 func _process(_delta: float) -> void:
+	frames_born += 1
 	for strum_line_id in range(note_manager.strum_lines.size()):
 		for receptor_id in note_manager.strum_lines[strum_line_id].receptors.size():
 			for note_id in note_manager.strum_lines[strum_line_id].receptors[receptor_id].notes.size():
@@ -34,7 +36,7 @@ func handle_note(strum_line_id, receptor_id, note_id):
 	if note_passed and !note_already_hit:
 		hit_note_ids[strum_line_id][receptor_id] = note_id
 		note_manager.note_press.emit(strum_line_id, receptor_id, note_to_hit, 0.0)
-		if %EditorHitSound.button_pressed:
+		if %EditorHitSound.button_pressed and frames_born > 5:
 			$NoteClick.play()
 	
 	if !note_passed and note_already_hit:

@@ -10,7 +10,7 @@
 
 [node name="ChartPlayer" parent="." unique_id=192656738 instance=ExtResource("1_03yvb")]
 
-[node name="Camera3D" parent="ChartPlayer/UI/Strumlines/SubViewport" parent_id_path=PackedInt32Array(192656738, 8042913) index="1" unique_id=955848793]
+[node name="Camera3D" parent="ChartPlayer/UI/Strumlines/SubViewport" parent_id_path=PackedInt32Array(192656738, 8042913) index="2" unique_id=955848793]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 fov = 19.0
 

@@ -15,18 +15,9 @@ func _ready() -> void:
 	load_chart()
 
 func load_chart():
-	chart_variable_init()
 	load_tracks()
 	load_notes(false)
 	load_events()
-
-func chart_variable_init():
-	for strum_line in chart_source.chart.strum_lines:
-		for receptor in strum_line.receptors:
-			receptor.last_press = Receptor.ReceptorInput.new()
-			receptor.last_press.input_time = 0
-			receptor.last_press.ignore_draw = true
-			receptor.last_press.dummy = true
 
 func load_tracks():
 	var chart = chart_source.chart
@@ -49,7 +40,14 @@ func load_tracks():
 	tracks_loaded.emit()
 
 func load_notes(ignore_past_notes: bool = false):
-	note_manager.strum_lines = chart_source.chart.strum_lines
+	note_manager.strum_lines = chart_source.chart.strum_lines.duplicate_deep(Resource.DEEP_DUPLICATE_ALL)
+	
+	for strum_line in note_manager.strum_lines:
+		for receptor in strum_line.receptors:
+			receptor.last_press = Receptor.ReceptorInput.new()
+			receptor.last_press.input_time = 0
+			receptor.last_press.ignore_draw = true
+			receptor.last_press.dummy = true
 	
 	if ignore_past_notes:
 		remove_notes_from_past()
