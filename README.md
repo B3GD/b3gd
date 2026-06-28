@@ -2,7 +2,7 @@
 <img width="50%" height="1150" alt="logo" src="https://github.com/user-attachments/assets/bd3603df-dba9-4474-a000-970ae6d1af49" />
 </p>
 <p align="center">
-"engine" (By FNF standards)
+"Engine" (Whats your definition?)
 </p>
 
 ## What is it?
@@ -53,3 +53,6 @@ Chart Editor:
 - [ ] Changing StrumLine options from Chart Editor (CPU, Key Count)
 - [ ] Changing StrumLine count (Add, Remove)
 - [ ] Chart Editor Cleanup? (The chart editor is the most complicated thing in the codebase. I think some of it could be refactored down into more digestible chunks.
+
+Note Rendering (3dGridRenderer):
+- [ ] Fix Hold Rotation (Hold rotation currently follows the note rotation, rather than pointing in the direction it heads)
