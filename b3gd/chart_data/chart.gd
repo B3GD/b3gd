@@ -1,5 +1,7 @@
 class_name Chart extends Resource
 
+const abstract = false
+
 @export var metadata:ChartMetadata
 @export var tracks:ChartTracks
 @export var strum_lines:Array[StrumLine]

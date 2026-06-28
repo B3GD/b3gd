@@ -1,5 +1,7 @@
 class_name Note extends Resource
 
+const abstract = false
+
 # Needed for chart data
 ## The time the note occurs in seconds.
 @export var time: float
@@ -17,6 +19,3 @@ func note_hit() -> bool:
 # If note functions return false, the default behaviour will be ignored.
 func note_miss() -> bool:
 	return true
-
-func update() -> void:
-	pass

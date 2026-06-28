@@ -1,4 +1,4 @@
-class_name Event extends Resource
+@abstract class_name Event extends Resource
 
 var parent: Node
 @export var time: float = 0

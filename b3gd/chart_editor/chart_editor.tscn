@@ -9,7 +9,9 @@
 [ext_resource type="Script" uid="uid://cy0rk72xgrung" path="res://b3gd/chart_editor/event_editing/event_class_box.gd" id="6_sjv8v"]
 [ext_resource type="PackedScene" uid="uid://b507lgcilwgxq" path="res://b3gd/chart_editor/event_editing/event_box.tscn" id="7_7xm88"]
 [ext_resource type="Script" uid="uid://dsxriov1ftjvw" path="res://b3gd/chart_editor/note_editing/strumline_container.gd" id="8_laud3"]
+[ext_resource type="Script" uid="uid://bkaf2otcreksg" path="res://b3gd/chart_editor/event_maker.gd" id="8_n0gnj"]
 [ext_resource type="PackedScene" uid="uid://dkros47lrg8sl" path="res://b3gd/chart_editor/note_editing/strum_line.tscn" id="9_8lyhl"]
+[ext_resource type="Texture2D" uid="uid://cka5y22a126yx" path="res://b3gd/chart_editor/event_editing/arrow.png" id="10_0pt3y"]
 [ext_resource type="Texture2D" uid="uid://cq03bxqwqbpqd" path="res://b3gd/chart_editor/chart_info/inspector.png" id="10_8v0hc"]
 [ext_resource type="Texture2D" uid="uid://cqccpwijdgqui" path="res://b3gd/chart_editor/chart_info/save.png" id="11_05qb2"]
 [ext_resource type="Texture2D" uid="uid://bd4ucgm5uh2qb" path="res://b3gd/chart_editor/chart_info/undo.png" id="12_8uoir"]
@@ -141,12 +143,6 @@ size_flags_vertical = 3
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="EventClassBox" type="OptionButton" parent="EditorUI/UIContainer/WorkAreaScroll/Container" unique_id=686199424]
-layout_mode = 2
-size_flags_vertical = 0
-focus_mode = 0
-script = ExtResource("6_sjv8v")
-
 [node name="EditorEventContainer" type="Control" parent="EditorUI/UIContainer/WorkAreaScroll/Container" unique_id=833418235]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 0)
@@ -154,6 +150,46 @@ layout_mode = 2
 script = ExtResource("6_0pt3y")
 event_box_scene = ExtResource("7_7xm88")
 event_lane_width = 160
+
+[node name="_EventMaker" type="Control" parent="EditorUI/UIContainer/WorkAreaScroll/Container/EditorEventContainer" unique_id=786892059]
+layout_mode = 1
+offset_right = 180.0
+offset_bottom = 40.0
+script = ExtResource("8_n0gnj")
+
+[node name="EditorEventClassBox" type="OptionButton" parent="EditorUI/UIContainer/WorkAreaScroll/Container/EditorEventContainer/_EventMaker" unique_id=686199424]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = -147.0
+offset_right = 134.0
+grow_vertical = 2
+size_flags_vertical = 0
+focus_mode = 0
+disabled = true
+fit_to_longest_item = false
+search_bar_enabled = true
+script = ExtResource("6_sjv8v")
+hidden_classes = PackedStringArray("Event", "EventTween")
+
+[node name="Arrow" type="NinePatchRect" parent="EditorUI/UIContainer/WorkAreaScroll/Container/EditorEventContainer/_EventMaker" unique_id=869931859]
+modulate = Color(1, 1, 1, 0.53333336)
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.99700004
+anchor_bottom = 1.0
+offset_left = 134.0
+offset_top = 11.0
+offset_right = -0.124053955
+offset_bottom = -11.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture = ExtResource("10_0pt3y")
+patch_margin_left = 4
+patch_margin_right = 17
+axis_stretch_horizontal = 1
 
 [node name="EditorStrumLineContainer" type="HBoxContainer" parent="EditorUI/UIContainer/WorkAreaScroll/Container" unique_id=251519595]
 unique_name_in_owner = true
@@ -169,6 +205,7 @@ custom_minimum_size = Vector2(4, 0)
 layout_mode = 2
 
 [node name="AddStrumlineButton" type="Button" parent="EditorUI/UIContainer/WorkAreaScroll/Container" unique_id=166877994]
+visible = false
 custom_minimum_size = Vector2(0, 47)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -507,10 +544,12 @@ metadata/_custom_type_script = "uid://krqcacc7sq0o"
 layout_mode = 2
 text = "Note Class:"
 
-[node name="NoteClassBox" type="OptionButton" parent="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/EditorFieldContainer" unique_id=758585293]
+[node name="EditorNoteClassBox" type="OptionButton" parent="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/EditorFieldContainer" unique_id=758585293]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
+search_bar_enabled = true
 script = ExtResource("18_yfv2k")
 
 [node name="EditorSeperator" type="HSeparator" parent="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=631681473]
@@ -700,5 +739,6 @@ offset_right = -86.0
 offset_bottom = 132.0
 texture = ExtResource("22_x2ptl")
 
+[connection signal="item_selected" from="EditorUI/UIContainer/WorkAreaScroll/Container/EditorEventContainer/_EventMaker/EditorEventClassBox" to="EditorUI/UIContainer/WorkAreaScroll/Container/EditorEventContainer/_EventMaker" method="_on_editor_event_class_box_item_selected"]
 [connection signal="pressed" from="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/FileButtons/SaveButton" to="ChartSaver" method="_on_save_button_pressed"]
 [connection signal="value_changed" from="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/PitchScaleContainer/EditorPitchScale" to="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/PitchScaleContainer/EditorPitchScale" method="_on_value_changed"]

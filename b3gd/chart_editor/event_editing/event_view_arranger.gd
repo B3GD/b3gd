@@ -26,15 +26,19 @@ func get_selection():
 	
 	for i in get_children().size():
 		var event_box = get_children()[i]
+		if event_box.name.begins_with("_"):
+			continue
 		if event_box.get_node("Button").button_pressed:
-			event_selected = i
-			if i != previous_selected:
+			event_selected = i - 1
+			if i != previous_selected and previous_selected != -1:
 				unselect_previous = true
 	if unselect_previous:
-		get_children()[previous_selected].get_node("Button").button_pressed = false
+		get_children()[previous_selected + 1].get_node("Button").button_pressed = false
 
 func update_events():
 	for child in get_children():
+		if child.name.begins_with("_"):
+			continue
 		remove_child(child)
 	
 	var i = 0

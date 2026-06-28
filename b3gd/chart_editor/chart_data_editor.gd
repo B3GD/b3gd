@@ -13,12 +13,25 @@ func get_snapped_time(seconds: float):
 	return song_audio_player.get_seconds_from_beat(beat)
 
 func add_note(strum_line, receptor, time, length):
-	var new_note = Note.new()
+	var new_note = load(%EditorNoteClassBox.class_paths[%EditorNoteClassBox.selected]).new()
 	new_note.time = time
 	new_note.length = length
 	chart_source.chart.strum_lines[strum_line].receptors[receptor].notes.append(new_note)
 	chart_source.chart.strum_lines[strum_line].receptors[receptor].notes.sort_custom(sort_ascending)
 	chart_loader.load_notes(false)
+
+func add_event(time):
+	var new_event = load(%EditorEventClassBox.class_paths[%EditorEventClassBox.selected]).new()
+	new_event.time = time
+	var max_lane_at_pos = -1
+	for event in chart_source.chart.events:
+		if abs(event.time - time) < 0.05:
+			max_lane_at_pos = max(max_lane_at_pos, event.lane)
+	new_event.lane = max_lane_at_pos + 1
+	
+	chart_source.chart.events.append(new_event)
+	chart_source.chart.events.sort_custom(sort_ascending)
+	
 
 func remove_note(strum_line, receptor, time):
 	var notes = chart_source.chart.strum_lines[strum_line].receptors[receptor].notes
