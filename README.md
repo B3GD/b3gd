@@ -1,3 +1,8 @@
+#### License notice
+B3GD is under a <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.en">CC BY-NC 4.0</a> license  
+Essentially, you can use this for any free projects, as long as you credit B3GD somewhere. 
+(make sure to read the real terms though!)
+
 <p align="center">
 <img width="50%" height="1150" alt="logo" src="https://github.com/user-attachments/assets/bd3603df-dba9-4474-a000-970ae6d1af49" />
 </p>
