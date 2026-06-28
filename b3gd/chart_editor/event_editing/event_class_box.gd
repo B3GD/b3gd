@@ -11,3 +11,5 @@ func _ready() -> void:
 				continue
 			add_item(global_class.class)
 			class_paths.append(global_class.path)
+	
+	selected = -1

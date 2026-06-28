@@ -19,7 +19,6 @@ script = ExtResource("2_vfrlu")
 tween = true
 duration = 2.0
 transition = 6
-ease = 1
 time = -2.0
 metadata/_custom_type_script = "uid://cxewr41xtv111"
 
@@ -39,7 +38,6 @@ target_zoom = Vector2(2, -1)
 tween = true
 duration = 4.0
 transition = 11
-ease = 1
 time = 4.0
 metadata/_custom_type_script = "uid://cyqa68xim30d1"
 

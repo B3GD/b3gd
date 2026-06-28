@@ -153,6 +153,7 @@ event_lane_width = 160
 
 [node name="_EventMaker" type="Control" parent="EditorUI/UIContainer/WorkAreaScroll/Container/EditorEventContainer" unique_id=786892059]
 layout_mode = 1
+anchors_preset = 0
 offset_right = 180.0
 offset_bottom = 40.0
 script = ExtResource("8_n0gnj")
@@ -162,7 +163,6 @@ unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_left = -147.0
 offset_right = 134.0
 grow_vertical = 2
 size_flags_vertical = 0

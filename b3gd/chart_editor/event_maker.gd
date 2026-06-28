@@ -12,6 +12,7 @@ func _input(event: InputEvent) -> void:
 		$EditorEventClassBox.disabled = false
 		if !$EditorEventClassBox.is_hovered():
 			$EditorEventClassBox.disabled = true
+			$EditorEventClassBox.selected = -1
 		#if !$EditorEventClassBox.get_popup().visible:
 		#	$EditorEventClassBox.show_popup()
 
@@ -40,7 +41,15 @@ func _process(delta: float) -> void:
 	time_mouse_pos += get_parent().song_audio_player.song_progress_seconds
 	time_mouse_pos = %EditorChartDataModifier.get_snapped_time(time_mouse_pos)
 	time = time_mouse_pos
+	
+	var max_lane_at_pos = -1
+	for event in get_parent().chart_source.chart.events:
+		if abs(event.time - time) < 0.05:
+			max_lane_at_pos = max(max_lane_at_pos, event.lane)
+	lane = max_lane_at_pos + 2
 
 
 func _on_editor_event_class_box_item_selected(index: int) -> void:
 	chart_data_modifier.add_event(time)
+	$EditorEventClassBox.disabled = true
+	$EditorEventClassBox.selected = -1

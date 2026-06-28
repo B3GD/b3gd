@@ -3,7 +3,7 @@
 @export var tween: bool
 @export_range(0.0, 10.0, 0.0, "or_greater") var duration: float
 @export var transition: Tween.TransitionType
-@export var ease_type: Tween.EaseType
+@export var ease_type: Tween.EaseType = Tween.EaseType.EASE_OUT
 var tween_tracker = {
 	"node": null,
 	"property": null
