@@ -37,7 +37,6 @@ script = ExtResource("3_my5jg")
 
 [node name="NoteManager" type="Node" parent="." unique_id=1686211870 node_paths=PackedStringArray("chart_loader", "song_audio_player") groups=["NoteManager"]]
 script = ExtResource("4_t3y1r")
-hit_window = 0.2
 chart_loader = NodePath("../ChartLoader")
 song_audio_player = NodePath("../SongAudioPlayer")
 

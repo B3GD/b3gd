@@ -6,7 +6,8 @@ var force_inactive := false # Chart editor will temporarily disable input.
 signal note_press(strum_line_id: int, receptor_id: int, note: Note, hold_delta: float)
 signal note_miss(strum_line_id: int, receptor_id: int)
 
-@export var hit_window = 0.22
+@export var hit_window = 0.2
+@export var hold_end_window = 0.12
 @export_group("Node References")
 @export var chart_loader: Node
 @export var song_audio_player: AudioStreamPlayer
@@ -43,19 +44,23 @@ func handle_manual_receptor_input(strum_line_id, receptor_id):
 	if receptor.notes.size() > 0:
 		note_distance = receptor.notes[0].time - song_audio_player.song_progress_seconds
 	
+	# If note outside of range, only ghost tap.
 	if note_distance > hit_window * 0.5:
 		if is_pressed:
 			hit_dummy(strum_line_id, receptor_id)
 		return
 	
+	# If theres no notes here, nothing will happen.
 	if receptor.notes.size() == 0:
 		return
 	
+	# If hold is almost done but end is forgotten, delete.
+	if !is_held and receptor.notes[0].hold_pressed and receptor.notes[0].length < hold_end_window:
+		receptor.notes.pop_front()
+	
+	# If a note is behind hit window, Miss it
 	if note_distance <= -hit_window * 0.5:
 		miss_note(strum_line_id, receptor_id)
-		return
-	
-	if !is_pressed and !is_held:
 		return
 	
 	if is_pressed or (is_held and receptor.notes[0].hold_pressed):
@@ -73,12 +78,14 @@ func hit_note(strum_line_id, receptor_id):
 	receptor.last_press.input_time = song_audio_player.song_progress_seconds
 	receptor.last_press.dummy = false
 	var note_ref = receptor.notes[0]
+	
 	if note_ref.length > 0:
 		var time_difference = song_audio_player.song_progress_seconds - note_ref.time
 		move_sustain(strum_line_id, receptor_id, time_difference)
 		note_ref.hold_pressed = true
 		if note_ref.note_hit():
 			note_press.emit(strum_line_id, receptor_id, note_ref, time_difference)
+	
 	if note_ref.length <= 0:
 		var sushit = note_ref.hold_pressed
 		var note_dupe = note_ref.duplicate()
@@ -92,8 +99,10 @@ func miss_note(strum_line_id, receptor_id):
 	
 	var receptor = strum_lines[strum_line_id].receptors[receptor_id]
 	var note_ref = receptor.notes[0]
+	
 	if note_ref.note_miss():
 		note_miss.emit(strum_line_id, receptor_id)
+	
 	if note_ref.length > 0:
 		move_sustain(strum_line_id, receptor_id, hit_window)
 		note_ref.hold_pressed = true
