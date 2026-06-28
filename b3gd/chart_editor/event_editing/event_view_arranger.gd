@@ -11,6 +11,7 @@ extends Control
 @onready var scroll_zoom = %EditorScrollZoom
 @onready var downscroll_toggle = %EditorDownscroll
 @onready var strum_line_container = %EditorStrumLineContainer
+@onready var editor_snap = %EditorSnap
 
 func _ready() -> void:
 	get_selection()
@@ -84,4 +85,4 @@ func update_event_positions():
 		event_box_y += size.y * baseline_mult
 		event_box.position.y = event_box_y - (event_box.size.y * 0.5)
 		
-		event_box.z_index = lane_offset
+		event_box.z_index = max(-event_box.lane, -4096)
