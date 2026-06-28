@@ -75,7 +75,8 @@ func get_beat_from_seconds(seconds: float):
 		if bpm_events[last_bpm_index].time >= seconds:
 			break
 		last_bpm_index += 1
-	var bpm_event = bpm_events[max(0, last_bpm_index - 1)]
+	last_bpm_index = max(0, last_bpm_index - 1)
+	var bpm_event = bpm_events[last_bpm_index]
 	return get_beat_carry(last_bpm_index) + ((seconds - bpm_event.time) * (bpm_event.bpm / 60))
 
 func _ready() -> void:
