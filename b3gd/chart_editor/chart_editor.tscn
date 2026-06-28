@@ -146,7 +146,7 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 script = ExtResource("6_0pt3y")
 event_box_scene = ExtResource("7_7xm88")
-event_lane_width = 180
+event_lane_width = 160
 
 [node name="EditorStrumLineContainer" type="HBoxContainer" parent="EditorUI/UIContainer/WorkAreaScroll/Container" unique_id=251519595]
 unique_name_in_owner = true
@@ -669,18 +669,19 @@ mouse_filter = 2
 [node name="Charles" type="TextureRect" parent="EditorUI/Images" unique_id=775932870]
 modulate = Color(1, 1, 1, 0.40392157)
 light_mask = 0
+texture_filter = 1
 material = SubResource("CanvasItemMaterial_aqojd")
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = -173.0
-offset_right = 250.03143
-offset_bottom = -3.0
+offset_left = 7.0
+offset_top = -201.0
+offset_right = 246.0
+offset_bottom = -9.0
 grow_vertical = 0
 texture = ExtResource("21_lq1aq")
-expand_mode = 1
+stretch_mode = 5
 
 [node name="MyMessage" type="TextureRect" parent="EditorUI/Images" unique_id=1597514997]
 layout_mode = 1
