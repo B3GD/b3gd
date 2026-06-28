@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://nwgw3lpaxmje" path="res://b3gd/chart_editor/sounds/note_click.wav" id="4_1yhdw"]
 [ext_resource type="Script" uid="uid://b8qw62xl3ryi3" path="res://b3gd/chart_editor/chart_saver.gd" id="5_n0gnj"]
 [ext_resource type="Script" uid="uid://b4it3bm2xipgc" path="res://b3gd/chart_editor/event_editing/event_view_arranger.gd" id="6_0pt3y"]
+[ext_resource type="Script" uid="uid://cy0rk72xgrung" path="res://b3gd/chart_editor/event_editing/event_class_box.gd" id="6_sjv8v"]
 [ext_resource type="PackedScene" uid="uid://b507lgcilwgxq" path="res://b3gd/chart_editor/event_editing/event_box.tscn" id="7_7xm88"]
 [ext_resource type="Script" uid="uid://dsxriov1ftjvw" path="res://b3gd/chart_editor/note_editing/strumline_container.gd" id="8_laud3"]
 [ext_resource type="PackedScene" uid="uid://dkros47lrg8sl" path="res://b3gd/chart_editor/note_editing/strum_line.tscn" id="9_8lyhl"]
@@ -140,6 +141,12 @@ size_flags_vertical = 3
 theme_override_constants/separation = 0
 alignment = 1
 
+[node name="EventClassBox" type="OptionButton" parent="EditorUI/UIContainer/WorkAreaScroll/Container" unique_id=686199424]
+layout_mode = 2
+size_flags_vertical = 0
+focus_mode = 0
+script = ExtResource("6_sjv8v")
+
 [node name="EditorEventContainer" type="Control" parent="EditorUI/UIContainer/WorkAreaScroll/Container" unique_id=833418235]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 0)
@@ -162,7 +169,6 @@ custom_minimum_size = Vector2(4, 0)
 layout_mode = 2
 
 [node name="AddStrumlineButton" type="Button" parent="EditorUI/UIContainer/WorkAreaScroll/Container" unique_id=166877994]
-visible = false
 custom_minimum_size = Vector2(0, 47)
 layout_mode = 2
 size_flags_horizontal = 4
