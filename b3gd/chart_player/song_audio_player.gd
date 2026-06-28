@@ -70,13 +70,13 @@ func get_seconds_from_beat(beat: float):
 	return ((beat - bpm_event.carry) / (bpm_event.event.bpm / 60)) + bpm_event.event.time
 
 func get_beat_from_seconds(seconds: float):
-	var bpm_event = {"event": bpm_events[0], "carry": get_beat_carry(0)}
-	for i in range(bpm_events.size()):
-		if bpm_event.event.time <= seconds:
-			bpm_event.event = bpm_events[i]
-			bpm_event.carry = get_beat_carry(i)
-	var beat_since_beat_start = (bpm_event.event.bpm / 60) * (seconds - bpm_event.event.time)
-	return beat_since_beat_start + bpm_event.carry
+	var last_bpm_index = 0
+	while last_bpm_index < bpm_events.size():
+		if bpm_events[last_bpm_index].time >= seconds:
+			break
+		last_bpm_index += 1
+	var bpm_event = bpm_events[max(0, last_bpm_index - 1)]
+	return get_beat_carry(last_bpm_index) + ((seconds - bpm_event.time) * (bpm_event.bpm / 60))
 
 func _ready() -> void:
 	add_child(scrub_timer)
