@@ -3,8 +3,7 @@
 @export var tween: bool
 @export_range(0.0, 10.0, 0.0, "or_greater") var duration: float
 @export var transition: Tween.TransitionType
-@export var ease: Tween.EaseType
-
+@export var ease_type: Tween.EaseType
 var tween_tracker = {
 	"node": null,
 	"property": null
@@ -31,13 +30,13 @@ func play(speed: float = 1.0):
 	if !tween:
 		to_tween.node.set(to_tween.property, to_tween.value)
 		return
-	var tween = parent.get_tree().create_tween()
-	tween.tween_property(
+	var current_tween = parent.get_tree().create_tween()
+	current_tween.tween_property(
 		to_tween.node, 
 		to_tween.property, 
 		to_tween.value, 
 		duration / speed
-	).set_trans(transition).set_ease(ease)
+	).set_trans(transition).set_ease(ease_type)
 	
 	if tween_tracker.node != null:
 		tween_tracker.node.zoom_tween = tween

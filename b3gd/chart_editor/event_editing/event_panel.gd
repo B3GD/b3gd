@@ -12,7 +12,7 @@ var event_param_info = {}
 
 const vector_members = ["x", "y", "z", "w"]
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var new_event_id = %EditorEventContainer.event_selected
 	if new_event_id == -1:
 		event_id = new_event_id

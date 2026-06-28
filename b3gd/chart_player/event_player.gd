@@ -8,7 +8,7 @@ var events:Array[Event]
 @export_group("Node References")
 @export var song_audio_player: Node
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var i = 0
 	while process_events():
 		i += 1

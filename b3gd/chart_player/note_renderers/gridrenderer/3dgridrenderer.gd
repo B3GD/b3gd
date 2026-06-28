@@ -87,7 +87,6 @@ func add_sustain_to_mesh(mesh_array: Array, receptor_id: int, receptor_transform
 	var last_hold_transform = Transform2D.IDENTITY
 	var hold_frame = noteskin_data.hold_frames[idle_frames.hold_frames]
 	
-	var last_rotation = 0
 	for segment_id in range(segment_count):
 		var start_segment_point = lerp(note_distance, end_distance, (segment_id + 0.0) / segment_count)
 		var last_segment_point = lerp(note_distance, end_distance,  (segment_id + 1.0) / segment_count)

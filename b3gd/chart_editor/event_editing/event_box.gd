@@ -25,7 +25,7 @@ func _input(event: InputEvent) -> void:
 			pre_drag = false
 			dragging = false
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var mouse_position = get_local_mouse_position()
 	is_mouse_over = Rect2(Vector2.ZERO, $Button.size).has_point(mouse_position)
 	if pre_drag and !is_mouse_over:
@@ -33,7 +33,6 @@ func _process(delta: float) -> void:
 		dragging = true
 	
 	if dragging:
-		#events[id].time += get_local_mouse_position().y * 0.001
 		var move_pixel_count_y = mouse_position.y - (size.y / 2)
 		move_pixel_count_y /= 64 * get_parent().scroll_zoom.value
 		var beat = get_parent().song_audio_player.get_beat_from_seconds(events[id].time + move_pixel_count_y)

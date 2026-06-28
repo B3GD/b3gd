@@ -12,19 +12,6 @@ func get_snapped_time(seconds: float):
 	beat = snappedf(beat, 1.0 / %EditorSnap.value)
 	return song_audio_player.get_seconds_from_beat(beat)
 
-func _ready() -> void:
-	pass
-
-func _input(event: InputEvent) -> void:
-	return
-	# UNREACHABLE CUZ I WANNA ADD IT BACK BUT I HAVENT YET
-	for i in range(4):
-		var input_name = "strumline_" + str(i)
-		if !InputMap.has_action(input_name):
-			return
-		if event.is_action_pressed(input_name):
-			add_note(1, i, song_audio_player.song_progress_seconds, 0.0)
-
 func add_note(strum_line, receptor, time, length):
 	var new_note = Note.new()
 	new_note.time = time

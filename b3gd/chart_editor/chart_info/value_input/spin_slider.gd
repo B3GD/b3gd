@@ -46,12 +46,12 @@ func _input(event: InputEvent) -> void:
 			dragging = false
 	
 	if event is InputEventMouseMotion and dragging:
-		var range = max_value - min_value
+		var spin_range = max_value - min_value
 		
 		if step == 0.0:
-			value += event.screen_relative.x * 0.003 * range
+			value += event.screen_relative.x * 0.003 * spin_range
 		else:
-			distance_from_next_step += event.screen_relative.x * 0.003 * range
+			distance_from_next_step += event.screen_relative.x * 0.003 * spin_range
 			if abs(distance_from_next_step) > step:
 				var value_moved = snapped(distance_from_next_step, step)
 				value += value_moved
