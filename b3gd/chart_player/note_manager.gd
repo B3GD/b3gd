@@ -8,6 +8,7 @@ signal note_miss(strum_line_id: int, receptor_id: int)
 
 @export var hit_window = 0.22
 @export_group("Node References")
+@export var chart_loader: Node
 @export var song_audio_player: AudioStreamPlayer
 
 var strum_lines: Array[StrumLine] = []
@@ -66,6 +67,8 @@ func hit_dummy(strum_line_id, receptor_id):
 	note_press.emit(strum_line_id, receptor_id, null, 1.0)
 
 func hit_note(strum_line_id, receptor_id):
+	mute_strumline(strum_line_id, false)
+	
 	var receptor = strum_lines[strum_line_id].receptors[receptor_id]
 	receptor.last_press.input_time = song_audio_player.song_progress_seconds
 	receptor.last_press.dummy = false
@@ -74,18 +77,23 @@ func hit_note(strum_line_id, receptor_id):
 		var time_difference = song_audio_player.song_progress_seconds - note_ref.time
 		move_sustain(strum_line_id, receptor_id, time_difference)
 		note_ref.hold_pressed = true
-		note_press.emit(strum_line_id, receptor_id, note_ref, time_difference)
+		if note_ref.note_hit():
+			note_press.emit(strum_line_id, receptor_id, note_ref, time_difference)
 	if note_ref.length <= 0:
 		var sushit = note_ref.hold_pressed
 		var note_dupe = note_ref.duplicate()
 		receptor.notes.pop_front()
 		if !sushit:
-			note_press.emit(strum_line_id, receptor_id, note_dupe, 1.0)
+			if note_ref.note_hit():
+				note_press.emit(strum_line_id, receptor_id, note_dupe, 1.0)
 
 func miss_note(strum_line_id, receptor_id):
+	mute_strumline(strum_line_id, true)
+	
 	var receptor = strum_lines[strum_line_id].receptors[receptor_id]
 	var note_ref = receptor.notes[0]
-	note_miss.emit(strum_line_id, receptor_id)
+	if note_ref.note_miss():
+		note_miss.emit(strum_line_id, receptor_id)
 	if note_ref.length > 0:
 		move_sustain(strum_line_id, receptor_id, hit_window)
 		note_ref.hold_pressed = true
@@ -97,3 +105,8 @@ func move_sustain(strum_line_id, receptor_id, by: float):
 	var note = strum_lines[strum_line_id].receptors[receptor_id].notes[0]
 	note.time += by
 	note.length -= by
+
+func mute_strumline(strum_line_id, mute):
+	var vocal_layer = chart_loader.vocal_layers[strum_line_id]
+	prints(vocal_layer, song_audio_player.stream.get_sync_stream_volume(vocal_layer))
+	song_audio_player.stream.set_sync_stream_volume(vocal_layer, -50 if mute else 0)

@@ -12,21 +12,19 @@ var creating_note = false
 var note_length = 0.0
 
 func _input(event: InputEvent) -> void:
-	if event is not InputEventMouseButton or !is_mouse_over:
-		if event is InputEventMouseButton and is_mouse_over:
-			print("yeah")
+	if event is not InputEventMouseButton:
 		return
 	var strum_line_id = int(%StrumLineLabel.text)
 	match event.button_index:
 		1:
-			if event.is_pressed():
+			if event.is_pressed() and is_mouse_over:
 				creating_note = true
 				note_length = 0.0
-			if event.is_released():
+			if event.is_released() and creating_note:
 				creating_note = false
 				chart_data_modifier.add_note(strum_line_id, mouse_column, mouse_time, note_length)
 		2:
-			if !event.is_pressed():
+			if !event.is_pressed() or !is_mouse_over:
 				return
 			chart_data_modifier.remove_note(strum_line_id, mouse_column, mouse_time)
 
@@ -34,9 +32,6 @@ func _process(_delta: float) -> void:
 	queue_redraw()
 	var mouse_position = get_local_mouse_position()
 	is_mouse_over = Rect2(Vector2.ZERO, size).has_point(mouse_position)
-	if !is_mouse_over:
-		return
-	mouse_column = floor(mouse_position.x / 64)
 	
 	var time_mouse_pos = mouse_position.y - get_parent().transform_y
 	var scroll_mult = get_parent().extra_zoom
@@ -46,13 +41,14 @@ func _process(_delta: float) -> void:
 	time_mouse_pos += song_audio_player.song_progress_seconds
 	time_mouse_pos = chart_data_modifier.get_snapped_time(time_mouse_pos)
 	
-	if !creating_note:
-		mouse_time = time_mouse_pos
 	if creating_note:
 		note_length = max(time_mouse_pos - mouse_time, 0)
+	else:
+		mouse_time = time_mouse_pos
+		mouse_column = floor(mouse_position.x / 64)
 
 func _draw() -> void:
-	if !is_mouse_over:
+	if !is_mouse_over and !creating_note:
 		return
 	
 	var scroll_mult = get_parent().extra_zoom

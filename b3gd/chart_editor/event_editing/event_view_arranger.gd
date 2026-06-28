@@ -15,6 +15,7 @@ extends Control
 func _ready() -> void:
 	get_selection()
 	update_events()
+	update_event_positions()
 
 func get_selection():
 	var previous_selected = event_selected
@@ -58,7 +59,7 @@ func update_event_positions():
 		return
 	
 	var current_time = song_audio_player.song_progress_seconds
-	var scroll_mult = 1.0 / (scroll_zoom.value * 2.0)
+	var scroll_mult = scroll_zoom.value
 	var baseline_mult = strum_line_container.timeline_present_point
 	baseline_mult = (remap(float(downscroll_toggle.button_pressed), 0, 1, 1, -1) * (baseline_mult - 0.5) + 0.5)
 	if downscroll_toggle.button_pressed:

@@ -19,14 +19,20 @@ func load_chart():
 	load_notes(false)
 	load_events()
 
+var vocal_layers = []
+
 func load_tracks():
 	var chart = chart_source.chart
-	
 	var tracks: Array[AudioStream] = [
 		chart.tracks.instrumental, 
 		chart.tracks.mixed_vocals
 	]
+	var start_index = tracks.size() - 1
 	tracks.append_array(chart.tracks.vocal_layers)
+	vocal_layers = []
+	for i in chart.tracks.vocal_layers.size():
+		vocal_layers.append(i + start_index)
+	
 	
 	for track in tracks:
 		if track == null:

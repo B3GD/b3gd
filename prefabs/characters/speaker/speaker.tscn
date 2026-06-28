@@ -20,7 +20,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("4_iwymf")
 }],
-"loop": false,
+"loop": 0,
 "name": &"idle",
 "speed": 9.0
 }, {
@@ -31,7 +31,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("6_s6k7h")
 }],
-"loop": false,
+"loop": 0,
 "name": &"sad_anim",
 "speed": 8.0
 }]

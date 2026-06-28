@@ -9,3 +9,14 @@ class_name Note extends Resource
 ## Used to check if the hold has begun. Used for rendering and input.
 ## I'm fine with this being in chart data as it is a single bool
 var hold_pressed = false
+
+# If note functions return false, the default behaviour will be ignored.
+func note_hit() -> bool:
+	return true
+
+# If note functions return false, the default behaviour will be ignored.
+func note_miss() -> bool:
+	return true
+
+func update() -> void:
+	pass

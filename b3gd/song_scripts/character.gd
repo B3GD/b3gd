@@ -39,7 +39,12 @@ func note_press(strum_line_id: int, receptor_id: int, note_data, _hold_delta: fl
 		return
 	time_since_last_sing = sing_length if note_data.hold_pressed else 0.0
 	thing_to_animate.stop()
-	thing_to_animate.play(sing_prefix + note_directions[receptor_id] + current_suffix)
+	
+	var suffix = current_suffix
+	if note_data is NoteSuffix:
+		suffix = note_data.suffix
+	
+	thing_to_animate.play(sing_prefix + note_directions[receptor_id] + suffix)
 
 func note_miss(strum_line_id: int, receptor_id: int) -> void:
 	if get_tree() == null or strumline != strum_line_id or ignore_miss: 

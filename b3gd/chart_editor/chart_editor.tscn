@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dyvqs61ch1mx2" path="res://b3gd/chart_editor/chart_info/seconds.png" id="15_xuodv"]
 [ext_resource type="Texture2D" uid="uid://7i5p3off2gwj" path="res://b3gd/chart_editor/chart_info/beats.png" id="16_kc8jy"]
 [ext_resource type="Script" uid="uid://b585c60ln25gs" path="res://b3gd/chart_editor/chart_info/editor_pitch_scale.gd" id="17_wmgvx"]
+[ext_resource type="Script" uid="uid://krqcacc7sq0o" path="res://b3gd/chart_editor/chart_info/value_input/spin_slider.gd" id="18_5spb2"]
 [ext_resource type="Script" uid="uid://cddem6pgulynf" path="res://b3gd/chart_editor/note_editing/note_type_box.gd" id="18_yfv2k"]
 [ext_resource type="Script" uid="uid://bhvkv73cux2u0" path="res://b3gd/chart_editor/event_editing/event_panel.gd" id="19_28jyi"]
 [ext_resource type="Texture2D" uid="uid://c0jlf16tl8ke7" path="res://b3gd/chart_editor/chart_info/event.png" id="20_12gnn"]
@@ -88,6 +89,9 @@ variation_embolden = 0.5
 font = SubResource("FontVariation_dyjyi")
 
 [sub_resource type="LabelSettings" id="LabelSettings_cle1c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5spb2"]
+font_color = Color(1, 0, 0, 1)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_aqojd"]
 
@@ -254,20 +258,19 @@ text = "Playback"
 label_settings = SubResource("LabelSettings_piitt")
 horizontal_alignment = 1
 
-[node name="CurrentTimeLabel" type="Label" parent="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=1054026542]
-layout_mode = 2
-text = "Current Time:"
-
 [node name="TimeBar" type="HBoxContainer" parent="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=546672490]
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 0
 script = ExtResource("14_0hvb2")
+
+[node name="TimeLabel" type="Label" parent="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/TimeBar" unique_id=1054026542]
+layout_mode = 2
+text = "Time:"
 
 [node name="EditorTimeFormatBox" type="OptionButton" parent="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/TimeBar" unique_id=1557712714]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 10
 size_flags_vertical = 8
 focus_mode = 0
 selected = 0
@@ -279,13 +282,14 @@ popup/item_1/id = 1
 
 [node name="CurrentTimeLabel" type="Label" parent="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/TimeBar" unique_id=657667020]
 layout_mode = 2
+size_flags_horizontal = 8
 size_flags_vertical = 8
-text = "0:28.00"
+text = "1:28.00"
 label_settings = SubResource("LabelSettings_o3yqt")
 
 [node name="TotalTimeLabel" type="Label" parent="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/TimeBar" unique_id=949914729]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 8
 size_flags_vertical = 8
 text = "/ 3:00.00"
 horizontal_alignment = 2
@@ -297,18 +301,85 @@ layout_mode = 2
 layout_mode = 2
 text = "Pitch Scale:"
 
-[node name="EditorPitchScale" type="SpinBox" parent="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/PitchScaleContainer" unique_id=1834025238]
+[node name="EditorPitchScale" type="Range" parent="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/PitchScaleContainer" unique_id=919260482]
 unique_name_in_owner = true
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 2
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+oversampling_with_scale = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+custom_minimum_size = Vector2(0, 0)
+custom_maximum_size = Vector2(-1, -1)
+propagate_maximum_size = false
+clip_contents = false
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.0
+offset_transform_enabled = false
+offset_transform_position = Vector2(0, 0)
+offset_transform_position_ratio = Vector2(0, 0)
+offset_transform_scale = Vector2(1, 1)
+offset_transform_rotation = 0.0
+offset_transform_pivot = Vector2(0, 0)
+offset_transform_pivot_ratio = Vector2(0.5, 0.5)
+offset_transform_visual_only = true
+localize_numeral_system = true
+layout_direction = 0
+translation_context = &""
+tooltip_text = ""
+tooltip_auto_translate_mode = 0
+focus_neighbor_left = NodePath("")
+focus_neighbor_top = NodePath("")
+focus_neighbor_right = NodePath("")
+focus_neighbor_bottom = NodePath("")
+focus_next = NodePath("")
+focus_previous = NodePath("")
+focus_mode = 0
+focus_behavior_recursive = 0
+mouse_filter = 0
+mouse_behavior_recursive = 0
+mouse_force_pass_scroll_events = true
+mouse_default_cursor_shape = 0
+accessibility_name = ""
+accessibility_description = ""
+accessibility_live = 0
+accessibility_controls_nodes = Array[NodePath]([])
+accessibility_described_by_nodes = Array[NodePath]([])
+accessibility_labeled_by_nodes = Array[NodePath]([])
+accessibility_flow_to_nodes = Array[NodePath]([])
+theme = null
+theme_type_variation = &""
 min_value = 0.1
-max_value = 4.0
+max_value = 8.0
 step = 0.1
-page = 1.0
+page = 0.0
 value = 1.0
-alignment = 1
-suffix = "x"
+exp_edit = false
+rounded = false
+allow_greater = true
+allow_lesser = false
 script = ExtResource("17_wmgvx")
+show_range = true
+metadata/_custom_type_script = "uid://krqcacc7sq0o"
 
 [node name="HitSoundContainer" type="HBoxContainer" parent="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=1860248497]
 layout_mode = 2
@@ -345,15 +416,86 @@ layout_mode = 2
 text = "Snap:"
 horizontal_alignment = 2
 
-[node name="EditorSnap" type="SpinBox" parent="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/EditorFieldContainer" unique_id=128797391]
+[node name="EditorSnap" type="Range" parent="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/EditorFieldContainer" unique_id=1629325114]
 unique_name_in_owner = true
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 2
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+oversampling_with_scale = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+custom_minimum_size = Vector2(0, 0)
+custom_maximum_size = Vector2(-1, -1)
+propagate_maximum_size = false
+clip_contents = false
 layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.0
+offset_transform_enabled = false
+offset_transform_position = Vector2(0, 0)
+offset_transform_position_ratio = Vector2(0, 0)
+offset_transform_scale = Vector2(1, 1)
+offset_transform_rotation = 0.0
+offset_transform_pivot = Vector2(0, 0)
+offset_transform_pivot_ratio = Vector2(0.5, 0.5)
+offset_transform_visual_only = true
+localize_numeral_system = true
+layout_direction = 0
+translation_context = &""
+tooltip_text = ""
+tooltip_auto_translate_mode = 0
+focus_neighbor_left = NodePath("")
+focus_neighbor_top = NodePath("")
+focus_neighbor_right = NodePath("")
+focus_neighbor_bottom = NodePath("")
+focus_next = NodePath("")
+focus_previous = NodePath("")
+focus_mode = 0
+focus_behavior_recursive = 0
+mouse_filter = 0
+mouse_behavior_recursive = 0
+mouse_force_pass_scroll_events = true
+mouse_default_cursor_shape = 0
+accessibility_name = ""
+accessibility_description = ""
+accessibility_live = 0
+accessibility_controls_nodes = Array[NodePath]([])
+accessibility_described_by_nodes = Array[NodePath]([])
+accessibility_labeled_by_nodes = Array[NodePath]([])
+accessibility_flow_to_nodes = Array[NodePath]([])
+theme = null
+theme_type_variation = &""
 min_value = 1.0
-max_value = 1025.0
+max_value = 5.0
+step = 1.0
 page = 1.0
 value = 1.0
-alignment = 1
-prefix = "1 /"
+exp_edit = false
+rounded = false
+allow_greater = true
+allow_lesser = false
+script = ExtResource("18_5spb2")
+prefix = "1 / "
+show_range = true
+metadata/_custom_type_script = "uid://krqcacc7sq0o"
 
 [node name="NoteClassLabel" type="Label" parent="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/EditorFieldContainer" unique_id=1946863317]
 layout_mode = 2
@@ -382,19 +524,86 @@ columns = 2
 layout_mode = 2
 text = "Zoom:"
 
-[node name="EditorScrollZoom" type="HSlider" parent="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/ViewFieldContainer" unique_id=872752771]
+[node name="EditorScrollZoom" type="Range" parent="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/ViewFieldContainer" unique_id=617358157]
 unique_name_in_owner = true
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 2
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+oversampling_with_scale = 0
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
 custom_minimum_size = Vector2(130, 0)
+custom_maximum_size = Vector2(-1, -1)
+propagate_maximum_size = false
+clip_contents = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+size_flags_stretch_ratio = 1.0
+offset_transform_enabled = false
+offset_transform_position = Vector2(0, 0)
+offset_transform_position_ratio = Vector2(0, 0)
+offset_transform_scale = Vector2(1, 1)
+offset_transform_rotation = 0.0
+offset_transform_pivot = Vector2(0, 0)
+offset_transform_pivot_ratio = Vector2(0.5, 0.5)
+offset_transform_visual_only = true
+localize_numeral_system = true
+layout_direction = 0
+translation_context = &""
+tooltip_text = ""
+tooltip_auto_translate_mode = 0
+focus_neighbor_left = NodePath("")
+focus_neighbor_top = NodePath("")
+focus_neighbor_right = NodePath("")
+focus_neighbor_bottom = NodePath("")
+focus_next = NodePath("")
+focus_previous = NodePath("")
 focus_mode = 0
-min_value = 0.1
-max_value = 0.9
-step = 0.1
-value = 0.5
-tick_count = 9
-ticks_on_borders = true
+focus_behavior_recursive = 0
+mouse_filter = 0
+mouse_behavior_recursive = 0
+mouse_force_pass_scroll_events = true
+mouse_default_cursor_shape = 0
+accessibility_name = ""
+accessibility_description = ""
+accessibility_live = 0
+accessibility_controls_nodes = Array[NodePath]([])
+accessibility_described_by_nodes = Array[NodePath]([])
+accessibility_labeled_by_nodes = Array[NodePath]([])
+accessibility_flow_to_nodes = Array[NodePath]([])
+theme = null
+theme_type_variation = &""
+min_value = 0.2
+max_value = 4.0
+step = 0.05
+page = 0.0
+value = 1.0
+exp_edit = false
+rounded = false
+allow_greater = true
+allow_lesser = false
+script = ExtResource("18_5spb2")
+show_range = true
+suffix = " x"
+metadata/_custom_type_script = "uid://krqcacc7sq0o"
 
 [node name="DownscrollLabel" type="Label" parent="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/ViewFieldContainer" unique_id=2083756646]
 layout_mode = 2
@@ -413,6 +622,7 @@ layout_mode = 2
 script = ExtResource("19_28jyi")
 header_label_settings = SubResource("LabelSettings_xr37n")
 property_label_settings = SubResource("LabelSettings_cle1c")
+error_label_settings = SubResource("LabelSettings_5spb2")
 
 [node name="Margin" type="MarginContainer" parent="EditorUI/UIContainer/FieldScroll/Container/EventPanel" unique_id=1879775223]
 layout_mode = 2
@@ -477,10 +687,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = -476.0
-offset_top = -128.0
-offset_right = -90.0
-offset_bottom = 128.0
+offset_left = -472.0
+offset_top = -124.0
+offset_right = -86.0
+offset_bottom = 132.0
 texture = ExtResource("22_x2ptl")
 
 [connection signal="pressed" from="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/FileButtons/SaveButton" to="ChartSaver" method="_on_save_button_pressed"]

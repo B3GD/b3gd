@@ -1,7 +1,7 @@
-class_name EventTween extends Event
+@abstract class_name EventTween extends Event
 
 @export var tween: bool
-@export var duration: float
+@export_range(0.0, 10.0, 0.0, "or_greater") var duration: float
 @export var transition: Tween.TransitionType
 @export var ease: Tween.EaseType
 

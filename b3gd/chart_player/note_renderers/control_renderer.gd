@@ -23,7 +23,7 @@ func _process(_delta: float) -> void:
 	
 	extra_zoom = 1.0
 	if scroll_zoom != null:
-		extra_zoom /= scroll_zoom.value * 2.0
+		extra_zoom *= scroll_zoom.value
 	if downscroll_toggle != null:
 		downscroll = downscroll_toggle.button_pressed
 	
@@ -46,12 +46,19 @@ func draw_receptors():
 	@warning_ignore("integer_division") # I want these to round. its ok
 	var grid_range_center = grid_range / 2
 	var grid_end_time = current_beat_rounded + grid_range_center
-	var current_grid_time = current_beat_rounded - grid_range_center
+	var grid_start_time = current_beat_rounded - grid_range_center
+	var current_grid_time = grid_start_time
 	while current_grid_time < grid_end_time:
 		var line_y = song_audio_player.get_seconds_from_beat(current_grid_time) - current_time
 		line_y *= scroll_mult * 64
 		
 		var alpha = lerp(0.5, 0.25, fmod(current_grid_time + 1000.0, 2.0))
+		
+		var min_distance = min(
+			current_grid_time - grid_start_time,
+			grid_end_time - current_grid_time
+		)
+		alpha *= min(min_distance * 0.03 , 1.0)
 		
 		draw_line(
 			Vector2(0, line_y),
@@ -59,6 +66,22 @@ func draw_receptors():
 			Color(Color.WHITE, alpha)
 		)
 		current_grid_time += 1
+	
+	var song_start = 0.0 - current_time
+	song_start *= scroll_mult * 64
+	
+	draw_rect(
+		Rect2(0, floor(-transform_y), size.x, floor(song_start + transform_y)),
+		Color(Color.BLACK, 0.2)
+	)
+	
+	var song_end = song_audio_player.stream.get_length() - current_time
+	song_end *= scroll_mult * 64
+	
+	draw_rect(
+		Rect2(0, floor(song_end), size.x, size.y),
+		Color(Color.BLACK, 0.2)
+	)
 	
 	for receptor_id in range(note_manager.strum_lines[strum_line_idx].receptors.size()):
 		draw_note(Vector2(receptor_id, -0.5), Vector2i(receptor_id, 0))
