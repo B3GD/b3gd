@@ -48,7 +48,7 @@ If theres anything here you want that is not on this list, feel free to either c
 
 Chart Editor:
 - [ ] HD Icons
-- [ ] Copy & Paste options
+- [ ] Selection: Copy & Paste Notes & Events
 - [ ] Per-Note NoteClass parameters
 - [ ] Changing StrumLine options from Chart Editor (CPU, Key Count)
 - [ ] Changing StrumLine count (Add, Remove)
