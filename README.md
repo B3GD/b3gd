@@ -53,3 +53,6 @@ Chart Editor:
 - [ ] Changing StrumLine options from Chart Editor (CPU, Key Count)
 - [ ] Changing StrumLine count (Add, Remove)
 - [ ] Chart Editor Cleanup? (The chart editor is the most complicated thing in the codebase. I think some of it could be refactored down into more digestible chunks.
+
+Note Rendering (3dGridRenderer):
+- [ ] Fix Hold Rotation (Hold rotation currently follows the note rotation, rather than pointing in the direction it heads)
