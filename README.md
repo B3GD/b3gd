@@ -22,7 +22,7 @@ If you don't like any part of the engine, you can remove it and replace it easil
 Any format godot supports is natively supported, for obvious reasons. What is not present is implementations for Sparrow or other less common formats. These must be provided from elsewhere or made yourself.
 
 ### Health
-Health is not engine level. Its dead simple you can just do it.
+Health is not engine level. Its dead simple to make yourself, so i didn't see a need.
 
 ### Keybinds
 The default input system expects inputs by the name of "strumline_x" (x being the strumline index).
