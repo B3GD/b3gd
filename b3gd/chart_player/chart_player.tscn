@@ -67,6 +67,7 @@ noteskin_texture = ExtResource("7_cdfgl")
 noteskin_data = SubResource("Resource_eb4vn")
 strum_line_idx = 0
 hold_resolution = 3.0
+cutoff_distance = 8.0
 
 [node name="StrumLineRenderer2" type="MeshInstance3D" parent="UI/Strumlines/SubViewport" unique_id=228372249]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.9, 0)
@@ -74,6 +75,7 @@ script = ExtResource("5_yp0gr")
 noteskin_texture = ExtResource("7_cdfgl")
 noteskin_data = SubResource("Resource_eb4vn")
 hold_resolution = 3.0
+cutoff_distance = 8.0
 
 [node name="Camera3D" type="Camera3D" parent="UI/Strumlines/SubViewport" unique_id=955848793]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17)

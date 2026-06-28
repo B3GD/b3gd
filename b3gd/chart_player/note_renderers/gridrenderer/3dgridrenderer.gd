@@ -7,6 +7,7 @@ extends MeshInstance3D
 @export var receptor_spacing := 0.9
 @export var note_speed := 1.0
 @export var hold_resolution := 8.0
+@export var cutoff_distance := -1.0
 # Callables can't be edited with export. This is a functional modifier system for modcharts though.
 var modifiers: Array[Callable]
 
@@ -71,6 +72,8 @@ func add_notes_to_mesh(mesh_array: Array, notes: Array[Note], receptor_id: int, 
 	var note_frame = noteskin_data.note_frames[idle_frames.note_frames]
 	for note in notes:
 		var note_distance = (note.time - song_audio_player.song_progress_seconds) * note_speed * scroll_speed
+		if cutoff_distance > 0.0 and note_distance > cutoff_distance:
+			return
 		if note.length > 0:
 			var end_distance = note_distance + (note.length * note_speed * scroll_speed)
 			add_sustain_to_mesh(mesh_array, receptor_id, hold_receptor_transform, note_distance, end_distance)
