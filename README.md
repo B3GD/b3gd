@@ -1,19 +1,54 @@
-# B3GD Engine
-#~ Yea I know its not an "engine" shush The Funks™ don't know that
+<p align="center">
+<img width="50%" height="1150" alt="logo" src="https://github.com/user-attachments/assets/bd3603df-dba9-4474-a000-970ae6d1af49" />
+</p>
+<p align="center">
+"engine" (By FNF standards)
+</p>
 
 ## What is it?
 
-Modular fnf-style godot thing, to help you and all your friends.  
-Designed to be easy to work off of - originally just for me with [Beta 3](https://gamebanana.com/mods/639119), 
-but some people told me I should clean it up and release it seperately too, so here it is.
+Modular fnf-style godot thing, designed to be easy to work off and expand.
+Originally designed just for [Beta 3](https://gamebanana.com/mods/639119), but cleaned up for generic use with an example project provided.
 
-## Why B3GD?
+## Why use it?
 
 B3GD is made to have a really small footprint, and to overall be something you can work with instead of working around.
-Each part is written to be as digestible as possible, trying to lose a lot of the jank that comes with Legacy FNF.
-If you don't like any part of the engine, you can remove it and replace it easily - from input to rendering to chart editors to event playback.
+Each part is written to be as digestible and customisable as possible, trying to lose a lot of the jank that comes with Legacy FNF.
+If you don't like any part of the engine, you can remove it and replace it easily - input system, note rendering, chart editor, event playing, character scripts...
 
-As part of being small, B3GD doesn't have a lot of things some other engines might consider fundamental - 
-it doesn't have XML or Atlas support, or any menus aside from a template song select.
-Oh yeah, also theres modchart support
-#~ Though, you do have to write the modifiers yourself
+## Limitations
+
+### Format Support
+Any format godot supports is natively supported, for obvious reasons. What is not present is implementations for Sparrow or other less common formats. These must be provided from elsewhere or made yourself.
+
+### Health
+Health is not engine level. Its dead simple you can just do it.
+
+### Keybinds
+The default input system expects inputs by the name of "strumline_x" (x being the strumline index).
+Multikey is fully supported internally, but you may have to hotswap inputs with InputMap if you want custom keybinds.
+
+### Chart Creation
+Charts must be initialised in the godot editor, by creating a Charts resource as input into the ChartPlayer. Here you can set up the strumlines and song metadata.
+Once the chart is created, there is a fully featured chart editor (Press F7 in any song while testing to swap live! This runs on-top of normal gameplay, allowing for accurate live preview)
+
+### Event Exports
+Although every format is supported, the chart editor is limited on what it can edit.
+Supported types:
+- Bool
+- Int (Int enums included)
+- Float
+- String
+- Vector2-4
+- Vector2i-4i
+- Color
+
+## BUCKET LIST
+If theres anything here you want that is not on this list, feel free to either create an issue or create a pull request for what you want.
+
+Chart Editor:
+- [ ] HD Icons
+- [ ] Copy & Paste options
+- [ ] Per-Note NoteClass parameters
+- [ ] Changing StrumLine options from Chart Editor (CPU, Key Count)
+- [ ] Changing StrumLine count (Add, Remove)
