@@ -7,7 +7,7 @@
 
 ## What is it?
 
-Modular fnf-style godot thing, designed to be easy to work off and expand.
+Modular FNF-style godot project, designed to be easy to work off and expand.
 Originally designed just for [Beta 3](https://gamebanana.com/mods/639119), but cleaned up for generic use with an example project provided.
 
 ## Why use it?
