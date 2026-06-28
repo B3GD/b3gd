@@ -5,6 +5,7 @@ extends PanelContainer
 @export var error_label_settings: LabelSettings
 
 @onready var chart_source = get_tree().get_first_node_in_group("ChartSource")
+@onready var chart_loader = get_tree().get_first_node_in_group("ChartLoader")
 @onready var field_container = %EditorEventFieldContainer
 
 var event_id = -1
@@ -180,3 +181,8 @@ func value_changed(new_value: Variant, source: Node):
 		chart_source.chart.events[event_id].set(string[0], new_vector)
 	else:
 		chart_source.chart.events[event_id].set(string[0], new_value)
+
+
+func remove_event() -> void:
+	chart_source.chart.events.remove_at(event_id)
+	chart_loader.load_events()

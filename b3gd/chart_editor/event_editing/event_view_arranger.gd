@@ -30,7 +30,7 @@ func get_selection():
 			continue
 		if event_box.get_node("Button").button_pressed:
 			event_selected = i - 1
-			if i != previous_selected and previous_selected != -1:
+			if event_selected != previous_selected and previous_selected != -1:
 				unselect_previous = true
 	if unselect_previous:
 		get_children()[previous_selected + 1].get_node("Button").button_pressed = false

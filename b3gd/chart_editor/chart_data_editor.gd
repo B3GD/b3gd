@@ -7,6 +7,9 @@ extends Node
 @onready var note_manager:Node = get_tree().get_first_node_in_group("NoteManager")
 @onready var event_player:Node = get_tree().get_first_node_in_group("EventPlayer")
 
+func _ready() -> void:
+	chart_loader.events_loaded.connect(events_loaded)
+
 func get_snapped_time(seconds: float):
 	var beat = song_audio_player.get_beat_from_seconds(seconds)
 	beat = snappedf(beat, 1.0 / %EditorSnap.value)
@@ -31,7 +34,10 @@ func add_event(time):
 	
 	chart_source.chart.events.append(new_event)
 	chart_source.chart.events.sort_custom(sort_ascending)
-	
+	chart_loader.load_events()
+
+func events_loaded():
+	%EditorEventContainer.update_events()
 
 func remove_note(strum_line, receptor, time):
 	var notes = chart_source.chart.strum_lines[strum_line].receptors[receptor].notes

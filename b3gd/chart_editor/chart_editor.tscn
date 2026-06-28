@@ -694,6 +694,11 @@ layout_mode = 2
 text = "Event"
 label_settings = SubResource("LabelSettings_asiwl")
 
+[node name="Button" type="Button" parent="EditorUI/UIContainer/FieldScroll/Container/EventPanel/Margin/EventContainer/Header" unique_id=762597451]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Remove"
+
 [node name="HeaderSeperator" type="HSeparator" parent="EditorUI/UIContainer/FieldScroll/Container/EventPanel/Margin/EventContainer" unique_id=98134740]
 layout_mode = 2
 
@@ -742,3 +747,4 @@ texture = ExtResource("22_x2ptl")
 [connection signal="item_selected" from="EditorUI/UIContainer/WorkAreaScroll/Container/EditorEventContainer/_EventMaker/EditorEventClassBox" to="EditorUI/UIContainer/WorkAreaScroll/Container/EditorEventContainer/_EventMaker" method="_on_editor_event_class_box_item_selected"]
 [connection signal="pressed" from="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/FileButtons/SaveButton" to="ChartSaver" method="_on_save_button_pressed"]
 [connection signal="value_changed" from="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/PitchScaleContainer/EditorPitchScale" to="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/PitchScaleContainer/EditorPitchScale" method="_on_value_changed"]
+[connection signal="pressed" from="EditorUI/UIContainer/FieldScroll/Container/EventPanel/Margin/EventContainer/Header/Button" to="EditorUI/UIContainer/FieldScroll/Container/EventPanel" method="remove_event"]
