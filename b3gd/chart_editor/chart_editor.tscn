@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://0fmbhebqx5x3"]
 
 [ext_resource type="Script" uid="uid://m5sbxr0i4jp1" path="res://b3gd/chart_editor/chart_data_editor.gd" id="1_tfe68"]
+[ext_resource type="Script" uid="uid://d1dcw7q58p7ox" path="res://b3gd/chart_editor/editor_chart_data_history.gd" id="2_0pt3y"]
 [ext_resource type="Script" uid="uid://cn613y6nswe4m" path="res://b3gd/chart_editor/chart_scrubber.gd" id="2_5spb2"]
 [ext_resource type="Script" uid="uid://cqyp5h5ij2gaa" path="res://b3gd/chart_editor/fake_note_manager.gd" id="3_sjv8v"]
 [ext_resource type="AudioStream" uid="uid://nwgw3lpaxmje" path="res://b3gd/chart_editor/sounds/note_click.wav" id="4_1yhdw"]
@@ -103,6 +104,10 @@ font_color = Color(1, 0, 0, 1)
 [node name="EditorChartDataModifier" type="Node" parent="." unique_id=294836472]
 unique_name_in_owner = true
 script = ExtResource("1_tfe68")
+
+[node name="EditorChartDataHistory" type="Node" parent="." unique_id=1780856954]
+unique_name_in_owner = true
+script = ExtResource("2_0pt3y")
 
 [node name="EditorSongScrubber" type="Node" parent="." unique_id=1673015449]
 unique_name_in_owner = true
