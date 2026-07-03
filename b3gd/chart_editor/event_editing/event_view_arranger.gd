@@ -12,6 +12,7 @@ extends Control
 @onready var downscroll_toggle = %EditorDownscroll
 @onready var strum_line_container = %EditorStrumLineContainer
 @onready var editor_snap = %EditorSnap
+@export var item_being_dragged = false
 
 func _ready() -> void:
 	get_selection()
@@ -80,6 +81,7 @@ func update_event_positions():
 		new_min = max(new_min, offset)
 	custom_minimum_size.x = new_min
 	
+	item_being_dragged = false
 	for event_box in get_children():
 		var lane_offset = -event_lane_width * event_box.lane
 		event_box.size.x = event_box.custom_minimum_size.x - lane_offset
@@ -89,4 +91,6 @@ func update_event_positions():
 		event_box_y += size.y * baseline_mult
 		event_box.position.y = event_box_y - (event_box.size.y * 0.5)
 		
+		if !event_box.name.begins_with("_") and event_box.dragging:
+			item_being_dragged = true
 		event_box.z_index = max(-event_box.lane, -4096)

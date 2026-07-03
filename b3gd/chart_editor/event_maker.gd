@@ -19,6 +19,8 @@ func _input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	var mouse_position = get_parent().get_local_mouse_position()
 	var is_mouse_over = Rect2(Vector2.ZERO, get_parent().size).has_point(mouse_position)
+	if get_parent().item_being_dragged:
+		is_mouse_over = false
 	
 	if !$EditorEventClassBox.disabled:
 		return

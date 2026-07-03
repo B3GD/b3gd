@@ -152,6 +152,7 @@ alignment = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 script = ExtResource("6_0pt3y")
 event_box_scene = ExtResource("7_7xm88")
 event_lane_width = 160
@@ -199,7 +200,7 @@ axis_stretch_horizontal = 1
 [node name="EditorStrumLineContainer" type="HBoxContainer" parent="EditorUI/UIContainer/WorkAreaScroll/Container" unique_id=251519595]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 2
 size_flags_vertical = 3
 alignment = 1
 script = ExtResource("8_laud3")
@@ -208,6 +209,7 @@ strum_line_node = ExtResource("9_8lyhl")
 [node name="Margin" type="Control" parent="EditorUI/UIContainer/WorkAreaScroll/Container" unique_id=1818328540]
 custom_minimum_size = Vector2(4, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="AddStrumlineButton" type="Button" parent="EditorUI/UIContainer/WorkAreaScroll/Container" unique_id=166877994]
 visible = false
@@ -735,6 +737,7 @@ offset_top = -201.0
 offset_right = 246.0
 offset_bottom = -9.0
 grow_vertical = 0
+mouse_filter = 2
 texture = ExtResource("21_lq1aq")
 stretch_mode = 5
 
