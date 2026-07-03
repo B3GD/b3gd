@@ -24,11 +24,9 @@ metadata/_custom_type_script = "uid://cxewr41xtv111"
 
 [sub_resource type="Resource" id="Resource_y1qrp"]
 script = ExtResource("3_s0yfo")
-bpm = 120.0
 
 [sub_resource type="Resource" id="Resource_jvbwd"]
 script = ExtResource("4_2wgma")
-target_zoom = Vector2(1, 1)
 lane = 1
 metadata/_custom_type_script = "uid://cyqa68xim30d1"
 

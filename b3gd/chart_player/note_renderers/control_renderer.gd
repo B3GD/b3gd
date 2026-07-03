@@ -69,14 +69,17 @@ func draw_receptors():
 	
 	var song_start = 0.0 - current_time
 	song_start *= scroll_mult * 64
+	var song_end = song_audio_player.stream.get_length() - current_time
+	song_end *= scroll_mult * 64
+	if downscroll:
+		var song_start_dupe = song_start
+		song_start = song_end
+		song_end = song_start_dupe
 	
 	draw_rect(
 		Rect2(0, floor(-transform_y), size.x, floor(song_start + transform_y)),
 		Color(Color.BLACK, 0.2)
 	)
-	
-	var song_end = song_audio_player.stream.get_length() - current_time
-	song_end *= scroll_mult * 64
 	
 	draw_rect(
 		Rect2(0, floor(song_end), size.x, size.y),
@@ -88,11 +91,23 @@ func draw_receptors():
 		
 		for note in note_manager.strum_lines[strum_line_idx].receptors[receptor_id].notes:
 			var note_y = (note.time - current_time) * scroll_mult
+			var note_length = note.length * scroll_mult
+			
+			if ((note_y + 0.5) * 64) + note_length < -transform_y:
+				if downscroll:
+					break
+				else:
+					continue
+			if (note_y * 64) > size.y:
+				if downscroll:
+					continue
+				else:
+					break
+			
 			draw_note(Vector2(receptor_id, note_y - 0.5), Vector2i(receptor_id, 1))
 			
-			if is_zero_approx(note.length):
+			if is_zero_approx(note_length):
 				continue
-			var note_length = note.length * scroll_mult
 			
 			if note_length > 0:
 				draw_note(Vector2(receptor_id, note_y), Vector2i(receptor_id, 2), note_length)
