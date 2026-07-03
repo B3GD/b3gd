@@ -39,4 +39,4 @@ func play(speed: float = 1.0):
 	).set_trans(transition).set_ease(ease_type)
 	
 	if tween_tracker.node != null:
-		tween_tracker.node.zoom_tween = current_tween
+		tween_tracker.node.set(tween_tracker.property, current_tween)
