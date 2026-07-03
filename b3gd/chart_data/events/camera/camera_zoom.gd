@@ -1,6 +1,6 @@
 class_name EventCameraZoom extends EventTween
 
-@export var target_zoom: Vector2
+@export var target_zoom: Vector2 = Vector2.ONE
 
 func init():
 	if parent.get_tree().get_first_node_in_group("SceneCamera") == null:

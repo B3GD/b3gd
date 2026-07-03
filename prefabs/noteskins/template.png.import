@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bdnho2gsjp6c2"
-path="res://.godot/imported/template.png-bb3b413c76d83d1909dbcc6f85314c38.ctex"
+path="res://.godot/imported/template.png-f8e1c109a211791766caf65f80cabd7d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://b3gd/chart_player/noteskins/template.png"
-dest_files=["res://.godot/imported/template.png-bb3b413c76d83d1909dbcc6f85314c38.ctex"]
+source_file="res://prefabs/noteskins/template.png"
+dest_files=["res://.godot/imported/template.png-f8e1c109a211791766caf65f80cabd7d.ctex"]
 
 [params]
 

@@ -11,6 +11,7 @@ var lane = 0
 @onready var button = $Button
 @onready var arrow = $Arrow
 @onready var events = get_parent().chart_source.chart.events
+@onready var chart_data_editor = get_parent().get_node("%EditorChartDataModifier")
 
 var dragging = false
 var pre_drag = false
@@ -22,6 +23,9 @@ func _input(event: InputEvent) -> void:
 		if event.is_pressed() and is_mouse_over:
 			pre_drag = true
 		elif event.is_released():
+			if dragging:
+				events.sort_custom(chart_data_editor.sort_ascending)
+				chart_data_editor.chart_loader.load_events()
 			pre_drag = false
 			dragging = false
 
@@ -45,7 +49,16 @@ func _process(_delta: float) -> void:
 		if mouse_position.x > get_parent().event_lane_width:
 			events[id].lane = max(events[id].lane - 1, 0)
 		
-		get_parent().update_event_positions()
+		var max_lane_at_pos = -1
+		var i = -1
+		for event in events:
+			i += 1
+			if i == id:
+				continue
+			if abs(event.time - time) < 0.05:
+				max_lane_at_pos = max(max_lane_at_pos, event.lane)
+		events[id].lane = max(events[id].lane, max_lane_at_pos + 1)
 		
+		get_parent().update_event_positions()
 	time = events[id].time
 	lane = events[id].lane

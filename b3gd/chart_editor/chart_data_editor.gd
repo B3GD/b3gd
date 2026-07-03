@@ -48,4 +48,6 @@ func remove_note(strum_line, receptor, time):
 	chart_loader.load_notes(false)
 
 func sort_ascending(a, b):
+	if is_equal_approx(a.time, b.time) and a is Event:
+		return a.lane < b.lane
 	return a.time < b.time

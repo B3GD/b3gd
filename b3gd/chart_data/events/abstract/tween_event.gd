@@ -1,8 +1,8 @@
 @abstract class_name EventTween extends Event
 
 @export var tween: bool
-@export_range(0.0, 10.0, 0.0, "or_greater") var duration: float
-@export var transition: Tween.TransitionType
+@export_range(0.0, 10.0, 0.0, "or_greater") var duration: float = 1.2
+@export var transition: Tween.TransitionType = Tween.TRANS_QUAD
 @export var ease_type: Tween.EaseType = Tween.EaseType.EASE_OUT
 var tween_tracker = {
 	"node": null,

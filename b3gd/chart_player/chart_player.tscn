@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://cr3x8h58rufy1" path="res://b3gd/chart_player/event_player.gd" id="3_v3b1e"]
 [ext_resource type="Script" uid="uid://rypo2bh7qid7" path="res://b3gd/chart_player/note_manager.gd" id="4_t3y1r"]
 [ext_resource type="Script" uid="uid://dvjswg4e6wv1q" path="res://b3gd/chart_player/note_renderers/gridrenderer/3dgridrenderer.gd" id="5_yp0gr"]
-[ext_resource type="Texture2D" uid="uid://bdnho2gsjp6c2" path="res://b3gd/chart_player/noteskins/template.png" id="7_cdfgl"]
+[ext_resource type="Texture2D" uid="uid://bdnho2gsjp6c2" path="res://prefabs/noteskins/template.png" id="7_cdfgl"]
 [ext_resource type="Script" uid="uid://bctudmv5p4heo" path="res://b3gd/chart_player/note_renderers/gridrenderer/noteskingriddata.gd" id="8_rbo3x"]
 
 [sub_resource type="Resource" id="Resource_eb4vn"]
