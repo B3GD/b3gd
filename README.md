@@ -52,7 +52,8 @@ Supported types:
 If theres anything here you want that is not on this list, feel free to either create an issue or create a pull request for what you want.
 
 Chart Editor:
-- [ ] HD Icons
+- [ ] Vortex-style input support
+- [ ] Undo / Redo
 - [ ] Selection: Copy & Paste Notes & Events
 - [ ] Per-Note NoteClass parameters
 - [ ] Changing StrumLine options from Chart Editor (CPU, Key Count)
