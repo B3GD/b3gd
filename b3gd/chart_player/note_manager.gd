@@ -27,9 +27,10 @@ func _process(_delta: float) -> void:
 func handle_auto_receptor_input(strum_line_id, receptor_id):
 	if strum_lines[strum_line_id].receptors[receptor_id].notes.size() == 0:
 		return
-	var note_to_hit = strum_lines[strum_line_id].receptors[receptor_id].notes[0]
-	if note_to_hit.time <= song_audio_player.song_progress_seconds:
+	while strum_lines[strum_line_id].receptors[receptor_id].notes[0].time <= song_audio_player.song_progress_seconds:
 		hit_note(strum_line_id, receptor_id)
+		if strum_lines[strum_line_id].receptors[receptor_id].notes.size() == 0:
+			return
 
 func handle_manual_receptor_input(strum_line_id, receptor_id):
 	var input_name = "strumline_" + str(receptor_id)
