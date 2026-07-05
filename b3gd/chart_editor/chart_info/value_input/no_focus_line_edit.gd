@@ -38,7 +38,7 @@ func _input(event: InputEvent) -> void:
 			editing = false
 	
 	if editing and event is InputEventKey and event.is_pressed():
-		var key_pressed = OS.get_keycode_string(event.key_label)
+		var key_pressed = event.as_text_keycode()
 		print(key_pressed)
 		match key_pressed:
 			"Left":
@@ -51,9 +51,13 @@ func _input(event: InputEvent) -> void:
 				text = text.erase(erase_position)
 				if old_length != len(text):
 					caret_position -= 1
+			"Ctrl", "Shift", "Alt":
+				pass
+			"Enter":
+				editing = false
 			_:
 				var old_length = len(text)
-				text = text.insert(caret_position, key_pressed)
+				text = text.insert(caret_position, char(event.unicode))
 				if old_length != len(text):
 					caret_position += 1
 	
