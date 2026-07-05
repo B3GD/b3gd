@@ -29,6 +29,8 @@ func handle_auto_receptor_input(strum_line_id, receptor_id):
 		return
 	while strum_lines[strum_line_id].receptors[receptor_id].notes[0].time <= song_audio_player.song_progress_seconds:
 		hit_note(strum_line_id, receptor_id)
+		if strum_lines[strum_line_id].receptors[receptor_id].notes[0].hold_pressed:
+			return
 		if strum_lines[strum_line_id].receptors[receptor_id].notes.size() == 0:
 			return
 
