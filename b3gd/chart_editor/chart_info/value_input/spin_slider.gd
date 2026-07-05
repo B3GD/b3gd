@@ -78,10 +78,10 @@ func _input(event: InputEvent) -> void:
 					if old_length != len(str(value)):
 						caret_position += 1
 	
-	if event.is_action_pressed("ui_copy"):
+	if editing and event.is_action_pressed("ui_copy"):
 		DisplayServer.clipboard_set(str(value))
 	
-	if event.is_action_pressed("ui_paste"):
+	if editing and event.is_action_pressed("ui_paste"):
 		var clipboard = DisplayServer.clipboard_get()
 		if clipboard.is_valid_float():
 			value = float(clipboard)

@@ -52,16 +52,15 @@ func _input(event: InputEvent) -> void:
 				if old_length != len(text):
 					caret_position -= 1
 			_:
-				if key_pressed.is_valid_int():
-					var old_length = len(text)
-					text = text.insert(caret_position, key_pressed)
-					if old_length != len(text):
-						caret_position += 1
+				var old_length = len(text)
+				text = text.insert(caret_position, key_pressed)
+				if old_length != len(text):
+					caret_position += 1
 	
-	if event.is_action_pressed("ui_copy"):
+	if editing and event.is_action_pressed("ui_copy"):
 		DisplayServer.clipboard_set(text)
 	
-	if event.is_action_pressed("ui_paste"):
+	if editing and event.is_action_pressed("ui_paste"):
 		text = DisplayServer.clipboard_get()
 
 func _draw() -> void:
