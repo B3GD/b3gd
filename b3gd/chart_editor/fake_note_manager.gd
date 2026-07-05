@@ -25,19 +25,26 @@ func _process(_delta: float) -> void:
 	frames_born += 1
 	for strum_line_id in range(note_manager.strum_lines.size()):
 		for receptor_id in note_manager.strum_lines[strum_line_id].receptors.size():
-			for note_id in note_manager.strum_lines[strum_line_id].receptors[receptor_id].notes.size():
-				handle_note(strum_line_id, receptor_id, note_id)
+			handle_note(strum_line_id, receptor_id)
 
-func handle_note(strum_line_id, receptor_id, note_id):
-	var note_to_hit = note_manager.strum_lines[strum_line_id].receptors[receptor_id].notes[note_id]
-	
-	var note_passed = note_to_hit.time <= song_audio_player.song_progress_seconds
-	var note_already_hit = hit_note_ids[strum_line_id][receptor_id] >= note_id
-	if note_passed and !note_already_hit:
-		hit_note_ids[strum_line_id][receptor_id] = note_id
-		note_manager.note_press.emit(strum_line_id, receptor_id, note_to_hit, 0.0)
+func handle_note(strum_line_id, receptor_id):
+	var receptor = note_manager.strum_lines[strum_line_id].receptors[receptor_id]
+	if receptor.notes.size() == 0:
+		return
+
+
+	var current_note_id = hit_note_ids[strum_line_id][receptor_id]
+
+	if current_note_id >= 0 and !receptor.notes[current_note_id].time <= song_audio_player.song_progress_seconds:
+		hit_note_ids[strum_line_id][receptor_id] -= 1
+		return
+
+	if receptor.notes.size() <= current_note_id + 1:
+		return
+
+	var next_note = receptor.notes[current_note_id + 1]
+	if next_note.time <= song_audio_player.song_progress_seconds:
+		hit_note_ids[strum_line_id][receptor_id] = current_note_id + 1
+		note_manager.note_press.emit(strum_line_id, receptor_id, next_note, 0.0)
 		if %EditorHitSound.button_pressed and frames_born > 5:
 			$NoteClick.play()
-	
-	if !note_passed and note_already_hit:
-		hit_note_ids[strum_line_id][receptor_id] = note_id - 1
