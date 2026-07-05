@@ -37,6 +37,9 @@ func beat_hit(_beat: int) -> void:
 func note_press(strum_line_id: int, receptor_id: int, note_data, _hold_delta: float) -> void:
 	if strumline != strum_line_id or note_data == null or ignore_sing:
 		return
+	if note_data is NoteIgnore:
+		return
+	
 	time_since_last_sing = sing_length if note_data.hold_pressed else 0.0
 	thing_to_animate.stop()
 	
