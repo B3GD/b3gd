@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://cy0rk72xgrung" path="res://b3gd/chart_editor/event_editing/event_class_box.gd" id="6_sjv8v"]
 [ext_resource type="PackedScene" uid="uid://b507lgcilwgxq" path="res://b3gd/chart_editor/event_editing/event_box.tscn" id="7_7xm88"]
 [ext_resource type="Script" uid="uid://dsxriov1ftjvw" path="res://b3gd/chart_editor/note_editing/strumline_container.gd" id="8_laud3"]
-[ext_resource type="Script" uid="uid://bkaf2otcreksg" path="res://b3gd/chart_editor/event_maker.gd" id="8_n0gnj"]
+[ext_resource type="Script" uid="uid://bkaf2otcreksg" path="res://b3gd/chart_editor/event_editing/event_maker.gd" id="8_n0gnj"]
 [ext_resource type="PackedScene" uid="uid://dkros47lrg8sl" path="res://b3gd/chart_editor/note_editing/strum_line.tscn" id="9_8lyhl"]
 [ext_resource type="Texture2D" uid="uid://cka5y22a126yx" path="res://b3gd/chart_editor/event_editing/arrow.png" id="10_0pt3y"]
 [ext_resource type="Texture2D" uid="uid://cq03bxqwqbpqd" path="res://b3gd/chart_editor/chart_info/inspector.png" id="10_8v0hc"]
