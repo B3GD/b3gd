@@ -120,5 +120,4 @@ func move_sustain(strum_line_id, receptor_id, by: float):
 
 func mute_strumline(strum_line_id, mute):
 	var vocal_layer = chart_loader.vocal_layers[strum_line_id]
-	prints(vocal_layer, song_audio_player.stream.get_sync_stream_volume(vocal_layer))
 	song_audio_player.stream.set_sync_stream_volume(vocal_layer, -50 if mute else 0)
