@@ -8,7 +8,7 @@ var bpm_events: Array[EventBPMChange] = []
 
 var paused = false
 
-var song_progress_seconds = -4: #set to a really low number so the song wont play until the chart loader does its setup
+var song_progress_seconds = -5: # This is the amount you need to put in a countdown script
 	set(value):
 		var previous_beat = song_progress_beats
 		song_progress_seconds = value
