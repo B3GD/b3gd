@@ -32,6 +32,10 @@ func _process(_delta: float) -> void:
 	queue_redraw()
 	var mouse_position = get_local_mouse_position()
 	is_mouse_over = Rect2(Vector2.ZERO, size).has_point(mouse_position)
+	if is_mouse_over:
+		var big_parent = get_parent().get_parent().get_parent().get_parent().get_parent()
+		var more_global_mouse_position = big_parent.get_local_mouse_position()
+		is_mouse_over = Rect2(Vector2.ZERO, big_parent.size).has_point(more_global_mouse_position)
 	
 	var time_mouse_pos = mouse_position.y - get_parent().transform_y
 	var scroll_mult = get_parent().extra_zoom
