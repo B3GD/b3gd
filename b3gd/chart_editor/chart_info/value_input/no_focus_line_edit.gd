@@ -13,6 +13,7 @@ var editing = false:
 		if editing:
 			caret_position = len(str(value)) - 1
 		queue_redraw()
+
 var caret_position = 0:
 	set(value):
 		caret_position = value
@@ -28,18 +29,17 @@ func _input(event: InputEvent) -> void:
 			editing = true
 		else:
 			editing = false
-	
+
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		
+
 		var mouse_position = get_local_mouse_position()
 		var is_mouse_over = Rect2(Vector2.ZERO, size).has_point(mouse_position)
-		
+
 		if event.is_pressed() and !is_mouse_over and editing:
 			editing = false
-	
+
 	if editing and event is InputEventKey and event.is_pressed():
 		var key_pressed = event.as_text_keycode()
-		print(key_pressed)
 		match key_pressed:
 			"Left":
 				caret_position = max(caret_position - 1, 0)
@@ -51,19 +51,18 @@ func _input(event: InputEvent) -> void:
 				text = text.erase(erase_position)
 				if old_length != len(text):
 					caret_position -= 1
-			"Ctrl", "Shift", "Alt":
-				pass
 			"Enter":
 				editing = false
 			_:
-				var old_length = len(text)
-				text = text.insert(caret_position, char(event.unicode))
-				if old_length != len(text):
-					caret_position += 1
-	
+				if event.unicode != 0:
+					var old_length = len(text)
+					text = text.insert(caret_position, char(event.unicode))
+					if old_length != len(text):
+						caret_position += 1
+
 	if editing and event.is_action_pressed("ui_copy"):
 		DisplayServer.clipboard_set(text)
-	
+
 	if editing and event.is_action_pressed("ui_paste"):
 		text = DisplayServer.clipboard_get()
 
