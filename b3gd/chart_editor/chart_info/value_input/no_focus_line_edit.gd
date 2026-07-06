@@ -11,9 +11,8 @@ var editing = false:
 	set(value):
 		editing = value
 		if editing:
-			caret_position = len(str(value)) - 1
+			caret_position = len(text)
 		queue_redraw()
-
 var caret_position = 0:
 	set(value):
 		caret_position = value
@@ -49,22 +48,23 @@ func _input(event: InputEvent) -> void:
 				var old_length = len(text)
 				var erase_position = max(caret_position - 1, 0)
 				text = text.erase(erase_position)
-				if old_length != len(text):
-					caret_position -= 1
+				caret_position += len(text) - old_length
 			"Enter":
 				editing = false
 			_:
 				if event.unicode != 0:
 					var old_length = len(text)
 					text = text.insert(caret_position, char(event.unicode))
-					if old_length != len(text):
-						caret_position += 1
+					caret_position += len(text) - old_length
 
 	if editing and event.is_action_pressed("ui_copy"):
 		DisplayServer.clipboard_set(text)
 
 	if editing and event.is_action_pressed("ui_paste"):
 		text = DisplayServer.clipboard_get()
+		var old_length = len(text)
+		text = text.insert(caret_position, DisplayServer.clipboard_get())
+		caret_position += len(text) - old_length
 
 func _draw() -> void:
 	var back = get_theme_stylebox("normal", "LineEdit")
