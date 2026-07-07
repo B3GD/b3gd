@@ -85,17 +85,16 @@ func hit_note(strum_line_id, receptor_id):
 	if note_ref.length > 0:
 		var time_difference = song_audio_player.song_progress_seconds - note_ref.time
 		move_sustain(strum_line_id, receptor_id, time_difference)
-		note_ref.hold_pressed = true
 		if note_ref.note_hit():
 			note_press.emit(strum_line_id, receptor_id, note_ref, time_difference)
+		note_ref.hold_pressed = true
 	
 	if note_ref.length <= 0:
 		var sushit = note_ref.hold_pressed
-		var note_dupe = note_ref.duplicate()
-		receptor.notes.pop_front()
 		if !sushit:
 			if note_ref.note_hit():
-				note_press.emit(strum_line_id, receptor_id, note_dupe, 1.0)
+				note_press.emit(strum_line_id, receptor_id, note_ref, 1.0)
+		receptor.notes.pop_front()
 
 func miss_note(strum_line_id, receptor_id):
 	mute_strumline(strum_line_id, true)
