@@ -8,6 +8,7 @@ extends Control
 @onready var chart_source := get_tree().get_first_node_in_group("ChartSource")
 @onready var scroll_zoom = get_parent().get_parent().get_node("%EditorScrollZoom")
 @onready var downscroll_toggle = get_parent().get_parent().get_node("%EditorDownscroll")
+@onready var snap = get_parent().get_parent().get_node("%EditorSnap")
 
 var downscroll = false
 var extra_zoom = 1.0
@@ -52,7 +53,14 @@ func draw_receptors():
 		var line_y = song_audio_player.get_seconds_from_beat(current_grid_time) - current_time
 		line_y *= scroll_mult * 64
 		
-		var alpha = lerp(0.5, 0.25, fmod(current_grid_time + 1000.0, 2.0))
+		var alpha = 1.0
+		var round_time_for_highlight = snapped(current_grid_time, 0.0001)
+		if round(round_time_for_highlight * 8.0) == round_time_for_highlight * 8.0:
+			alpha = [
+				0.0, 0.95, 0.8, 0.95, 0.5, 0.95, 0.8, 0.95
+			][int(floor(round_time_for_highlight * 8) - (floor(round_time_for_highlight) * 8))]
+		
+		alpha = lerp(0.75, 0.125, alpha)
 		
 		var min_distance = min(
 			current_grid_time - grid_start_time,
@@ -65,7 +73,7 @@ func draw_receptors():
 			Vector2(custom_minimum_size.x, line_y),
 			Color(Color.WHITE, alpha)
 		)
-		current_grid_time += 1
+		current_grid_time += 1.0 / float(snap.value)
 	
 	var song_start = 0.0 - current_time
 	song_start *= scroll_mult * 64

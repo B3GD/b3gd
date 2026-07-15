@@ -30,24 +30,24 @@ func _input(event: InputEvent) -> void:
 			dragging = false
 		else:
 			editing = false
-
+	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-
+		
 		var mouse_position = get_local_mouse_position()
 		var is_mouse_over = Rect2(Vector2.ZERO, size).has_point(mouse_position)
 		if event.is_pressed() and is_mouse_over and !editing:
 			dragging = true
 			drag_position = mouse_position
-
+		
 		if event.is_pressed() and !is_mouse_over and editing:
 			editing = false
-
+		
 		if event.is_released():
 			dragging = false
-
+	
 	if event is InputEventMouseMotion and dragging:
 		var spin_range = max_value - min_value
-
+		
 		if step == 0.0:
 			value += event.screen_relative.x * 0.003 * spin_range
 		else:
@@ -56,7 +56,7 @@ func _input(event: InputEvent) -> void:
 				var value_moved = snapped(distance_from_next_step, step)
 				value += value_moved
 				distance_from_next_step -= value_moved
-
+	
 	if editing and event is InputEventKey and event.is_pressed():
 		var key_pressed = event.as_text_keycode()
 		match key_pressed:
@@ -76,10 +76,10 @@ func _input(event: InputEvent) -> void:
 					var old_length = len(get_value_string())
 					value = float(get_value_string().insert(caret_position, key_pressed))
 					caret_position += len(get_value_string()) - old_length
-
+	
 	if editing and event.is_action_pressed("ui_copy"):
 		DisplayServer.clipboard_set(get_value_string())
-
+	
 	if editing and event.is_action_pressed("ui_paste"):
 		var clipboard = DisplayServer.clipboard_get()
 		if clipboard.is_valid_float():
@@ -90,7 +90,7 @@ func get_value_string():
 
 func _draw() -> void:
 	var string = get_value_string()
-
+	
 	var back = get_theme_stylebox("normal", "LineEdit")
 	var back_focus = get_theme_stylebox("focus", "LineEdit")
 	var font = get_theme_font("font", "LineEdit")
@@ -107,7 +107,7 @@ func _draw() -> void:
 		draw_rect(Rect2(left_margin + caret_x, font_y - caret_y, 2, caret_height), Color.WHITE)
 	if !show_range:
 		return
-
+	
 	var right_margin = back.get_content_margin(SIDE_LEFT)
 	var bottom_margin = back.get_content_margin(SIDE_BOTTOM)
 	var height = 2
@@ -131,7 +131,7 @@ func _draw() -> void:
 	if overflow < 0:
 		overflow *= -1
 		flip = true
-
+	
 	var overflow_remainder = overflow - floor(overflow)
 	var overflow_background_count = floor(overflow)
 	if overflow_background_count > 0.0:

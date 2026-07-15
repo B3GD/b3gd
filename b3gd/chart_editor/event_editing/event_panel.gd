@@ -30,9 +30,9 @@ func update_event_info():
 	var event_name = event.get_script().get_global_name()
 	var label = "id: " + str(event_id) + " - " + event_name
 	%EditorEventHeader.text = label
-
+	
 	var export_properties = []
-
+	
 	var current_script_source = ""
 	for property in event.get_property_list():
 		if property.type == 0 and property.name.ends_with(".gd"):
@@ -48,7 +48,7 @@ func update_event_info():
 			continue
 		if !(property.usage & PROPERTY_USAGE_EDITOR): # Limit to export variables
 			continue
-
+		
 		export_properties.append({
 			"is_category": false,
 			"name": property.name,
@@ -57,10 +57,10 @@ func update_event_info():
 			"hint_string": property.hint_string,
 			"usage": property.usage
 		})
-
+	
 	for child in field_container.get_children():
 		field_container.remove_child(child)
-
+	
 	for property in export_properties:
 		var name_label = Label.new()
 		name_label.text = property.name
@@ -71,7 +71,7 @@ func update_event_info():
 			continue
 		name_label.text = name_label.text.capitalize() + ": "
 		name_label.label_settings = property_label_settings
-
+		
 		var enum_values = {}
 		var range_options = {}
 		match property.hint:
@@ -92,22 +92,22 @@ func update_event_info():
 				for value in enum_string:
 					value = value.split(":")
 					enum_values.set(value[0], int(value[1]))
-
+		
 		if property.hint_string.split(",").has("camera_targets") and get_tree().get_first_node_in_group("CameraTargets") != null:
 			var i = 0
 			for child in get_tree().get_first_node_in_group("CameraTargets").get_children():
 				enum_values.set(child.name, i)
 				i += 1
-
+		
 		var hbox = HBoxContainer.new()
 		field_container.add_child(hbox)
 		hbox.add_child(name_label)
 		hbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-
+		
 		var value = event.get(property.name)
-
+		
 		var inputs = []
-
+		
 		match property.type:
 			TYPE_BOOL:
 				var check_box = CheckBox.new()
@@ -143,7 +143,7 @@ func update_event_info():
 					count = 3
 				if property.type == TYPE_VECTOR4 or property.type == TYPE_VECTOR4I:
 					count = 4
-
+				
 				for i in count:
 					var spin_box = init_spin_slider()
 					spin_box.value = value[vector_members[i]]
@@ -154,7 +154,7 @@ func update_event_info():
 				warn_label.text = "UNSUPPORTED TYPE"
 				warn_label.label_settings = error_label_settings
 				hbox.add_child(warn_label)
-
+		
 		for input in inputs:
 			input[0].size_flags_horizontal = Control.SIZE_EXPAND_FILL
 			input[0].focus_behavior_recursive = Control.FOCUS_BEHAVIOR_DISABLED

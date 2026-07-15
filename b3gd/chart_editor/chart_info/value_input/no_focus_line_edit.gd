@@ -28,15 +28,15 @@ func _input(event: InputEvent) -> void:
 			editing = true
 		else:
 			editing = false
-
+	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-
+		
 		var mouse_position = get_local_mouse_position()
 		var is_mouse_over = Rect2(Vector2.ZERO, size).has_point(mouse_position)
-
+		
 		if event.is_pressed() and !is_mouse_over and editing:
 			editing = false
-
+	
 	if editing and event is InputEventKey and event.is_pressed():
 		var key_pressed = event.as_text_keycode()
 		match key_pressed:
@@ -56,10 +56,10 @@ func _input(event: InputEvent) -> void:
 					var old_length = len(text)
 					text = text.insert(caret_position, char(event.unicode))
 					caret_position += len(text) - old_length
-
+	
 	if editing and event.is_action_pressed("ui_copy"):
 		DisplayServer.clipboard_set(text)
-
+	
 	if editing and event.is_action_pressed("ui_paste"):
 		text = DisplayServer.clipboard_get()
 		var old_length = len(text)

@@ -1,32 +1,32 @@
 [gd_scene format=3 uid="uid://0fmbhebqx5x3"]
 
-[ext_resource type="Script" uid="uid://m5sbxr0i4jp1" path="res://b3gd/chart_editor/chart_data_editor.gd" id="1_fioop"]
-[ext_resource type="Script" uid="uid://d1dcw7q58p7ox" path="res://b3gd/chart_editor/editor_chart_data_history.gd" id="2_u5rpk"]
-[ext_resource type="Script" uid="uid://cn613y6nswe4m" path="res://b3gd/chart_editor/chart_scrubber.gd" id="3_wikv8"]
-[ext_resource type="Script" uid="uid://cqyp5h5ij2gaa" path="res://b3gd/chart_editor/note_editing/fake_note_manager.gd" id="4_dmtwi"]
-[ext_resource type="AudioStream" uid="uid://nwgw3lpaxmje" path="res://b3gd/chart_editor/sounds/note_click.wav" id="5_148jm"]
-[ext_resource type="Script" uid="uid://b8qw62xl3ryi3" path="res://b3gd/chart_editor/chart_saver.gd" id="6_rrdy4"]
-[ext_resource type="Script" uid="uid://b4it3bm2xipgc" path="res://b3gd/chart_editor/event_editing/event_view_arranger.gd" id="7_tjk5a"]
-[ext_resource type="PackedScene" uid="uid://b507lgcilwgxq" path="res://b3gd/chart_editor/event_editing/event_box.tscn" id="8_v56cb"]
-[ext_resource type="Script" uid="uid://bkaf2otcreksg" path="res://b3gd/chart_editor/event_editing/event_maker.gd" id="9_lc1e1"]
-[ext_resource type="Script" uid="uid://cy0rk72xgrung" path="res://b3gd/chart_editor/event_editing/event_class_box.gd" id="10_ooi8a"]
-[ext_resource type="Texture2D" uid="uid://cka5y22a126yx" path="res://b3gd/chart_editor/event_editing/arrow.png" id="11_awtbs"]
-[ext_resource type="Script" uid="uid://dsxriov1ftjvw" path="res://b3gd/chart_editor/note_editing/strumline_container.gd" id="12_tq722"]
-[ext_resource type="PackedScene" uid="uid://dkros47lrg8sl" path="res://b3gd/chart_editor/note_editing/strum_line.tscn" id="13_w1d6e"]
-[ext_resource type="Texture2D" uid="uid://cq03bxqwqbpqd" path="res://b3gd/chart_editor/chart_info/inspector.png" id="14_vw1cg"]
-[ext_resource type="Texture2D" uid="uid://cqccpwijdgqui" path="res://b3gd/chart_editor/chart_info/save.png" id="15_4wuii"]
-[ext_resource type="Texture2D" uid="uid://bd4ucgm5uh2qb" path="res://b3gd/chart_editor/chart_info/undo.png" id="16_r6g8m"]
-[ext_resource type="Texture2D" uid="uid://c6mup4esllr8p" path="res://b3gd/chart_editor/chart_info/redo.png" id="17_34qji"]
-[ext_resource type="Script" uid="uid://bapfqr3m4v28h" path="res://b3gd/chart_editor/chart_info/time_bar.gd" id="18_2scan"]
-[ext_resource type="Texture2D" uid="uid://dyvqs61ch1mx2" path="res://b3gd/chart_editor/chart_info/seconds.png" id="19_mqvcw"]
-[ext_resource type="Texture2D" uid="uid://7i5p3off2gwj" path="res://b3gd/chart_editor/chart_info/beats.png" id="20_be58p"]
-[ext_resource type="Script" uid="uid://b585c60ln25gs" path="res://b3gd/chart_editor/chart_info/editor_pitch_scale.gd" id="21_q1w8q"]
-[ext_resource type="Script" uid="uid://krqcacc7sq0o" path="res://b3gd/chart_editor/chart_info/value_input/spin_slider.gd" id="22_a5s5n"]
-[ext_resource type="Script" uid="uid://cddem6pgulynf" path="res://b3gd/chart_editor/note_editing/note_type_box.gd" id="23_k040k"]
-[ext_resource type="Script" uid="uid://bhvkv73cux2u0" path="res://b3gd/chart_editor/event_editing/event_panel.gd" id="24_gw6r0"]
-[ext_resource type="Texture2D" uid="uid://c0jlf16tl8ke7" path="res://b3gd/chart_editor/chart_info/event.png" id="25_osuhq"]
-[ext_resource type="Texture2D" uid="uid://kd73i3dkrn6l" path="res://b3gd/chart_editor/chart_info/charles.png" id="26_ax6m2"]
-[ext_resource type="Texture2D" uid="uid://cnjiglqj2tbq5" path="res://b3gd/im mad.png" id="27_n85hy"]
+[ext_resource type="Script" uid="uid://m5sbxr0i4jp1" path="res://b3gd/chart_editor/chart_data_editor.gd" id="1_tfe68"]
+[ext_resource type="Script" uid="uid://d1dcw7q58p7ox" path="res://b3gd/chart_editor/editor_chart_data_history.gd" id="2_0pt3y"]
+[ext_resource type="Script" uid="uid://cn613y6nswe4m" path="res://b3gd/chart_editor/chart_scrubber.gd" id="2_5spb2"]
+[ext_resource type="Script" uid="uid://cqyp5h5ij2gaa" path="res://b3gd/chart_editor/note_editing/fake_note_manager.gd" id="3_sjv8v"]
+[ext_resource type="AudioStream" uid="uid://nwgw3lpaxmje" path="res://b3gd/chart_editor/sounds/note_click.wav" id="4_1yhdw"]
+[ext_resource type="Script" uid="uid://b8qw62xl3ryi3" path="res://b3gd/chart_editor/chart_saver.gd" id="5_n0gnj"]
+[ext_resource type="Script" uid="uid://b4it3bm2xipgc" path="res://b3gd/chart_editor/event_editing/event_view_arranger.gd" id="6_0pt3y"]
+[ext_resource type="Script" uid="uid://cy0rk72xgrung" path="res://b3gd/chart_editor/event_editing/event_class_box.gd" id="6_sjv8v"]
+[ext_resource type="PackedScene" uid="uid://b507lgcilwgxq" path="res://b3gd/chart_editor/event_editing/event_box.tscn" id="7_7xm88"]
+[ext_resource type="Script" uid="uid://dsxriov1ftjvw" path="res://b3gd/chart_editor/note_editing/strumline_container.gd" id="8_laud3"]
+[ext_resource type="Script" uid="uid://bkaf2otcreksg" path="res://b3gd/chart_editor/event_editing/event_maker.gd" id="8_n0gnj"]
+[ext_resource type="PackedScene" uid="uid://dkros47lrg8sl" path="res://b3gd/chart_editor/note_editing/strum_line.tscn" id="9_8lyhl"]
+[ext_resource type="Texture2D" uid="uid://cka5y22a126yx" path="res://b3gd/chart_editor/event_editing/arrow.png" id="10_0pt3y"]
+[ext_resource type="Texture2D" uid="uid://cq03bxqwqbpqd" path="res://b3gd/chart_editor/chart_info/inspector.png" id="10_8v0hc"]
+[ext_resource type="Texture2D" uid="uid://cqccpwijdgqui" path="res://b3gd/chart_editor/chart_info/save.png" id="11_05qb2"]
+[ext_resource type="Texture2D" uid="uid://bd4ucgm5uh2qb" path="res://b3gd/chart_editor/chart_info/undo.png" id="12_8uoir"]
+[ext_resource type="Texture2D" uid="uid://c6mup4esllr8p" path="res://b3gd/chart_editor/chart_info/redo.png" id="13_n51ab"]
+[ext_resource type="Script" uid="uid://bapfqr3m4v28h" path="res://b3gd/chart_editor/chart_info/time_bar.gd" id="14_0hvb2"]
+[ext_resource type="Texture2D" uid="uid://dyvqs61ch1mx2" path="res://b3gd/chart_editor/chart_info/seconds.png" id="15_xuodv"]
+[ext_resource type="Texture2D" uid="uid://7i5p3off2gwj" path="res://b3gd/chart_editor/chart_info/beats.png" id="16_kc8jy"]
+[ext_resource type="Script" uid="uid://b585c60ln25gs" path="res://b3gd/chart_editor/chart_info/editor_pitch_scale.gd" id="17_wmgvx"]
+[ext_resource type="Script" uid="uid://krqcacc7sq0o" path="res://b3gd/chart_editor/chart_info/value_input/spin_slider.gd" id="18_5spb2"]
+[ext_resource type="Script" uid="uid://cddem6pgulynf" path="res://b3gd/chart_editor/note_editing/note_type_box.gd" id="18_yfv2k"]
+[ext_resource type="Script" uid="uid://bhvkv73cux2u0" path="res://b3gd/chart_editor/event_editing/event_panel.gd" id="19_28jyi"]
+[ext_resource type="Texture2D" uid="uid://c0jlf16tl8ke7" path="res://b3gd/chart_editor/chart_info/event.png" id="20_12gnn"]
+[ext_resource type="Texture2D" uid="uid://kd73i3dkrn6l" path="res://b3gd/chart_editor/chart_info/charles.png" id="21_lq1aq"]
+[ext_resource type="Texture2D" uid="uid://cnjiglqj2tbq5" path="res://b3gd/im mad.png" id="22_x2ptl"]
 
 [sub_resource type="FontVariation" id="FontVariation_akx1q"]
 variation_embolden = 1.0
@@ -103,25 +103,25 @@ font_color = Color(1, 0, 0, 1)
 
 [node name="EditorChartDataModifier" type="Node" parent="." unique_id=294836472]
 unique_name_in_owner = true
-script = ExtResource("1_fioop")
+script = ExtResource("1_tfe68")
 
 [node name="EditorChartDataHistory" type="Node" parent="." unique_id=1780856954]
 unique_name_in_owner = true
-script = ExtResource("2_u5rpk")
+script = ExtResource("2_0pt3y")
 
 [node name="EditorSongScrubber" type="Node" parent="." unique_id=1673015449]
 unique_name_in_owner = true
-script = ExtResource("3_wikv8")
+script = ExtResource("2_5spb2")
 
 [node name="FakeNoteManager" type="Node" parent="." unique_id=285104005]
-script = ExtResource("4_dmtwi")
+script = ExtResource("3_sjv8v")
 
 [node name="NoteClick" type="AudioStreamPlayer" parent="FakeNoteManager" unique_id=732366418]
-stream = ExtResource("5_148jm")
-max_polyphony = 16
+stream = ExtResource("4_1yhdw")
+volume_db = -6.0
 
 [node name="ChartSaver" type="Node" parent="." unique_id=1195970071]
-script = ExtResource("6_rrdy4")
+script = ExtResource("5_n0gnj")
 
 [node name="EditorUI" type="CanvasLayer" parent="." unique_id=773338071]
 layer = 255
@@ -153,8 +153,8 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-script = ExtResource("7_tjk5a")
-event_box_scene = ExtResource("8_v56cb")
+script = ExtResource("6_0pt3y")
+event_box_scene = ExtResource("7_7xm88")
 event_lane_width = 160
 
 [node name="_EventMaker" type="Control" parent="EditorUI/UIContainer/WorkAreaScroll/Container/EditorEventContainer" unique_id=786892059]
@@ -162,7 +162,7 @@ layout_mode = 1
 anchors_preset = 0
 offset_right = 180.0
 offset_bottom = 40.0
-script = ExtResource("9_lc1e1")
+script = ExtResource("8_n0gnj")
 
 [node name="EditorEventClassBox" type="OptionButton" parent="EditorUI/UIContainer/WorkAreaScroll/Container/EditorEventContainer/_EventMaker" unique_id=686199424]
 unique_name_in_owner = true
@@ -176,7 +176,7 @@ focus_mode = 0
 disabled = true
 fit_to_longest_item = false
 search_bar_enabled = true
-script = ExtResource("10_ooi8a")
+script = ExtResource("6_sjv8v")
 hidden_classes = PackedStringArray("Event", "EventTween")
 
 [node name="Arrow" type="NinePatchRect" parent="EditorUI/UIContainer/WorkAreaScroll/Container/EditorEventContainer/_EventMaker" unique_id=869931859]
@@ -192,7 +192,7 @@ offset_right = -0.124053955
 offset_bottom = -11.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
-texture = ExtResource("11_awtbs")
+texture = ExtResource("10_0pt3y")
 patch_margin_left = 4
 patch_margin_right = 17
 axis_stretch_horizontal = 1
@@ -203,13 +203,8 @@ layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 3
 alignment = 1
-script = ExtResource("12_tq722")
-strum_line_node = ExtResource("13_w1d6e")
-
-[node name="Margin" type="Control" parent="EditorUI/UIContainer/WorkAreaScroll/Container" unique_id=1818328540]
-custom_minimum_size = Vector2(4, 0)
-layout_mode = 2
-size_flags_horizontal = 3
+script = ExtResource("8_laud3")
+strum_line_node = ExtResource("9_8lyhl")
 
 [node name="AddStrumlineButton" type="Button" parent="EditorUI/UIContainer/WorkAreaScroll/Container" unique_id=166877994]
 visible = false
@@ -219,6 +214,11 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 focus_mode = 0
 text = "  + Add Strumline  "
+
+[node name="EditorUIScrubber" type="VScrollBar" parent="EditorUI/UIContainer" unique_id=242495460]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
 
 [node name="FieldScroll" type="ScrollContainer" parent="EditorUI/UIContainer" unique_id=929645039]
 layout_mode = 2
@@ -247,7 +247,7 @@ layout_mode = 2
 
 [node name="Icon" type="TextureRect" parent="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/Header" unique_id=214390818]
 layout_mode = 2
-texture = ExtResource("14_vw1cg")
+texture = ExtResource("10_8v0hc")
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/Header" unique_id=2144672168]
@@ -275,7 +275,7 @@ size_flags_vertical = 0
 focus_mode = 0
 shortcut = SubResource("Shortcut_xr37n")
 text = "Save"
-icon = ExtResource("15_4wuii")
+icon = ExtResource("11_05qb2")
 
 [node name="EditorUndoButton" type="Button" parent="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/FileButtons" unique_id=1756593776]
 unique_name_in_owner = true
@@ -286,7 +286,7 @@ focus_mode = 0
 disabled = true
 shortcut = SubResource("Shortcut_cle1c")
 text = "Undo"
-icon = ExtResource("16_r6g8m")
+icon = ExtResource("12_8uoir")
 
 [node name="EditorRedoButton" type="Button" parent="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/FileButtons" unique_id=1834438337]
 unique_name_in_owner = true
@@ -297,7 +297,7 @@ focus_mode = 0
 disabled = true
 shortcut = SubResource("Shortcut_kkbay")
 text = "Redo"
-icon = ExtResource("17_34qji")
+icon = ExtResource("13_n51ab")
 
 [node name="FileSeperator" type="HSeparator" parent="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=890963446]
 layout_mode = 2
@@ -311,7 +311,7 @@ horizontal_alignment = 1
 [node name="TimeBar" type="HBoxContainer" parent="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=546672490]
 layout_mode = 2
 size_flags_vertical = 0
-script = ExtResource("18_2scan")
+script = ExtResource("14_0hvb2")
 
 [node name="TimeLabel" type="Label" parent="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/TimeBar" unique_id=1054026542]
 layout_mode = 2
@@ -325,9 +325,9 @@ size_flags_vertical = 8
 focus_mode = 0
 selected = 0
 item_count = 2
-popup/item_0/icon = ExtResource("19_mqvcw")
+popup/item_0/icon = ExtResource("15_xuodv")
 popup/item_0/id = 0
-popup/item_1/icon = ExtResource("20_be58p")
+popup/item_1/icon = ExtResource("16_kc8jy")
 popup/item_1/id = 1
 
 [node name="CurrentTimeLabel" type="Label" parent="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/TimeBar" unique_id=657667020]
@@ -427,7 +427,7 @@ exp_edit = false
 rounded = false
 allow_greater = true
 allow_lesser = false
-script = ExtResource("21_q1w8q")
+script = ExtResource("17_wmgvx")
 show_range = true
 metadata/_custom_type_script = "uid://krqcacc7sq0o"
 
@@ -534,15 +534,15 @@ accessibility_flow_to_nodes = Array[NodePath]([])
 theme = null
 theme_type_variation = &""
 min_value = 1.0
-max_value = 5.0
+max_value = 9.0
 step = 1.0
 page = 1.0
-value = 1.0
+value = 8.0
 exp_edit = false
 rounded = false
 allow_greater = true
 allow_lesser = false
-script = ExtResource("22_a5s5n")
+script = ExtResource("18_5spb2")
 prefix = "1 / "
 show_range = true
 metadata/_custom_type_script = "uid://krqcacc7sq0o"
@@ -557,7 +557,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 search_bar_enabled = true
-script = ExtResource("23_k040k")
+script = ExtResource("18_yfv2k")
 
 [node name="EditorSeperator" type="HSeparator" parent="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=631681473]
 layout_mode = 2
@@ -644,15 +644,15 @@ accessibility_flow_to_nodes = Array[NodePath]([])
 theme = null
 theme_type_variation = &""
 min_value = 0.2
-max_value = 4.0
+max_value = 8.0
 step = 0.05
 page = 0.0
-value = 1.0
+value = 8.0
 exp_edit = false
 rounded = false
 allow_greater = true
 allow_lesser = false
-script = ExtResource("22_a5s5n")
+script = ExtResource("18_5spb2")
 show_range = true
 suffix = " x"
 metadata/_custom_type_script = "uid://krqcacc7sq0o"
@@ -671,7 +671,7 @@ alignment = 1
 
 [node name="EventPanel" type="PanelContainer" parent="EditorUI/UIContainer/FieldScroll/Container" unique_id=1194554065]
 layout_mode = 2
-script = ExtResource("24_gw6r0")
+script = ExtResource("19_28jyi")
 header_label_settings = SubResource("LabelSettings_xr37n")
 property_label_settings = SubResource("LabelSettings_cle1c")
 error_label_settings = SubResource("LabelSettings_5spb2")
@@ -692,7 +692,7 @@ layout_mode = 2
 
 [node name="Icon" type="TextureRect" parent="EditorUI/UIContainer/FieldScroll/Container/EventPanel/Margin/EventContainer/Header" unique_id=273886200]
 layout_mode = 2
-texture = ExtResource("25_osuhq")
+texture = ExtResource("20_12gnn")
 stretch_mode = 3
 
 [node name="EditorEventHeader" type="Label" parent="EditorUI/UIContainer/FieldScroll/Container/EventPanel/Margin/EventContainer/Header" unique_id=633300032]
@@ -738,7 +738,7 @@ offset_right = 246.0
 offset_bottom = -9.0
 grow_vertical = 0
 mouse_filter = 2
-texture = ExtResource("26_ax6m2")
+texture = ExtResource("21_lq1aq")
 stretch_mode = 5
 
 [node name="MyMessage" type="TextureRect" parent="EditorUI/Images" unique_id=1597514997]
@@ -750,9 +750,10 @@ offset_left = -472.0
 offset_top = -124.0
 offset_right = -86.0
 offset_bottom = 132.0
-texture = ExtResource("27_n85hy")
+texture = ExtResource("22_x2ptl")
 
 [connection signal="item_selected" from="EditorUI/UIContainer/WorkAreaScroll/Container/EditorEventContainer/_EventMaker/EditorEventClassBox" to="EditorUI/UIContainer/WorkAreaScroll/Container/EditorEventContainer/_EventMaker" method="_on_editor_event_class_box_item_selected"]
+[connection signal="value_changed" from="EditorUI/UIContainer/EditorUIScrubber" to="EditorSongScrubber" method="_on_editor_ui_scrubber_value_changed"]
 [connection signal="pressed" from="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/FileButtons/SaveButton" to="ChartSaver" method="_on_save_button_pressed"]
 [connection signal="value_changed" from="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/PitchScaleContainer/EditorPitchScale" to="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox/PitchScaleContainer/EditorPitchScale" method="_on_value_changed"]
 [connection signal="pressed" from="EditorUI/UIContainer/FieldScroll/Container/EventPanel/Margin/EventContainer/Header/Button" to="EditorUI/UIContainer/FieldScroll/Container/EventPanel" method="remove_event"]
