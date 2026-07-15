@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c0cmejkc8gn3b"]
 
-[ext_resource type="Texture2D" uid="uid://cbk31lviufypw" path="res://menus/freeplay/freeplaybg.png" id="1_ff5d7"]
-[ext_resource type="Script" uid="uid://fy4fs5hvyrk6" path="res://menus/freeplay/freeplay_item_maker.gd" id="1_rqawy"]
+[ext_resource type="Texture2D" uid="uid://cbk31lviufypw" path="res://states/menus/freeplay/freeplaybg.png" id="1_ff5d7"]
+[ext_resource type="Script" uid="uid://fy4fs5hvyrk6" path="res://states/menus/freeplay/freeplay_item_maker.gd" id="1_rqawy"]
 
 [node name="Freeplay" type="Control" unique_id=888896270]
 layout_mode = 3

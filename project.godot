@@ -32,9 +32,11 @@ folder_colors={
 "res://b3gd/chart_editor/": "gray",
 "res://b3gd/chart_player/": "gray",
 "res://b3gd/song_scripts/": "pink",
-"res://menus/": "yellow",
 "res://prefabs/": "green",
-"res://songs/": "blue"
+"res://songs/": "blue",
+"res://states/": "yellow",
+"res://states/chart_player/": "red",
+"res://states/chart_player/note_renderers/": "gray"
 }
 
 [global_group]
