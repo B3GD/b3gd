@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="Chart" format=3 uid="uid://bvc2ibsd0eloj"]
 
 [ext_resource type="Script" uid="uid://uba06rj25tk5" path="res://b3gd/chart_data/event.gd" id="1_y1qrp"]
-[ext_resource type="Script" uid="uid://cxewr41xtv111" path="res://b3gd/chart_data/events/camera/camera_movement.gd" id="2_vfrlu"]
-[ext_resource type="Script" uid="uid://d10klgni64d7f" path="res://b3gd/chart_data/events/song_playback/bpm.gd" id="3_s0yfo"]
+[ext_resource type="Script" uid="uid://cxewr41xtv111" path="res://prefabs/chart_data/events/camera/camera_movement.gd" id="2_vfrlu"]
+[ext_resource type="Script" uid="uid://d10klgni64d7f" path="res://prefabs/chart_data/events/song_playback/bpm.gd" id="3_s0yfo"]
 [ext_resource type="Script" uid="uid://tsakffm2k03s" path="res://b3gd/chart_data/chart.gd" id="3_vfrlu"]
-[ext_resource type="Script" uid="uid://cyqa68xim30d1" path="res://b3gd/chart_data/events/camera/camera_zoom.gd" id="4_2wgma"]
+[ext_resource type="Script" uid="uid://cyqa68xim30d1" path="res://prefabs/chart_data/events/camera/camera_zoom.gd" id="4_2wgma"]
 [ext_resource type="Script" uid="uid://dcj6ncvkdmib8" path="res://b3gd/chart_data/strum_line.gd" id="4_s0yfo"]
 [ext_resource type="Script" uid="uid://dmjgm4x8wfbgo" path="res://b3gd/chart_data/chart_metadata.gd" id="4_vfrlu"]
 [ext_resource type="Script" uid="uid://mae25nhr3e8c" path="res://b3gd/chart_data/receptor.gd" id="5_y1qrp"]
