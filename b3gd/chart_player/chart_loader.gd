@@ -9,7 +9,6 @@ signal events_loaded()
 @export var song_audio_player:AudioStreamPlayer
 @export var note_manager:Node
 @export var event_player:Node
-@export var status_handler:Node
 
 func _ready() -> void:
 	load_chart()
@@ -33,7 +32,6 @@ func load_tracks():
 	for i in chart.tracks.vocal_layers.size():
 		vocal_layers.append(i + start_index)
 	
-	
 	for track in tracks:
 		if track == null:
 			tracks.erase(track)
@@ -49,6 +47,7 @@ func load_notes(ignore_past_notes: bool = false):
 	note_manager.strum_lines = chart_source.chart.strum_lines.duplicate_deep(Resource.DEEP_DUPLICATE_ALL)
 	
 	for strum_line in note_manager.strum_lines:
+		strum_line.function = [note_manager.player_receptor_input, note_manager.cpu_receptor_input][int(strum_line.cpu)]
 		for receptor in strum_line.receptors:
 			receptor.last_press = Receptor.ReceptorInput.new()
 			receptor.last_press.input_time = 0

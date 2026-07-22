@@ -18,15 +18,18 @@ func erase_editor() -> void:
 	editor.queue_free()
 	editor = null
 	$ChartLoader.load_notes(true)
-	$NoteManager.force_inactive = false
+	$NoteManager.process_mode = Node.PROCESS_MODE_INHERIT
+	$UI.process_mode = Node.PROCESS_MODE_INHERIT
 	$UI.visible = true
 	
 	if $SongAudioPlayer.paused: 
 		$SongAudioPlayer.unpause()
 
 func add_editor() -> void:
-	$NoteManager.force_inactive = true
+	$NoteManager.process_mode = Node.PROCESS_MODE_DISABLED
 	$ChartLoader.load_chart()
 	editor = load(editor_path).instantiate()
 	add_child(editor)
+	$UI.process_mode = Node.PROCESS_MODE_DISABLED
 	$UI.visible = false
+	

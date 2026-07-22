@@ -29,8 +29,8 @@ func process_events() -> bool:
 			events[last_played_event].play(song_audio_player.pitch_scale * -1)
 		return false
 	if last_played_event != -1 and events[last_played_event].time > song_audio_player.song_progress_seconds:
-		last_played_event = max(last_played_event - 1, -1)
 		events[last_played_event].play(song_audio_player.pitch_scale * -1)
+		last_played_event = max(last_played_event - 1, -1)
 		return true
 	if last_played_event >= events.size() - 1:
 		return false

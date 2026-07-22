@@ -11,7 +11,13 @@ func init():
 
 func play(speed: float = 1.0):
 	var split_parameters = Array(function_parameters.split(",", false))
+	assert(node != null, "Call function: Node" + node_path + "does not exist")
 	if add_speed:
 		split_parameters.insert(0, speed)
-	if node != null:
-		node.callv(function_name, split_parameters)
+	var function_id = node.get_method_list().find_custom(func(x): return x.name == function_name)
+	assert(function_id >= 0, "Call function: function" + function_name + "does not exist")
+	var function_params = node.get_method_list()[function_id].args
+	for param_id in split_parameters.size():
+		var param = function_params[param_id]
+		split_parameters[param_id] = type_convert(split_parameters[param_id], param.type)
+	node.callv(function_name, split_parameters)

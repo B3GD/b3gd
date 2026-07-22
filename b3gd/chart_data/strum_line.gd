@@ -4,3 +4,5 @@ class_name StrumLine extends Resource
 @export var receptors: Array[Receptor]
 ## If this is true, Input on this strumline is automatic
 @export var cpu: bool
+
+var function: Callable
