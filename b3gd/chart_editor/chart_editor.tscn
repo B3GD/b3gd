@@ -7,7 +7,6 @@
 [ext_resource type="AudioStream" uid="uid://nwgw3lpaxmje" path="res://b3gd/chart_editor/sounds/note_click.wav" id="4_1yhdw"]
 [ext_resource type="Script" uid="uid://b8qw62xl3ryi3" path="res://b3gd/chart_editor/chart_saver.gd" id="5_n0gnj"]
 [ext_resource type="Script" uid="uid://b4it3bm2xipgc" path="res://b3gd/chart_editor/event_editing/event_view_arranger.gd" id="6_0pt3y"]
-[ext_resource type="Script" uid="uid://cy0rk72xgrung" path="res://b3gd/chart_editor/event_editing/event_class_box.gd" id="6_sjv8v"]
 [ext_resource type="PackedScene" uid="uid://b507lgcilwgxq" path="res://b3gd/chart_editor/event_editing/event_box.tscn" id="7_7xm88"]
 [ext_resource type="Script" uid="uid://dsxriov1ftjvw" path="res://b3gd/chart_editor/note_editing/strumline_container.gd" id="8_laud3"]
 [ext_resource type="Script" uid="uid://bkaf2otcreksg" path="res://b3gd/chart_editor/event_editing/event_maker.gd" id="8_n0gnj"]
@@ -22,11 +21,11 @@
 [ext_resource type="Texture2D" uid="uid://7i5p3off2gwj" path="res://b3gd/chart_editor/chart_info/beats.png" id="16_kc8jy"]
 [ext_resource type="Script" uid="uid://b585c60ln25gs" path="res://b3gd/chart_editor/chart_info/editor_pitch_scale.gd" id="17_wmgvx"]
 [ext_resource type="Script" uid="uid://krqcacc7sq0o" path="res://b3gd/chart_editor/chart_info/value_input/spin_slider.gd" id="18_5spb2"]
-[ext_resource type="Script" uid="uid://cddem6pgulynf" path="res://b3gd/chart_editor/note_editing/note_type_box.gd" id="18_yfv2k"]
 [ext_resource type="Script" uid="uid://bhvkv73cux2u0" path="res://b3gd/chart_editor/event_editing/event_panel.gd" id="19_28jyi"]
 [ext_resource type="Texture2D" uid="uid://c0jlf16tl8ke7" path="res://b3gd/chart_editor/chart_info/event.png" id="20_12gnn"]
 [ext_resource type="Texture2D" uid="uid://kd73i3dkrn6l" path="res://b3gd/chart_editor/chart_info/charles.png" id="21_lq1aq"]
 [ext_resource type="Texture2D" uid="uid://cnjiglqj2tbq5" path="res://b3gd/im mad.png" id="22_x2ptl"]
+[ext_resource type="Script" uid="uid://b3feif32ouid8" path="res://b3gd/chart_editor/class_selector_box.gd" id="23_0pt3y"]
 
 [sub_resource type="FontVariation" id="FontVariation_akx1q"]
 variation_embolden = 1.0
@@ -176,8 +175,9 @@ focus_mode = 0
 disabled = true
 fit_to_longest_item = false
 search_bar_enabled = true
-script = ExtResource("6_sjv8v")
+script = ExtResource("23_0pt3y")
 hidden_classes = PackedStringArray("Event", "EventTween")
+script_path = "res://b3gd/chart_data/event.gd"
 
 [node name="Arrow" type="NinePatchRect" parent="EditorUI/UIContainer/WorkAreaScroll/Container/EditorEventContainer/_EventMaker" unique_id=869931859]
 modulate = Color(1, 1, 1, 0.53333336)
@@ -557,7 +557,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 search_bar_enabled = true
-script = ExtResource("18_yfv2k")
+script = ExtResource("23_0pt3y")
+script_path = "res://b3gd/chart_data/note.gd"
 
 [node name="EditorSeperator" type="HSeparator" parent="EditorUI/UIContainer/FieldScroll/Container/ChartInfoPanel/Margin/HBox" unique_id=631681473]
 layout_mode = 2
