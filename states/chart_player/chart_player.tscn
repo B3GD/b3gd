@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ce48x5d41hgyi" path="res://b3gd/chart_editor/chart_editor_activate.gd" id="1_5icij"]
 [ext_resource type="Script" uid="uid://223mam7be1wl" path="res://b3gd/chart_player/chart_loader.gd" id="1_62xbj"]
-[ext_resource type="Resource" uid="uid://df85i1axj661g" path="res://songs/test/chart.tres" id="3_cdfgl"]
+[ext_resource type="Resource" uid="uid://bvc2ibsd0eloj" path="res://songs/test/chart.tres" id="3_cdfgl"]
 [ext_resource type="Script" uid="uid://bpt0v2hxb23lq" path="res://b3gd/chart_player/song_audio_player.gd" id="3_my5jg"]
 [ext_resource type="Script" uid="uid://cr3x8h58rufy1" path="res://b3gd/chart_player/event_player.gd" id="3_v3b1e"]
 [ext_resource type="Script" uid="uid://rypo2bh7qid7" path="res://b3gd/chart_player/note_manager.gd" id="4_t3y1r"]
@@ -20,13 +20,12 @@ metadata/_custom_type_script = "uid://bctudmv5p4heo"
 script = ExtResource("1_5icij")
 chart = ExtResource("3_cdfgl")
 
-[node name="ChartLoader" type="Node" parent="." unique_id=2030037540 node_paths=PackedStringArray("chart_source", "song_audio_player", "note_manager", "event_player", "status_handler") groups=["ChartLoader"]]
+[node name="ChartLoader" type="Node" parent="." unique_id=2030037540 node_paths=PackedStringArray("chart_source", "song_audio_player", "note_manager", "event_player") groups=["ChartLoader"]]
 script = ExtResource("1_62xbj")
 chart_source = NodePath("..")
 song_audio_player = NodePath("../SongAudioPlayer")
 note_manager = NodePath("../NoteManager")
 event_player = NodePath("../EventPlayer")
-status_handler = NodePath("../StatusHandler")
 
 [node name="EventPlayer" type="Node" parent="." unique_id=746537916 node_paths=PackedStringArray("song_audio_player") groups=["EventPlayer"]]
 script = ExtResource("3_v3b1e")
@@ -53,14 +52,15 @@ grow_vertical = 2
 focus_mode = 0
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="UI/Strumlines" unique_id=8042913]
+[node name="StrumlinesSubViewport" type="SubViewport" parent="UI/Strumlines" unique_id=8042913]
+own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
 anisotropic_filtering_level = 0
 size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
-[node name="StrumLineRenderer" type="MeshInstance3D" parent="UI/Strumlines/SubViewport" unique_id=2002107423]
+[node name="StrumLineRenderer" type="MeshInstance3D" parent="UI/Strumlines/StrumlinesSubViewport" unique_id=2002107423]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.9000001, 0)
 script = ExtResource("5_yp0gr")
 noteskin_texture = ExtResource("7_cdfgl")
@@ -69,7 +69,7 @@ strum_line_idx = 0
 hold_resolution = 3.0
 cutoff_distance = 8.0
 
-[node name="StrumLineRenderer2" type="MeshInstance3D" parent="UI/Strumlines/SubViewport" unique_id=228372249]
+[node name="StrumLineRenderer2" type="MeshInstance3D" parent="UI/Strumlines/StrumlinesSubViewport" unique_id=228372249]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.9, 0)
 script = ExtResource("5_yp0gr")
 noteskin_texture = ExtResource("7_cdfgl")
@@ -77,7 +77,7 @@ noteskin_data = SubResource("Resource_eb4vn")
 hold_resolution = 3.0
 cutoff_distance = 8.0
 
-[node name="Camera3D" type="Camera3D" parent="UI/Strumlines/SubViewport" unique_id=955848793]
+[node name="Camera3D" type="Camera3D" parent="UI/Strumlines/StrumlinesSubViewport" unique_id=955848793]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 17)
 keep_aspect = 0
 projection = 1
